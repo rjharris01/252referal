@@ -5,17 +5,27 @@
  */
 package Views;
 
+import javax.swing.JButton;
+import javax.swing.JList;
+import javax.swing.JScrollPane;
+
 /**
  *
  * @author richa_bfe6tpy
  */
 public class SecretaryApprovePatientView extends javax.swing.JPanel {
 
+    private JButton SecretaryApprovePatientButton;
+    private JScrollPane jScrollPane1;
+    private JList<Object> SecretaryAccountRequestedList;
+    private JButton SecretaryDeclinePatientButton;
+    private JButton SecretaryBackButton;
+
     /**
      * Creates new form SecrataryApprovePatientView
      */
     public SecretaryApprovePatientView() {
-        initComponents();
+        initMyComponents();
     }
 
     /**
@@ -38,6 +48,62 @@ public class SecretaryApprovePatientView extends javax.swing.JPanel {
             .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void initMyComponents() {
+        SecretaryApprovePatientButton = new javax.swing.JButton();
+        SecretaryDeclinePatientButton = new javax.swing.JButton();
+        SecretaryBackButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        SecretaryAccountRequestedList = new javax.swing.JList<>();
+        
+        
+        
+        
+        SecretaryApprovePatientButton.setText("Approve");
+        SecretaryDeclinePatientButton.setText("Decline");
+        SecretaryBackButton.setText("Back");        
+       
+
+        SecretaryAccountRequestedList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        SecretaryAccountRequestedList.setToolTipText("");
+        jScrollPane1.setViewportView(SecretaryAccountRequestedList);
+
+        javax.swing.GroupLayout SecretaryApprovePatientPanelLayout = new javax.swing.GroupLayout(this);
+        this.setLayout(SecretaryApprovePatientPanelLayout);
+        SecretaryApprovePatientPanelLayout.setHorizontalGroup(
+            SecretaryApprovePatientPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SecretaryApprovePatientPanelLayout.createSequentialGroup()
+                 .addComponent(SecretaryBackButton)   
+            
+            )
+            .addGroup(SecretaryApprovePatientPanelLayout.createSequentialGroup()
+                
+                .addComponent(jScrollPane1)
+                .addGap(22, 22, 22)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, SecretaryApprovePatientPanelLayout.createSequentialGroup()
+                .addContainerGap(372, Short.MAX_VALUE)
+                .addComponent(SecretaryDeclinePatientButton)
+                .addComponent(SecretaryApprovePatientButton)
+                
+                .addGap(180, 180, 180))
+        );
+        SecretaryApprovePatientPanelLayout.setVerticalGroup(
+            SecretaryApprovePatientPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SecretaryApprovePatientPanelLayout.createSequentialGroup()
+                 .addComponent(SecretaryBackButton)   
+            
+            )
+            .addGroup(SecretaryApprovePatientPanelLayout.createSequentialGroup()
+                .addContainerGap(75, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(SecretaryApprovePatientPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(SecretaryApprovePatientButton)
+                    .addComponent(SecretaryDeclinePatientButton))
+                .addContainerGap())
+        );
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
