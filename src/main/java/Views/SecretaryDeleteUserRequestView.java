@@ -5,17 +5,32 @@
  */
 package Views;
 
+import javax.swing.JButton;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
 /**
  *
  * @author richa_bfe6tpy
  */
 public class SecretaryDeleteUserRequestView extends javax.swing.JPanel {
 
+    private JScrollPane jScrollPane3;
+    private JList<Object> AccountDeleteRequestsList;
+    private JButton DeleteUserRequestBackButton;
+    private JButton DeleteUserRequestButton;
+    private JPanel SecretaryDeleteUserManualPanel;
+    private JScrollPane jScrollPane4;
+    private JList<Object> AccountDeleteManualList;
+    private JButton DeleteUserManualtBackButton1;
+    private JButton DeleteUserManualButton1;
+
     /**
      * Creates new form SecretaryDeleteUserRequestView
      */
     public SecretaryDeleteUserRequestView() {
-        initComponents();
+        initMyComponents();
     }
 
     /**
@@ -38,6 +53,55 @@ public class SecretaryDeleteUserRequestView extends javax.swing.JPanel {
             .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void initMyComponents() {
+        
+        jScrollPane3 = new javax.swing.JScrollPane();
+        AccountDeleteRequestsList = new javax.swing.JList<>();
+        DeleteUserRequestBackButton = new javax.swing.JButton();
+        DeleteUserRequestButton = new javax.swing.JButton();
+        SecretaryDeleteUserManualPanel = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        AccountDeleteManualList = new javax.swing.JList<>();
+        DeleteUserManualtBackButton1 = new javax.swing.JButton();
+        DeleteUserManualButton1 = new javax.swing.JButton();
+        
+        AccountDeleteRequestsList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+         
+        jScrollPane3.setViewportView(AccountDeleteRequestsList);
+
+        DeleteUserRequestBackButton.setText("Back");
+        
+
+        DeleteUserRequestButton.setText("Delete");
+        
+
+        javax.swing.GroupLayout SecretaryDeleteUserRequestPanelLayout = new javax.swing.GroupLayout(this);
+        this.setLayout(SecretaryDeleteUserRequestPanelLayout);
+        SecretaryDeleteUserRequestPanelLayout.setHorizontalGroup(
+            SecretaryDeleteUserRequestPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SecretaryDeleteUserRequestPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(SecretaryDeleteUserRequestPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(SecretaryDeleteUserRequestPanelLayout.createSequentialGroup()
+                        .addComponent(DeleteUserRequestBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(DeleteUserRequestButton, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(70, Short.MAX_VALUE))
+        );
+        SecretaryDeleteUserRequestPanelLayout.setVerticalGroup(
+            SecretaryDeleteUserRequestPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SecretaryDeleteUserRequestPanelLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(SecretaryDeleteUserRequestPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DeleteUserRequestBackButton, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(DeleteUserRequestButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
