@@ -5,17 +5,26 @@
  */
 package Views;
 
+import javax.swing.JButton;
+import javax.swing.JList;
+import javax.swing.JScrollPane;
+
 /**
  *
  * @author richa_bfe6tpy
  */
 public class SecretaryDeleteUserManualView extends javax.swing.JPanel {
 
+    private JScrollPane jScrollPane4;
+    private JList<Object> AccountDeleteManualList;
+    private JButton DeleteUserManualtBackButton1;
+    private JButton DeleteUserManualButton1;
+
     /**
      * Creates new form SecretaryDeleteUserManual
      */
     public SecretaryDeleteUserManualView() {
-        initComponents();
+        initMyComponents();
     }
 
     /**
@@ -38,6 +47,51 @@ public class SecretaryDeleteUserManualView extends javax.swing.JPanel {
             .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void initMyComponents() {
+        jScrollPane4 = new javax.swing.JScrollPane();
+        AccountDeleteManualList = new javax.swing.JList<>();
+        DeleteUserManualtBackButton1 = new javax.swing.JButton();
+        DeleteUserManualButton1 = new javax.swing.JButton();
+        
+        AccountDeleteManualList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane4.setViewportView(AccountDeleteManualList);
+
+        DeleteUserManualtBackButton1.setText("Back");
+        
+
+        DeleteUserManualButton1.setText("Delete");
+       
+
+        javax.swing.GroupLayout SecretaryDeleteUserManualPanelLayout = new javax.swing.GroupLayout(this);
+        this.setLayout(SecretaryDeleteUserManualPanelLayout);
+        SecretaryDeleteUserManualPanelLayout.setHorizontalGroup(
+            SecretaryDeleteUserManualPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SecretaryDeleteUserManualPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(SecretaryDeleteUserManualPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER, false)
+                    .addGroup(SecretaryDeleteUserManualPanelLayout.createSequentialGroup()
+                        .addComponent(DeleteUserManualtBackButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(DeleteUserManualButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(70, Short.MAX_VALUE))
+        );
+        SecretaryDeleteUserManualPanelLayout.setVerticalGroup(
+            SecretaryDeleteUserManualPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SecretaryDeleteUserManualPanelLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(SecretaryDeleteUserManualPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DeleteUserManualtBackButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(DeleteUserManualButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        
+        
+        
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
