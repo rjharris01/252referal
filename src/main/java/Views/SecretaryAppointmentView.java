@@ -5,17 +5,42 @@
  */
 package Views;
 
+import java.time.LocalDateTime;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
 /**
  *
  * @author richa_bfe6tpy
  */
 public class SecretaryAppointmentView extends javax.swing.JPanel {
 
+    private JComboBox<Object> SecretaryAppointmentDoctorBox;
+    private JComboBox<Object> SecretaryAppointmentPatientBox;
+    private JComboBox<Object> SecretaryAppointmentMonthBox;
+    private JButton SecretaryAppointmentSubmitButton;
+    private JButton SecretaryAppointmentBackButton;
+    private JLabel SecretaryAppointmentDoctorLabel;
+    private JLabel SecretaryAppoointmentPatientLabel;
+    private JLabel SecretaryAppointmentMonthLabel;
+    private JLabel SecretaryAppointmentDayLabel;
+    private JComboBox<Object> SecretaryAppointmentDayBox;
+    private JComboBox<Object> SecretaryAppointmentYearBox;
+    private JComboBox<Object> SecretaryAppointmentHourBox;
+    private JComboBox<Object> SecretaryAppointmentMinuteBox;
+    private JLabel SecretaryAppointmentYearLabel;
+    private JLabel SecretaryAppointmentHourLabel;
+    private JLabel SecretaryAppointmentMinuteLabel;
+    private JPanel SecretaryApprovePatientPanel;
+    private JButton SecretaryApprovePatientButton;
+
     /**
      * Creates new form SecrataryAppointmentView
      */
     public SecretaryAppointmentView() {
-        initComponents();
+        initMyComponents();
     }
 
     /**
@@ -39,6 +64,199 @@ public class SecretaryAppointmentView extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public void initMyComponents() {
+        SecretaryAppointmentDoctorBox = new javax.swing.JComboBox<>();
+        SecretaryAppointmentPatientBox = new javax.swing.JComboBox<>();
+        SecretaryAppointmentMonthBox = new javax.swing.JComboBox<>();
+        SecretaryAppointmentSubmitButton = new javax.swing.JButton();
+        SecretaryAppointmentBackButton = new javax.swing.JButton();
+        SecretaryAppointmentDoctorLabel = new javax.swing.JLabel();
+        SecretaryAppoointmentPatientLabel = new javax.swing.JLabel();
+        SecretaryAppointmentMonthLabel = new javax.swing.JLabel();
+        SecretaryAppointmentDayLabel = new javax.swing.JLabel();
+        SecretaryAppointmentDayBox = new javax.swing.JComboBox<>();
+        SecretaryAppointmentYearBox = new javax.swing.JComboBox<>();
+        SecretaryAppointmentHourBox = new javax.swing.JComboBox<>();
+        SecretaryAppointmentMinuteBox = new javax.swing.JComboBox<>();
+        SecretaryAppointmentYearLabel = new javax.swing.JLabel();
+        SecretaryAppointmentHourLabel = new javax.swing.JLabel();
+        SecretaryAppointmentMinuteLabel = new javax.swing.JLabel();
+        SecretaryApprovePatientPanel = new javax.swing.JPanel();
+        SecretaryApprovePatientButton = new javax.swing.JButton();
+        
+        
+        SecretaryAppointmentPatientBox.setEditor(null);
+        SecretaryAppointmentMonthBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
+        SecretaryAppointmentSubmitButton.setText("Submit");
+        SecretaryAppointmentBackButton.setText("Back");
+        SecretaryAppointmentDoctorLabel.setText("Doctor");
+        SecretaryAppoointmentPatientLabel.setText("Patient");
+        SecretaryAppointmentMonthLabel.setText("Month");
+        SecretaryAppointmentDayLabel.setText("Day");
+        SecretaryAppointmentHourBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
+        SecretaryAppointmentMinuteBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "05", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55" }));
+        SecretaryAppointmentYearLabel.setText("Year");
+        SecretaryAppointmentHourLabel.setText("Hour");
+        SecretaryAppointmentMinuteLabel.setText("Minute");
+        
+        setAppointmentYears();
+        
+        SecretaryAppointmentMonthBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                SecretaryAppointmentMonthBoxItemStateChanged(evt);
+            }
+        });
+        
+        SecretaryAppointmentYearBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                SecretaryAppointmentYearBoxItemStateChanged(evt);
+            }
+        });
+        
+        
+        javax.swing.GroupLayout SecretaryAppointmentPanelLayout = new javax.swing.GroupLayout(this);
+        this.setLayout(SecretaryAppointmentPanelLayout);
+        SecretaryAppointmentPanelLayout.setHorizontalGroup(
+            SecretaryAppointmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SecretaryAppointmentPanelLayout.createSequentialGroup()
+                .addGroup(SecretaryAppointmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(SecretaryAppointmentPanelLayout.createSequentialGroup()
+                        .addGap(94, 94, 94)
+                        .addGroup(SecretaryAppointmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(SecretaryAppointmentPanelLayout.createSequentialGroup()
+                                .addGroup(SecretaryAppointmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(SecretaryAppoointmentPatientLabel)
+                                    .addComponent(SecretaryAppointmentDoctorLabel))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SecretaryAppointmentPanelLayout.createSequentialGroup()
+                                .addGroup(SecretaryAppointmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(SecretaryAppointmentDoctorBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(SecretaryAppointmentPatientBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, SecretaryAppointmentPanelLayout.createSequentialGroup()
+                                        .addGroup(SecretaryAppointmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(SecretaryAppointmentPanelLayout.createSequentialGroup()
+                                                .addComponent(SecretaryAppointmentMonthLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(SecretaryAppointmentDayLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(22, 22, 22)
+                                                .addComponent(SecretaryAppointmentYearLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
+                                                .addGap(16, 16, 16))
+                                            .addGroup(SecretaryAppointmentPanelLayout.createSequentialGroup()
+                                                .addComponent(SecretaryAppointmentMonthBox, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(SecretaryAppointmentDayBox, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(SecretaryAppointmentYearBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                                        .addGroup(SecretaryAppointmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(SecretaryAppointmentHourBox, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(SecretaryAppointmentPanelLayout.createSequentialGroup()
+                                                .addGap(14, 14, 14)
+                                                .addComponent(SecretaryAppointmentHourLabel)))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(SecretaryAppointmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(SecretaryAppointmentMinuteLabel)
+                                            .addComponent(SecretaryAppointmentMinuteBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(129, 129, 129))))
+                    .addGroup(SecretaryAppointmentPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(SecretaryAppointmentBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(SecretaryAppointmentSubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        SecretaryAppointmentPanelLayout.setVerticalGroup(
+            SecretaryAppointmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SecretaryAppointmentPanelLayout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(SecretaryAppointmentDoctorLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SecretaryAppointmentDoctorBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SecretaryAppoointmentPatientLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SecretaryAppointmentPatientBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60)
+                .addGroup(SecretaryAppointmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SecretaryAppointmentYearLabel)
+                    .addComponent(SecretaryAppointmentDayLabel)
+                    .addComponent(SecretaryAppointmentMonthLabel)
+                    .addComponent(SecretaryAppointmentHourLabel)
+                    .addComponent(SecretaryAppointmentMinuteLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(SecretaryAppointmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SecretaryAppointmentMonthBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SecretaryAppointmentDayBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SecretaryAppointmentYearBox, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SecretaryAppointmentHourBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SecretaryAppointmentMinuteBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
+                .addGroup(SecretaryAppointmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SecretaryAppointmentSubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SecretaryAppointmentBackButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        
+    }
+     private void setAppointmentYears()
+    {
+        for (int i = LocalDateTime.now().getYear();i < (LocalDateTime.now().getYear()+20);i++)
+                {
+                    SecretaryAppointmentYearBox.addItem(String.valueOf(i));
+                }
+    }
+     
+     private void SecretaryAppointmentMonthBoxItemStateChanged(java.awt.event.ItemEvent evt) {                                                              
+        setAppointmentDays(Integer.parseInt(SecretaryAppointmentMonthBox.getSelectedItem().toString()));
+    }  
+     
+     private void SecretaryAppointmentYearBoxItemStateChanged(java.awt.event.ItemEvent evt) {
+        setAppointmentDays(Integer.parseInt(SecretaryAppointmentMonthBox.getSelectedItem().toString()));
+    }    
+     
+     
+     
+     private void setAppointmentDays(int month)
+    {
+        switch (month) {
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+                SecretaryAppointmentDayBox.removeAllItems();
+                for(int i = 0; i < 31 ; i++)
+                {
+                    SecretaryAppointmentDayBox.addItem(String.format("%02d",i + 1));
+                }   break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                SecretaryAppointmentDayBox.removeAllItems();
+                for(int i = 0; i < 30 ; i++)
+                {
+                    SecretaryAppointmentDayBox.addItem(String.format("%02d",i + 1));
+                }   break;
+            case 2:
+                SecretaryAppointmentDayBox.removeAllItems();
+                for(int i = 0; i < 28 ; i++)
+                {
+                    SecretaryAppointmentDayBox.addItem(String.format("%02d",i + 1));
+                }   
+                int year = Integer.parseInt(SecretaryAppointmentYearBox.getSelectedItem().toString());
+                if (((year % 4 == 0) && (year % 100!= 0)) || (year%400 == 0))
+                {
+                    SecretaryAppointmentDayBox.addItem("29");
+                }   
+                break;
+            default:
+                break;
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
