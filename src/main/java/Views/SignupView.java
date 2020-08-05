@@ -5,17 +5,41 @@
  */
 package Views;
 
+import java.time.LocalDateTime;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
 /**
  *
  * @author richa_bfe6tpy
  */
 public class SignupView extends javax.swing.JPanel {
 
+    private JTextField SignupNameField;
+    private JTextField SignupAddressField;
+    private JComboBox<Object> SignupDateMonth;
+    private JComboBox<Object> SignupDateDay;
+    private JComboBox<Object> SignupDateYear;
+    private JLabel MonthLabel;
+    private JLabel DayLabel;
+    private JLabel YearLabel;
+    private JLabel BirthdayLabel;
+    private JLabel GenderLabel;
+    private JLabel NameLabel;
+    private JLabel jLabel2;
+    private JPasswordField SignupPasswordField;
+    private JLabel jLabel3;
+    private JComboBox<Object> SignupGenderSelector;
+    private JButton SignupSubmitButton;
+
     /**
      * Creates new form SignupView
      */
     public SignupView() {
-        initComponents();
+        initMyComponents();
     }
 
     /**
@@ -39,6 +63,257 @@ public class SignupView extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void initMyComponents() {
+        SignupNameField = new javax.swing.JTextField();
+        SignupAddressField = new javax.swing.JTextField();
+        SignupDateMonth = new javax.swing.JComboBox<>();
+        SignupDateDay = new javax.swing.JComboBox<>();
+        SignupDateYear = new javax.swing.JComboBox<>();
+        MonthLabel = new javax.swing.JLabel();
+        DayLabel = new javax.swing.JLabel();
+        YearLabel = new javax.swing.JLabel();
+        BirthdayLabel = new javax.swing.JLabel();
+        GenderLabel = new javax.swing.JLabel();
+        NameLabel = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        SignupPasswordField = new javax.swing.JPasswordField();
+        jLabel3 = new javax.swing.JLabel();
+        SignupGenderSelector = new javax.swing.JComboBox<>();
+        SignupSubmitButton = new javax.swing.JButton();
+        
+        SignupNameField.setText("Enter Name Here ");
+        SignupNameField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                SignupNameFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                SignupNameFieldFocusLost(evt);
+            }
+        });
+
+        SignupAddressField.setText("Enter Address Here");
+        SignupAddressField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                SignupAddressFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                SignupAddressFieldFocusLost(evt);
+            }
+        });
+
+        SignupDateMonth.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
+        
+        SignupDateMonth.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                SignupDateMonthItemStateChanged(evt);
+            }
+        });
+     
+
+        SignupDateYear.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                SignupDateYearItemStateChanged(evt);
+            }
+        });
+        
+
+        MonthLabel.setText("Month");
+
+        DayLabel.setText("Day");
+
+        YearLabel.setText("Year");
+
+        BirthdayLabel.setText("Birthday   :");
+
+        GenderLabel.setText("Gender     :");
+
+        NameLabel.setText("Name        :");
+
+        jLabel2.setText("Password :");
+
+        SignupPasswordField.setText("jPasswordField1");
+        SignupPasswordField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                SignupPasswordFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                SignupPasswordFieldFocusLost(evt);
+            }
+        });
+        
+        setSignupYears();
+
+        jLabel3.setText("Address    :");
+
+        SignupGenderSelector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", "Other" }));
+        SignupGenderSelector.setSelectedIndex(2);
+        SignupGenderSelector.setToolTipText("");
+
+        SignupSubmitButton.setText("Submit");
+       
+
+        javax.swing.GroupLayout SignupPanelLayout = new javax.swing.GroupLayout(this);
+        this.setLayout(SignupPanelLayout);
+        SignupPanelLayout.setHorizontalGroup(
+            SignupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SignupPanelLayout.createSequentialGroup()
+                .addGap(109, 109, 109)
+                .addGroup(SignupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(NameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
+                    .addComponent(BirthdayLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(GenderLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(SignupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(SignupPanelLayout.createSequentialGroup()
+                        .addGroup(SignupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(SignupDateMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(MonthLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 172, Short.MAX_VALUE)
+                        .addGroup(SignupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(SignupDateDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DayLabel))
+                        .addGap(18, 18, 18)
+                        .addGroup(SignupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(YearLabel)
+                            .addComponent(SignupDateYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30))
+                    .addComponent(SignupNameField)
+                    .addComponent(SignupPasswordField)
+                    .addGroup(SignupPanelLayout.createSequentialGroup()
+                        .addComponent(SignupGenderSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(SignupAddressField))
+                .addGap(173, 173, 173))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SignupPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(SignupSubmitButton)
+                .addGap(80, 80, 80))
+        );
+        SignupPanelLayout.setVerticalGroup(
+            SignupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SignupPanelLayout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addGroup(SignupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SignupNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NameLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(SignupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(SignupPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(13, 13, 13)
+                .addGroup(SignupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(SignupAddressField, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(SignupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(GenderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SignupGenderSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(SignupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(MonthLabel)
+                    .addComponent(DayLabel)
+                    .addComponent(YearLabel)
+                    .addComponent(BirthdayLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(SignupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SignupDateMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SignupDateDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SignupDateYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                .addComponent(SignupSubmitButton)
+                .addGap(20, 20, 20))
+        );
+        
+    }
+    
+    private void SignupPasswordFieldFocusLost(java.awt.event.FocusEvent evt) {                                              
+       if (SignupPasswordField.getPassword().length == 0)
+        {
+            SignupPasswordField.setText("please enter a password");
+        }
+    }  
+    
+    private void SignupPasswordFieldFocusGained(java.awt.event.FocusEvent evt) {                                                
+        SignupPasswordField.setText("");
+    }  
+    
+    private void SignupDateYearItemStateChanged(java.awt.event.ItemEvent evt) {                                                
+         setSignupDays(Integer.parseInt(SignupDateMonth.getSelectedItem().toString()));
+    }      
+    
+    private void SignupDateMonthItemStateChanged(java.awt.event.ItemEvent evt) {                                                 
+        setSignupDays(Integer.parseInt(SignupDateMonth.getSelectedItem().toString()));
+    }      
+    private void setSignupDays(int month)
+    {
+        switch (month) {
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+                SignupDateDay.removeAllItems();
+                for(int i = 0; i < 31 ; i++)
+                {
+                    SignupDateDay.addItem(String.format("%02d",i + 1));
+                }   break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                SignupDateDay.removeAllItems();
+                for(int i = 0; i < 30 ; i++)
+                {
+                    SignupDateDay.addItem(String.format("%02d",i + 1));
+                }   break;
+            case 2:
+                SignupDateDay.removeAllItems();
+                for(int i = 0; i < 28 ; i++)
+                {
+                    SignupDateDay.addItem(String.format("%02d",i + 1));
+                }   
+                int year = Integer.parseInt(SignupDateYear.getSelectedItem().toString());
+                if (((year % 4 == 0) && (year % 100!= 0)) || (year%400 == 0))
+                {
+                    SignupDateDay.addItem("29");
+                }   
+                break;
+            default:
+                break;
+        }
+    }
+    private void SignupAddressFieldFocusGained(java.awt.event.FocusEvent evt) {                                               
+        SignupAddressField.setText("");
+    }                                              
+
+    private void SignupAddressFieldFocusLost(java.awt.event.FocusEvent evt) {                                             
+        if (SignupAddressField.getText().equals(""))
+        {
+            SignupAddressField.setText("Enter Address Here");
+        }
+    }    
+    private void SignupNameFieldFocusLost(java.awt.event.FocusEvent evt) {                                          
+        if (SignupNameField.getText().equals(""))
+        {
+            SignupNameField.setText("Enter Name Here");
+        }
+    }                                         
+    private void SignupNameFieldFocusGained(java.awt.event.FocusEvent evt) {                                            
+        SignupNameField.setText("");
+    }                                           
+    
+    private void setSignupYears()
+    {
+        for (int i = LocalDateTime.now().getYear();i > (LocalDateTime.now().getYear()-130);i--)
+                {
+                    SignupDateYear.addItem(String.valueOf(i));
+                }
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
