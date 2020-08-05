@@ -5,17 +5,29 @@
  */
 package Views;
 
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
 /**
  *
  * @author richa_bfe6tpy
  */
 public class SecretaryOrderMedicineView extends javax.swing.JPanel {
 
+    private JButton SecrataryOrderMedicineBackButton;
+    private JButton SecrataryOrderMedicineButton;
+    private JComboBox<Object> SecretaryOrderMedecineMedicinesBox;
+    private JTextField SecretaryOrderMedicineQuantityField;
+    private JLabel SecretaryOrderMedicineLabel;
+    private JLabel SecretaryOrderQuantityLabel;
+
     /**
      * Creates new form SecretaryOrderMedicineView
      */
     public SecretaryOrderMedicineView() {
-        initComponents();
+        initMyComponents();
     }
 
     /**
@@ -38,6 +50,89 @@ public class SecretaryOrderMedicineView extends javax.swing.JPanel {
             .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void initMyComponents() {
+        
+        SecrataryOrderMedicineBackButton = new javax.swing.JButton();
+        SecrataryOrderMedicineButton = new javax.swing.JButton();
+        SecretaryOrderMedecineMedicinesBox = new javax.swing.JComboBox<>();
+        SecretaryOrderMedicineQuantityField = new javax.swing.JTextField();
+        SecretaryOrderMedicineLabel = new javax.swing.JLabel();
+        SecretaryOrderQuantityLabel = new javax.swing.JLabel();
+        
+        
+        SecrataryOrderMedicineBackButton.setText("Back");
+        
+
+        SecrataryOrderMedicineButton.setText("Order");
+        
+
+        SecretaryOrderMedicineQuantityField.setText("Enter the quantity you wish to order");
+        SecretaryOrderMedicineQuantityField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                SecretaryOrderMedicineQuantityFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                SecretaryOrderMedicineQuantityFieldFocusLost(evt);
+            }
+        });
+
+        SecretaryOrderMedicineLabel.setText("Medicine");
+
+        SecretaryOrderQuantityLabel.setText("Quantity");
+
+        javax.swing.GroupLayout SecretaryOrderMedicinePanelLayout = new javax.swing.GroupLayout(this);
+        this.setLayout(SecretaryOrderMedicinePanelLayout);
+        SecretaryOrderMedicinePanelLayout.setHorizontalGroup(
+            SecretaryOrderMedicinePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SecretaryOrderMedicinePanelLayout.createSequentialGroup()
+                .addGroup(SecretaryOrderMedicinePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(SecretaryOrderMedicinePanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(SecrataryOrderMedicineBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(387, 387, 387)
+                        .addComponent(SecrataryOrderMedicineButton, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(SecretaryOrderMedicinePanelLayout.createSequentialGroup()
+                        .addGap(126, 126, 126)
+                        .addComponent(SecretaryOrderMedecineMedicinesBox, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(SecretaryOrderMedicineQuantityField, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(SecretaryOrderMedicinePanelLayout.createSequentialGroup()
+                        .addGap(178, 178, 178)
+                        .addComponent(SecretaryOrderMedicineLabel)
+                        .addGap(147, 147, 147)
+                        .addComponent(SecretaryOrderQuantityLabel)))
+                .addContainerGap(70, Short.MAX_VALUE))
+        );
+        SecretaryOrderMedicinePanelLayout.setVerticalGroup(
+            SecretaryOrderMedicinePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SecretaryOrderMedicinePanelLayout.createSequentialGroup()
+                .addGap(111, 111, 111)
+                .addGroup(SecretaryOrderMedicinePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SecretaryOrderMedicineLabel)
+                    .addComponent(SecretaryOrderQuantityLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(SecretaryOrderMedicinePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SecretaryOrderMedecineMedicinesBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SecretaryOrderMedicineQuantityField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(173, 173, 173)
+                .addGroup(SecretaryOrderMedicinePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SecrataryOrderMedicineBackButton, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(SecrataryOrderMedicineButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+    }
+    
+     private void SecretaryOrderMedicineQuantityFieldFocusGained(java.awt.event.FocusEvent evt) {                                                                
+        SecretaryOrderMedicineQuantityField.setText("");
+    }                                                               
+
+    private void SecretaryOrderMedicineQuantityFieldFocusLost(java.awt.event.FocusEvent evt) {                                                              
+        if ("".equals(SecretaryOrderMedicineQuantityField.getText()))
+        {
+            SecretaryOrderMedicineQuantityField.setText("Enter New Medicine Name");
+        }
+    }   
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
