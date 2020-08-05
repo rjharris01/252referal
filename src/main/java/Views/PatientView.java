@@ -5,17 +5,31 @@
  */
 package Views;
 
+import java.awt.Label;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+
 /**
  *
  * @author richa_bfe6tpy
  */
 public class PatientView extends javax.swing.JPanel {
 
+    private JPanel PatientPanel;
+    private Label UserWelcomeLabel;
+    private JButton PatientRequestAccountDeletionButton;
+    private JButton PatientViewAppointmentButton;
+    private JButton PatientViewPerscriptionButton;
+    private JButton PatientViewHistoryButton;
+    private JButton PatientFeedbackButton;
+    private JButton PatientAppointmentButton;
+    private JButton PatientLogoutButton;
+
     /**
      * Creates new form PatientView
      */
     public PatientView() {
-        initComponents();
+        myInitComponents();
     }
 
     /**
@@ -38,6 +52,87 @@ public class PatientView extends javax.swing.JPanel {
             .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    public void myInitComponents() {
+        
+        
+        UserWelcomeLabel = new java.awt.Label();
+        PatientRequestAccountDeletionButton = new javax.swing.JButton();
+        PatientViewAppointmentButton = new javax.swing.JButton();
+        PatientViewPerscriptionButton = new javax.swing.JButton();
+        PatientViewHistoryButton = new javax.swing.JButton();
+        PatientFeedbackButton = new javax.swing.JButton();
+        PatientAppointmentButton = new javax.swing.JButton();
+        PatientLogoutButton = new javax.swing.JButton();
+        
+        
+        
+        UserWelcomeLabel.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        UserWelcomeLabel.setText("Welcome");
+
+        PatientRequestAccountDeletionButton.setText("Delete Account");
+       
+
+        PatientViewAppointmentButton.setText("View Appointment");
+
+        PatientViewPerscriptionButton.setText("View Perscripton");
+
+        PatientViewHistoryButton.setText("View History");
+
+        PatientFeedbackButton.setText("Leave feedback for a Doctor");
+
+        PatientAppointmentButton.setText("Request Appointment");
+       
+
+        PatientLogoutButton.setText("Logout");
+       
+
+        javax.swing.GroupLayout PatientMainPanelLayout = new javax.swing.GroupLayout(this);
+        this.setLayout(PatientMainPanelLayout);
+        PatientMainPanelLayout.setHorizontalGroup(
+            PatientMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PatientMainPanelLayout.createSequentialGroup()
+                .addGroup(PatientMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PatientMainPanelLayout.createSequentialGroup()
+                        .addGap(83, 83, 83)
+                        .addGroup(PatientMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(PatientFeedbackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(PatientViewHistoryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(PatientViewPerscriptionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(PatientMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(PatientAppointmentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(PatientRequestAccountDeletionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(PatientViewAppointmentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(PatientMainPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(PatientLogoutButton)
+                        .addGap(199, 199, 199)
+                        .addComponent(UserWelcomeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(160, Short.MAX_VALUE))
+        );
+        PatientMainPanelLayout.setVerticalGroup(
+            PatientMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PatientMainPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(PatientMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(UserWelcomeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PatientLogoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(PatientMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(PatientViewHistoryButton, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
+                    .addComponent(PatientAppointmentButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(PatientMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(PatientFeedbackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PatientRequestAccountDeletionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(PatientMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(PatientViewPerscriptionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PatientViewAppointmentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(39, Short.MAX_VALUE))
+        );
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
