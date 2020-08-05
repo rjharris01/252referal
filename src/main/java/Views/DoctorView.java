@@ -5,18 +5,29 @@
  */
 package Views;
 
+import java.awt.Label;
+import javax.swing.JButton;
+
 /**
  *
  * @author richa_bfe6tpy
  */
 public class DoctorView extends javax.swing.JPanel {
 
+    private Label label3;
+    private JButton DoctorViewPatientHistoryButton;
+    private JButton DoctorCreateMedicineButton;
+    private JButton DoctorViewAppointmentsButton;
+    private JButton DoctorStartAppointmentButton;
+    private JButton DoctorLogoutButton;
+
     /**
      * Creates new form DoctorView
      */
+    
     public DoctorView() {
-        initComponents();
-    }
+        myInitComponents();
+    } 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -40,6 +51,71 @@ public class DoctorView extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
 
+    public void myInitComponents(){
+        label3 = new java.awt.Label();
+        DoctorViewPatientHistoryButton = new javax.swing.JButton();
+        DoctorCreateMedicineButton = new javax.swing.JButton();
+        DoctorViewAppointmentsButton = new javax.swing.JButton();
+        DoctorStartAppointmentButton = new javax.swing.JButton();
+        DoctorLogoutButton = new javax.swing.JButton();
+        
+        
+        label3.setAlignment(java.awt.Label.CENTER);
+        label3.setText("Doctor Panel");
+
+        DoctorViewPatientHistoryButton.setText("View Patient History");
+
+        DoctorCreateMedicineButton.setText("Create New Medicine");
+       
+        DoctorViewAppointmentsButton.setText("View Appointments");
+
+        DoctorStartAppointmentButton.setText("Start Appointment");
+
+        DoctorLogoutButton.setText("Logout");
+      
+
+        javax.swing.GroupLayout DoctorMainPanelLayout = new javax.swing.GroupLayout(this);
+        this.setLayout(DoctorMainPanelLayout);
+        DoctorMainPanelLayout.setHorizontalGroup(
+            DoctorMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DoctorMainPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(DoctorLogoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(DoctorMainPanelLayout.createSequentialGroup()
+                .addGap(105, 105, 105)
+                .addGroup(DoctorMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(DoctorViewPatientHistoryButton, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
+                    .addComponent(DoctorStartAppointmentButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23)
+                .addGroup(DoctorMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(DoctorViewAppointmentsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(DoctorCreateMedicineButton, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        DoctorMainPanelLayout.setVerticalGroup(
+            DoctorMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DoctorMainPanelLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(DoctorLogoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addGroup(DoctorMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DoctorMainPanelLayout.createSequentialGroup()
+                        .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(89, 89, 89))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DoctorMainPanelLayout.createSequentialGroup()
+                        .addGroup(DoctorMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(DoctorViewAppointmentsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DoctorStartAppointmentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(29, 29, 29)
+                        .addGroup(DoctorMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(DoctorCreateMedicineButton, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DoctorViewPatientHistoryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())))
+        );
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }
