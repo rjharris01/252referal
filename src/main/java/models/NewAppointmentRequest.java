@@ -7,8 +7,13 @@ package models;
 
 /**
  *
- * @author richa_bfe6tpy
+ * @author Richard Harris
  */
-public class NewAppointmentRequest {
+public class NewAppointmentRequest extends Request{
+    private AppointmentRequest appointment;
+    
+    public AppointmentRequest getAppointmentRequest() { return appointment;}
+    public void setAppointmentRequest(AppointmentRequest newAppointmentRequest){appointment = newAppointmentRequest;}
+    
     
 }
