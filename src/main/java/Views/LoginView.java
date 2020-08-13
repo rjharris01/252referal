@@ -6,9 +6,13 @@
 package Views;
 
 
+import controllers.LoginController;
 import java.awt.Button;
 import java.awt.Label;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -56,7 +60,12 @@ public class LoginView extends javax.swing.JPanel {
     public void myInitComponents(){
         
         userNameInput = new javax.swing.JTextField();
+        
         login = new java.awt.Button();
+        
+       
+        
+                
         passwordInput = new javax.swing.JPasswordField();
         signup = new java.awt.Button();
         jLabel1 = new javax.swing.JLabel();
@@ -70,6 +79,8 @@ public class LoginView extends javax.swing.JPanel {
         login.setLabel("Login");
         
         userNameInput.setText("Enter UserID");
+        
+        
         
          userNameInput.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -133,6 +144,8 @@ public class LoginView extends javax.swing.JPanel {
         );
     }
     
+    
+    
     private void userNameInputFocusGained(java.awt.event.FocusEvent evt) {                                          
 
         userNameInput.setText("");
@@ -155,6 +168,25 @@ public class LoginView extends javax.swing.JPanel {
     private void passwordInputFocusGained(java.awt.event.FocusEvent evt) {                                          
         passwordInput.setText("");
     }     
+
+    
+    public String getUserName(){
+        return userNameInput.getText();
+    }
+    
+    
+    public char[] getPassword(){
+        return passwordInput.getPassword();
+    }
+   
+    
+    public void addLoginListener(ActionListener listenForLogin){
+        login.addActionListener(listenForLogin);
+    }
+    
+    public void displayErrorMessage(String errorMessage){
+        JOptionPane.showMessageDialog(this, errorMessage);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
