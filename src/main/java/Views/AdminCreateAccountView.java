@@ -204,7 +204,7 @@ public class AdminCreateAccountView extends javax.swing.JPanel {
     }
     
     public String getAccountType(){
-                return AdminAccountTypeBox.toString();
+                return AdminAccountTypeBox.getSelectedItem().toString();
     }
     
     public void setFirstAccountType(){
