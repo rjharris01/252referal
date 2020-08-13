@@ -8,7 +8,16 @@
 
 package Views;
 
+import controllers.AdminCreateAccountController;
+import controllers.LoginController;
+import java.awt.BorderLayout;
 import java.awt.Dimension;
+import javax.swing.JPanel;
+import java.awt.Color;
+import java.awt.Toolkit;
+import javax.swing.SwingConstants;
+import models.user.Administrator;
+import models.user.User;
 
 /**
  *
@@ -19,8 +28,25 @@ public class soft252ReferalView extends javax.swing.JFrame {
     /**
      * Creates new form soft252ReferalView
      */
-    public soft252ReferalView() {        
+    
+    private JPanel panelMain;
+    
+    private User theUser = new User() {};
+    
+    public soft252ReferalView() {   
+        panelMain = new JPanel();
+        add(panelMain);
+       
+       LoginView theView = new LoginView();
+       User theModel = new User() {};
+        
+       LoginController theController = new LoginController(theView,theModel);
+        
+       panelMain.add(theView,SwingConstants.CENTER);
+        
+        pack();
         initComponents();
+        
     }
 
     /**
@@ -34,7 +60,13 @@ public class soft252ReferalView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Patient Management");
+        setPreferredSize(new java.awt.Dimension(700, 500));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -50,6 +82,21 @@ public class soft252ReferalView extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+       
+       if(theUser.getAllUsers().isEmpty())
+       {
+        AdminCreateAccountView theView = new AdminCreateAccountView();
+        Administrator theModel = new Administrator();
+        AdminCreateAccountController theController = new AdminCreateAccountController(theView, theModel, true);
+        panelMain.add(theView,SwingConstants.CENTER);
+        panelMain.revalidate();
+       }
+       
+       
+       
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -81,7 +128,9 @@ public class soft252ReferalView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                
                 new soft252ReferalView().setVisible(true);
+                
             }
         });
     }
