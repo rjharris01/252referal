@@ -36,31 +36,7 @@ import models.user.User;
 public class userFactory {
     
     
-    public User makeNewAdmin(String userType,String accountName, String accountPassword, String accountAddress)
-    {
-        User tempUser = null;
-        String userId;
-        
-        Administrator tempAdministrator;
-         
-        tempAdministrator = new Administrator();
-         
-        tempAdministrator.setName(accountName);
-        tempAdministrator.setPassword(accountPassword);
-        tempAdministrator.setAddress(accountAddress);
-            
-        userId = getNextUserId("A");
-        tempAdministrator.setUserId(userId);
-            
-        writeNewUser(tempAdministrator);
-        tempUser = tempAdministrator;
-        
-        return tempUser;
-        
-        
-    }
-    
-    public User makeNewUser(String userType, soft252ReferalView ui) 
+    public User makeNewUser(String userType,String accountName, String accountPassword, String accountAddress) 
     {
         
         String userId;
@@ -83,15 +59,15 @@ public class userFactory {
             
             System.out.print("Please enter the patients name: ");
             
-            tempPatient.setName(tempInput);
+            tempPatient.setName(accountName);
             
             System.out.print("Please enter a password: ");
            
-            tempPatient.setPassword(tempInput);
+            tempPatient.setPassword(accountPassword);
             
             System.out.print("Please enter the patients address: ");
             
-            tempPatient.setAddress(tempInput);
+            tempPatient.setAddress(accountAddress);
             
             
             System.out.print("Please enter the patients gender: ");
@@ -127,15 +103,15 @@ public class userFactory {
             tempDoctor = new Doctor();
             System.out.print("Please enter the Doctors name: ");
             
-            tempDoctor.setName(tempInput);
+            tempDoctor.setName(accountName);
             
             System.out.print("Please enter a password: ");
           
-            tempDoctor.setPassword(tempInput);
+            tempDoctor.setPassword(accountPassword);
             
             System.out.print("Please enter the Doctors address: ");
           
-            tempDoctor.setAddress(tempInput);
+            tempDoctor.setAddress(accountAddress);
             
             userId = getNextUserId("D");
             tempDoctor.setUserId(userId);
@@ -153,15 +129,15 @@ public class userFactory {
             tempSecretary = new Secretary();
             System.out.print("Please enter the Secretarys name: ");
            
-            tempSecretary.setName(tempInput);
+            tempSecretary.setName(accountName);
             
             System.out.print("Please enter a password: ");
         
-            tempSecretary.setPassword(tempInput);
+            tempSecretary.setPassword(accountPassword);
             
             System.out.print("Please enter the Secretary address: ");
            
-            tempSecretary.setAddress(tempInput);
+            tempSecretary.setAddress(accountAddress);
             
             userId = getNextUserId("S");
             tempSecretary.setUserId(userId);
@@ -178,11 +154,11 @@ public class userFactory {
             tempAdministrator = new Administrator();
             System.out.print("Please enter the Admins name: ");
           
-            tempAdministrator.setName(tempInput);
+            tempAdministrator.setName(accountName);
             
             System.out.print("Please enter a password: ");
            
-            tempAdministrator.setPassword(tempInput);
+            tempAdministrator.setPassword(accountPassword);
             
             System.out.print("Please enter the Admins address: ");
            
