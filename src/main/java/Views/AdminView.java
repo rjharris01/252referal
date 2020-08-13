@@ -6,6 +6,7 @@
 package Views;
 
 import java.awt.Label;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 /**
@@ -115,7 +116,33 @@ public class AdminView extends javax.swing.JPanel {
         );
 
     }
-
+    
+    
+    
+    
+    
+    
+    public void addAdminCreateAccountListener(ActionListener listenForAdminCreateAccount){
+        AdminCreateAccountButton.addActionListener(listenForAdminCreateAccount);
+    }
+    
+    public void addAdminModifyDoctorsListener(ActionListener listenForAdminModifyDoctors){
+        AdminModifyDoctorsButton.addActionListener(listenForAdminModifyDoctors);
+    }
+    
+    public void addAdminViewRatingsListener(ActionListener listenForAdminViewRatings){
+        AdminViewRatingsButton.addActionListener(listenForAdminViewRatings);
+    }
+    
+    public void addAdminModifySecretariesListener(ActionListener listenForAdminModifySecretaries){
+        AdminModifySecretariesButton.addActionListener(listenForAdminModifySecretaries);
+    }
+    
+    public void addAdminLogoutListener(ActionListener listenForAdminLogout){
+        AdminLogoutButton.addActionListener(listenForAdminLogout);
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
