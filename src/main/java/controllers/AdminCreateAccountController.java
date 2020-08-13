@@ -20,12 +20,14 @@ import models.user.User;
 public class AdminCreateAccountController {
     private AdminCreateAccountView theView;
     private Administrator theModel;
+    private Boolean first;
     
     
     public AdminCreateAccountController(AdminCreateAccountView theView, Administrator theModel, Boolean first){
         
         this.theView = theView;
         this.theModel = theModel;
+        this.first = first;
         
         if (first)
         {
@@ -42,13 +44,18 @@ public class AdminCreateAccountController {
         public void actionPerformed(ActionEvent e) {
             try
             {
+       
+                
                 userFactory NewUserFactory = new userFactory();
-                User user = (User) NewUserFactory.makeNewAdmin(theView.getAccountType(), theView.getAccountName(), theView.getAccountPassword(),theView.getAccountAddress());
+                User user = (User) NewUserFactory.makeNewUser(theView.getAccountType(), theView.getAccountName(), theView.getAccountPassword(),theView.getAccountAddress());
                 JOptionPane.showMessageDialog(null, "Account\n"+ user.getUserId() + "\nCreated");
-            
+                
+                
+                
             
             } catch(Exception ex)
             {
+                
                 
             }
             
