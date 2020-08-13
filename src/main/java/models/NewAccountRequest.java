@@ -5,10 +5,21 @@
  */
 package models;
 
+
+import models.user.User;
+
 /**
  *
- * @author richa_bfe6tpy
+ * @author Richard Harris
  */
-public class NewAccountRequest {
+public class NewAccountRequest extends Request {
+    private User user;
     
+    public User getUser() { return user;}
+    public void setUser(User newUser){user = newUser;}
+    
+    @Override
+    public String toString() {
+        return ("Name: " + this.getUser().getName() + " Address: " + this.getUser().getAddress());
+    }
 }
