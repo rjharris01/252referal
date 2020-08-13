@@ -5,10 +5,16 @@
  */
 package models;
 
+
+
 /**
  *
- * @author richa_bfe6tpy
+ * @author Richard Harris
  */
-public class OrderMedicineRequest {
+public class OrderMedicineRequest extends Request {
+    private Medicine medicine;
     
+    public Medicine getMedicine() { return medicine;}
+    public void setMedicine(Medicine newMedicine){medicine = newMedicine;}
 }
+
