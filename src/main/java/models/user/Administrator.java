@@ -5,10 +5,18 @@
  */
 package models.user;
 
+
+
+import java.util.ArrayList;
+import models.Rating;
+
 /**
  *
- * @author richa_bfe6tpy
+ * @author Richard Harris
  */
-public class Administrator {
-    
+public class Administrator extends User {
+    public ArrayList<Rating> getDoctorRatings(Doctor doctor)
+    {
+        return doctor.getRatings();
+    }
 }
