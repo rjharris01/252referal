@@ -5,6 +5,8 @@
  */
 package Views;
 
+import java.awt.event.ActionListener;
+import java.util.Arrays;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -196,6 +198,31 @@ public class AdminCreateAccountView extends javax.swing.JPanel {
             AdminCreatePasswordField.setText("Enter Password Here");
         }
     }    
+    
+    public void addSubmitListener(ActionListener listenForSubmit){
+        AdminCreateSubmitButton.addActionListener(listenForSubmit);
+    }
+    
+    public String getAccountType(){
+                return AdminAccountTypeBox.toString();
+    }
+    
+    public void setFirstAccountType(){
+        AdminAccountTypeBox.removeAll();
+        AdminAccountTypeBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"Administrator" }));
+    }
+    
+    public String getAccountName(){
+        return AdminCreateNameField.getText();
+    }
+    
+    public String getAccountPassword() {
+        return Arrays.toString(AdminCreatePasswordField.getPassword());
+    }
+    
+    public String getAccountAddress() {
+        return AdminCreateAddressField.getText();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
