@@ -83,7 +83,7 @@ public class Secretary extends User {
       {
           if ("accountDeleteRequest".equals(request.getType()))
           {
-              requests.add((AccountDeleteRequest) request);
+              requests.add((AccountDeleteRequest)request);
           }
       }
       return requests;
