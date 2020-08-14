@@ -6,6 +6,7 @@
 package controllers.Patient;
 
 import Views.LoginView;
+import Views.Patient.PatientLeaveFeedbackForDoctorView;
 import Views.Patient.PatientRequestAppointmentView;
 import Views.Patient.PatientView;
 import controllers.LoginController;
@@ -78,7 +79,13 @@ public class PatientController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            PatientLeaveFeedbackForDoctorView newView = new PatientLeaveFeedbackForDoctorView();
+            
+                
+            PatientLeaveFeedbackForDoctorController theController = new PatientLeaveFeedbackForDoctorController(newView, theModel);
+            theView.setVisible(false);
+            newView.setVisible(true);
+            theView.getParent().add(newView,SwingConstants.CENTER);
         }
          
      }
