@@ -262,16 +262,16 @@ public class SecretaryAppointmentView extends javax.swing.JPanel {
         }
     }
      
-     public String getPatient(){
-                return SecretaryAppointmentPatientBox.getSelectedItem().toString();
+     public Patient getPatient(){
+                return (Patient)SecretaryAppointmentPatientBox.getSelectedItem();
     }
      
      public void setPatients( DefaultComboBoxModel<Patient> patientModel){
                 SecretaryAppointmentPatientBox.setModel(patientModel);
     }
      
-     public String getDoctor(){
-                return SecretaryAppointmentDoctorBox.getSelectedItem().toString();
+     public Doctor getDoctor(){
+                return (Doctor)SecretaryAppointmentDoctorBox.getSelectedItem();
     }
      
      public void setDoctors(DefaultComboBoxModel<Doctor> doctorModel){
@@ -285,7 +285,26 @@ public class SecretaryAppointmentView extends javax.swing.JPanel {
     public void addBackListener(ActionListener listenForSubmit){
         SecretaryAppointmentBackButton.addActionListener(listenForSubmit);
     }
-
+    
+    public String getSecretaryAppointmentDay(){
+        return SecretaryAppointmentDayBox.getSelectedItem().toString();
+    }
+    
+    public String getSecretaryAppointmentMonthBox(){
+        return SecretaryAppointmentMonthBox.getSelectedItem().toString();
+    }
+    
+   public String getSecretaryAppointmentYearBox(){
+        return SecretaryAppointmentYearBox.getSelectedItem().toString();
+    }
+     
+    public String getSecretaryAppointmentHourBox(){
+        return SecretaryAppointmentHourBox.getSelectedItem().toString();
+    }
+      
+    public String getSecretaryAppointmentMinuteBox(){
+        return SecretaryAppointmentMinuteBox.getSelectedItem().toString();
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }

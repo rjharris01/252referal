@@ -10,9 +10,12 @@ import Views.Secretary.SecretaryView;
 import controllers.Admin.AdminCreateAccountController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.SwingConstants;
+import models.AppointmentRequest;
 import models.user.Doctor;
 import models.user.Patient;
 import models.user.Secretary;
@@ -79,14 +82,26 @@ public class SecretaryAppointmentController {
         class SubmitListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
-            try
-                {
-       
-                
-                    userFactory NewUserFactory = new userFactory();
-                    User user = (User) NewUserFactory.makeNewUser(theView.getAccountType(), theView.getAccountName(), theView.getAccountPassword(),theView.getAccountAddress());
-                    JOptionPane.showMessageDialog(null, "Account\n"+ user.getUserId() + "\nCreated");
+            try{
+                Doctor doctor =  theView.getDoctor();
+                Patient patient = theView.getPatient();
+        
+                String day,month,year,hour,minute;
 
+                day = (theView.getSecretaryAppointmentDay());
+                month = (theView.getSecretaryAppointmentMonthBox());
+                year = (theView.getSecretaryAppointmentYearBox());
+                hour = (theView.getSecretaryAppointmentHourBox()); 
+                minute = (theView.getSecretaryAppointmentMinuteBox());
+
+
+                String str = (year +"-"+ month +"-"+day+" "+hour+":"+minute);
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+                LocalDateTime appointmentDate = LocalDateTime.parse(str, formatter);
+
+                AppointmentRequest appointmentRequest = new AppointmentRequest();
+                appointmentRequest.newAppointmentRequest(doctor,patient,appointmentDate);
+                appointmentRequest.approveRequest(appointmentRequest);
                 
                 
             
@@ -117,29 +132,3 @@ public class SecretaryAppointmentController {
 
 
 
-ArrayList<User> users;
-        DefaultComboBoxModel<Doctor> doctorModel = new DefaultComboBoxModel<>();
-        SecretaryAppointmentDoctorBox.setModel(doctorModel);
-        
-        DefaultComboBoxModel<Patient> patientModel = new DefaultComboBoxModel<>();
-        SecretaryAppointmentPatientBox.setModel(patientModel);
-        
-        SecretaryPanel.removeAll();
-        SecretaryPanel.add(SecretaryAppointmentPanel);
-        users =  getAllUsers();
-        for (User user: users)
-        {
-            if ("D".equals(String.valueOf(user.getUserId().charAt(0))))
-            {
-                doctorModel.addElement((Doctor) user);
-                
-            }
-            
-            else if ("P".equals(String.valueOf(user.getUserId().charAt(0))))
-            {
-                patientModel.addElement((Patient) user);
-            }
-        }
-        
-        setAppointmentDays(Integer.parseInt(SignupDateMonth.getSelectedItem().toString()));
-        setAppointmentYears();
