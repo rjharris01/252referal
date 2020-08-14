@@ -7,9 +7,13 @@ package controllers;
 
 import controllers.Admin.AdminController;
 import Views.Admin.AdminView;
+import Views.Doctor.DoctorView;
+import controllers.Doctor.DoctorController;
 import Views.LoginView;
+import Views.Patient.PatientView;
 import Views.Secretary.SecretaryView;
 import Views.SignupView;
+import controllers.Patient.PatientController;
 import controllers.Secretary.SecretaryController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,7 +26,9 @@ import java.util.Arrays;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import models.user.Administrator;
+import models.user.Patient;
 import models.user.Secretary;
+import models.user.Doctor;
 import models.user.User;
 
 /**
@@ -136,11 +142,26 @@ public class LoginController {
                 
                 break;
             case "D":
-                //to do doctor
+                DoctorView docView = new DoctorView();
+                Doctor docModel = (Doctor) user;
+                
+                DoctorController DoctorController = new DoctorController(docView,docModel);
+                
+                this.theView.setVisible(false);
+                docView.setVisible(true);
+                this.theView.getParent().add(docView,SwingConstants.CENTER);
                 break;
+                
             case "P":
-                //to do patient
-                //UserWelcomeLabel.setText("Welcome " + user.getName() + ",");
+                PatientView patView = new PatientView();
+                Patient patModel = (Patient) user;
+                
+                PatientController patientController = new PatientController(patView,patModel);
+                
+                this.theView.setVisible(false);
+                patView.setVisible(true);
+                this.theView.getParent().add(patView,SwingConstants.CENTER);
+                patView.setUserWelcomeLabel("Welcome " + patModel.getName() + ",");
                 
                 break;
             case "S":
@@ -157,6 +178,7 @@ public class LoginController {
                 break;
         }
     }
-}
+ }
+
 
 
