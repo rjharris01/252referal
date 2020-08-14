@@ -5,13 +5,19 @@
  */
 package controllers.Secretary;
 
-import Views.Admin.AdminView;
+import Views.LoginView;
+import Views.Secretary.SecretaryDeleteUserManualView;
+import Views.Secretary.SecretaryAppointmentView;
+import Views.Secretary.SecretaryApprovePatientView;
+import Views.Secretary.SecretaryDeleteUserRequestView;
+import Views.Secretary.SecretaryOrderMedicineView;
 import Views.Secretary.SecretaryView;
-import controllers.Admin.AdminController;
+import controllers.LoginController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import models.user.Administrator;
+import javax.swing.SwingConstants;
 import models.user.Secretary;
+import models.user.User;
 
 /**
  *
@@ -27,68 +33,97 @@ public class SecretaryController {
         this.theModel = theModel;
        
         
-        this.theView.addSecratryApprovePatientListener(new SecratryApprovePatientListener());
-        this.theView.addSecratryCreateAppointmentListener(new SecratryCreateAppointmentListener());
-        this.theView.addSecratryOrderMedicineListener(new SecratryOrderMedicineListener());
-        this.theView.addSecratryRemovePatientListener(new SecratryRemovePatientListener());
-        this.theView.addSecratryRemovePatientRequestListener(new SecratryRemovePatientRequestListener());
-        this.theView.addSecratryCompletePerscriptionListener(new SecratryCompletePerscriptionListener());
+        this.theView.addSecratryApprovePatientListener(new SecretaryApprovePatientListener());
+        this.theView.addSecratryCreateAppointmentListener(new SecretaryCreateAppointmentListener());
+        this.theView.addSecratryOrderMedicineListener(new SecretaryOrderMedicineListener());
+        this.theView.addSecratryRemovePatientListener(new SecretaryDeleteUserRequestListener());
+        this.theView.addSecratryRemovePatientRequestListener(new SecretaryRemovePatientRequestListener());
+        this.theView.addSecratryCompletePerscriptionListener(new SecretaryCompletePerscriptionListener());
         this.theView.addLogoutListener(new LogoutListener());
         this.theView.addSecretaryApproveAppointmentListener(new SecretaryApproveAppointmentListener());
         
         
     }
     
-    class SecratryApprovePatientListener implements ActionListener {
+    class SecretaryApprovePatientListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            SecretaryApprovePatientView newView = new SecretaryApprovePatientView();
+  
+              
+            SecretaryApprovePatientController theController = new SecretaryApprovePatientController(newView, theModel);
+            theView.setVisible(false);
+            newView.setVisible(true);
+            theView.getParent().add(newView,SwingConstants.CENTER);
         }
         
     }
     
-    class SecratryCreateAppointmentListener implements ActionListener {
+    class SecretaryCreateAppointmentListener implements ActionListener {
 
-        @Override
+       @Override
         public void actionPerformed(ActionEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            SecretaryAppointmentView newView = new SecretaryAppointmentView();
+  
+              
+            SecretaryAppointmentController theController = new SecretaryAppointmentController(newView, theModel);
+            theView.setVisible(false);
+            newView.setVisible(true);
+            theView.getParent().add(newView,SwingConstants.CENTER);
         }
         
     }
     
-    class SecratryOrderMedicineListener implements ActionListener {
+    class SecretaryOrderMedicineListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            SecretaryOrderMedicineView newView = new SecretaryOrderMedicineView();
+  
+              
+            SecretaryOrderMedicineController theController = new SecretaryOrderMedicineController(newView, theModel);
+            theView.setVisible(false);
+            newView.setVisible(true);
+            theView.getParent().add(newView,SwingConstants.CENTER);
         }
         
     }
     
-    class SecratryRemovePatientListener implements ActionListener {
+    class SecretaryDeleteUserRequestListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            SecretaryDeleteUserRequestView newView = new SecretaryDeleteUserRequestView();
+  
+              
+            SecretaryDeleteUserRequestController theController = new SecretaryDeleteUserRequestController(newView, theModel);
+            theView.setVisible(false);
+            newView.setVisible(true);
+            theView.getParent().add(newView,SwingConstants.CENTER);
+        }
+    }
+    
+    class SecretaryRemovePatientRequestListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            SecretaryDeleteUserManualView newView = new SecretaryDeleteUserManualView();
+  
+              
+            SecretaryDeleteUserManualController theController = new SecretaryDeleteUserManualController(newView, theModel);
+            theView.setVisible(false);
+            newView.setVisible(true);
+            theView.getParent().add(newView,SwingConstants.CENTER);
         }
         
     }
     
-    class SecratryRemovePatientRequestListener implements ActionListener {
+    class SecretaryCompletePerscriptionListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-        
-    }
-    
-    class SecratryCompletePerscriptionListener implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            //
         }
         
     }
@@ -97,7 +132,14 @@ public class SecretaryController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            theModel.setLoginStatus(false);
+            LoginView newView = new LoginView();
+            User newModel = new User() {};    
+                
+            LoginController theController = new LoginController(newView, newModel);
+            theView.setVisible(false);
+            newView.setVisible(true);
+            theView.getParent().add(newView,SwingConstants.CENTER);
         }
         
     }
@@ -106,7 +148,7 @@ public class SecretaryController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            //
         }
         
     }
