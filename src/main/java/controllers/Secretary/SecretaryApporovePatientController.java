@@ -5,10 +5,22 @@
  */
 package controllers.Secretary;
 
+import Views.Secretary.SecretaryApprovePatientView;
+import models.user.Secretary;
+
 /**
  *
  * @author richa_bfe6tpy
  */
 public class SecretaryApporovePatientController {
+    private SecretaryApprovePatientView theView;
+    private Secretary theModel;
     
+    
+    public SecretaryApporovePatientController(SecretaryApprovePatientView theView, Secretary theModel){
+        
+        this.theView = theView;
+        this.theModel = theModel;
+       
+    }
 }

@@ -5,10 +5,22 @@
  */
 package controllers.Secretary;
 
+import Views.Secretary.SecretaryOrderMedicineView;
+import models.user.Secretary;
+
 /**
  *
  * @author richa_bfe6tpy
  */
 public class SecretaryOrderMedicineController {
+    private SecretaryOrderMedicineView theView;
+    private Secretary theModel;
     
+    
+    public SecretaryOrderMedicineController(SecretaryOrderMedicineView theView, Secretary theModel){
+        
+        this.theView = theView;
+        this.theModel = theModel;
+       
+    }
 }
