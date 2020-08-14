@@ -24,7 +24,8 @@ public class Rating implements Serializable {
     private Patient patient;
     private Doctor doctor;
     private Appointment appointment;
-    private String rating;
+    private int rating;
+    private String comment;
     
     public Patient getPatient() { return patient;}
     public void setPatient(Patient newPatient){patient = newPatient;}
@@ -35,8 +36,11 @@ public class Rating implements Serializable {
     public Appointment getAppointment() { return appointment;}
     public void setAppointment(Appointment newAppointment){appointment = newAppointment;} 
     
-    public String getRating() { return rating;}
-    public void setRating(String newRating){rating = newRating;}
+    public int getRating() { return rating;}
+    public void setRating(int newRating){rating = newRating;}
+    
+    public String getComments() { return comment;}
+    public void setComments(String newComment){comment = newComment;}
     
     
     
