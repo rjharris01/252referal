@@ -36,7 +36,7 @@ import models.user.User;
 public class userFactory {
     
     
-    public User makeNewUser(String userType,String accountName, String accountPassword, String accountAddress) 
+    public User makeNewUser(String userType,String accountName, String accountPassword, String accountAddress, String gender, LocalDate tempDate) 
     {
         
         String userId;
@@ -46,7 +46,7 @@ public class userFactory {
         User tempUser = null;
         
         
-        LocalDate tempDate = null;
+    
         
         
         
@@ -72,12 +72,11 @@ public class userFactory {
             
             System.out.print("Please enter the patients gender: ");
           
-            tempPatient.setGender(tempInput);
+            tempPatient.setGender(gender);
             
             System.out.print("Please enter the patients birthday in format dd/mm/yyyy: ");
            
-            DateTimeFormatter dt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            tempDate = LocalDate.parse(tempInput, dt);
+           
             tempPatient.setBirthday(tempDate);
             
             
