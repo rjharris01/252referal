@@ -21,6 +21,7 @@ public class AdminView extends javax.swing.JPanel {
     private JButton AdminViewRatingsButton;
     private JButton AdminModifySecretariesButton;
     private JButton AdminLogoutButton;
+    private JButton AdminDoctorFeedbackButton;
 
     /**
      * Creates new form AdministratorView
@@ -57,13 +58,16 @@ public class AdminView extends javax.swing.JPanel {
         AdminModifyDoctorsButton = new javax.swing.JButton();
         AdminViewRatingsButton = new javax.swing.JButton();
         AdminModifySecretariesButton = new javax.swing.JButton();
+        AdminDoctorFeedbackButton = new javax.swing.JButton();
         AdminLogoutButton = new javax.swing.JButton();
+        
         
         label2.setAlignment(java.awt.Label.CENTER);
         label2.setText("Admin Panel");
 
         AdminCreateAccountButton.setText("Create Account");
         
+        AdminDoctorFeedbackButton.setText("Doctor Feedback");
 
         AdminModifyDoctorsButton.setText("Modify Doctors ");
 
@@ -89,12 +93,15 @@ public class AdminView extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(AdminMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(AdminModifySecretariesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(AdminDoctorFeedbackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(AdminMainPanelLayout.createSequentialGroup()
                         .addGroup(AdminMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(label2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(AdminModifyDoctorsButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE))
                         .addGap(10, 10, 10)
+                        
                         .addComponent(AdminViewRatingsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        
                 .addContainerGap())
         );
         AdminMainPanelLayout.setVerticalGroup(
@@ -112,6 +119,7 @@ public class AdminView extends javax.swing.JPanel {
                         .addComponent(AdminViewRatingsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(AdminModifySecretariesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(AdminDoctorFeedbackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(80, Short.MAX_VALUE))
         );
 
@@ -140,6 +148,10 @@ public class AdminView extends javax.swing.JPanel {
     
     public void addAdminLogoutListener(ActionListener listenForAdminLogout){
         AdminLogoutButton.addActionListener(listenForAdminLogout);
+    }
+    
+    public void addDoctorFeedbackListener(ActionListener listenForDoctorFeedback){
+        AdminDoctorFeedbackButton.addActionListener(listenForDoctorFeedback);
     }
     
     

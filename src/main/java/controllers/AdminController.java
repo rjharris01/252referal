@@ -7,10 +7,12 @@ package controllers;
 
 import Views.AdminCreateAccountView;
 import Views.AdminView;
+import Views.LoginView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.SwingConstants;
 import models.user.Administrator;
+import models.user.User;
 
 /**
  *
@@ -30,6 +32,7 @@ public class AdminController {
         this.theView.addAdminViewRatingsListener(new AdminViewRatingsListener());
         this.theView.addAdminModifySecretariesListener(new AdminModifySecretariesListener());
         this.theView.addAdminLogoutListener(new AdminLogoutListener());
+        this.theView.addDoctorFeedbackListener(new AdminDoctorFeedbackListener());
     }
     
     class AdminCreateAccountListener implements ActionListener {
@@ -57,6 +60,15 @@ public class AdminController {
         
     }
     
+    class AdminDoctorFeedbackListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+        
+    }
+    
     class AdminViewRatingsListener implements ActionListener {
 
         @Override
@@ -70,7 +82,15 @@ public class AdminController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            theModel.setLoginStatus(false);
+            LoginView newView = new LoginView();
+            User newModel = new User() {};    
+                
+            LoginController theController = new LoginController(newView, newModel);
+            theView.setVisible(false);
+            newView.setVisible(true);
+            theView.getParent().add(newView,SwingConstants.CENTER);
+            
         }
         
     }
