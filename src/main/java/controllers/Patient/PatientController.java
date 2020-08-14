@@ -5,10 +5,15 @@
  */
 package controllers.Patient;
 
+import Views.LoginView;
+import Views.Patient.PatientRequestAppointmentView;
 import Views.Patient.PatientView;
+import controllers.LoginController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.SwingConstants;
 import models.user.Patient;
+import models.user.User;
 
 /**
  *
@@ -82,7 +87,14 @@ public class PatientController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      
+            PatientRequestAppointmentView newView = new PatientRequestAppointmentView();
+            
+                
+            PatientRequestAppointmentController theController = new PatientRequestAppointmentController(newView, theModel);
+            theView.setVisible(false);
+            newView.setVisible(true);
+            theView.getParent().add(newView,SwingConstants.CENTER);
         }
          
      }
@@ -91,7 +103,14 @@ public class PatientController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            theModel.setLoginStatus(false);
+            LoginView newView = new LoginView();
+            User newModel = new User() {};    
+                
+            LoginController theController = new LoginController(newView, newModel);
+            theView.setVisible(false);
+            newView.setVisible(true);
+            theView.getParent().add(newView,SwingConstants.CENTER);
         }
          
      }
