@@ -36,8 +36,8 @@ public class SecretaryController {
         this.theView.addSecratryApprovePatientListener(new SecretaryApprovePatientListener());
         this.theView.addSecratryCreateAppointmentListener(new SecretaryCreateAppointmentListener());
         this.theView.addSecratryOrderMedicineListener(new SecretaryOrderMedicineListener());
-        this.theView.addSecratryRemovePatientListener(new SecretaryDeleteUserRequestListener());
-        this.theView.addSecratryRemovePatientRequestListener(new SecretaryRemovePatientRequestListener());
+        this.theView.addSecratryRemovePatientListener(new SecretaryDeleteUserListener());
+        this.theView.addSecratryRemovePatientRequestListener(new SecretaryDeletePatientRequestListener());
         this.theView.addSecratryCompletePerscriptionListener(new SecretaryCompletePerscriptionListener());
         this.theView.addLogoutListener(new LogoutListener());
         this.theView.addSecretaryApproveAppointmentListener(new SecretaryApproveAppointmentListener());
@@ -90,7 +90,7 @@ public class SecretaryController {
         
     }
     
-    class SecretaryDeleteUserRequestListener implements ActionListener {
+    class SecretaryDeletePatientRequestListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -104,7 +104,7 @@ public class SecretaryController {
         }
     }
     
-    class SecretaryRemovePatientRequestListener implements ActionListener {
+    class SecretaryDeleteUserListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
