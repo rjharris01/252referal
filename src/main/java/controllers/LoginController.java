@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import models.user.Administrator;
 import models.user.User;
@@ -64,9 +65,21 @@ public class LoginController {
                         
                     
                     }
+                    
+                    else{
+                        JOptionPane.showMessageDialog(null, "Incorrect login details / User not found");
+                    }
                 }
+                
+                
             }
-
+            
+            if(theModel.getLoginStatus() == null)
+            {
+                
+              JOptionPane.showMessageDialog(null, "Incorrect login details / User not found");
+                    
+            }
         }
 
         catch(Exception x)
