@@ -31,7 +31,8 @@ public class AppointmentRequest extends Appointment implements Serializable {
     
     public void approveRequest(AppointmentRequest appointmentRequest) 
     {
-         writeNewAppointment(appointmentRequest);
+         Appointment appointment = (Appointment)appointmentRequest; 
+         writeNewAppointment(appointment);
          deleteRequest(appointmentRequest);
     }
     
@@ -40,17 +41,11 @@ public class AppointmentRequest extends Appointment implements Serializable {
        deleteRequest(appointmentRequest);
     }
     
-    public void newAppointmentRequest(Doctor doctor, Patient patient,LocalDateTime date)
+    public void newAppointmentRequest(AppointmentRequest appointmentRequest)
     {
             AppointmentRequest tempRequest;
-            tempRequest = new AppointmentRequest();
+            tempRequest = appointmentRequest;
             tempRequest.setType("newAppointmentRequest");
-            Doctor tempDoctor = doctor;
-            Patient tempPatient = patient;
-            LocalDateTime tempDate = date;
-            tempRequest.setAppointmentDate(tempDate);
-            tempRequest.setDoctor(tempDoctor);
-            tempRequest.setPatient(tempPatient);
             tempRequest.setAppointmentId(getNextAppointmentId());
             
             addAppointmentRequest(tempRequest);

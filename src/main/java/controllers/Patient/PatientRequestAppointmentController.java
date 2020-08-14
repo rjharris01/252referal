@@ -75,11 +75,11 @@ public class PatientRequestAppointmentController {
         
                 String day,month,year,hour,minute;
 
-                day = (theView.getSecretaryAppointmentDay());
-                month = (theView.getSecretaryAppointmentMonthBox());
-                year = (theView.getSecretaryAppointmentYearBox());
-                hour = (theView.getSecretaryAppointmentHourBox()); 
-                minute = (theView.getSecretaryAppointmentMinuteBox());
+                day = (theView.getPatientAppointmentDay());
+                month = (theView.getPatientAppointmentMonthBox());
+                year = (theView.getPatientAppointmentYearBox());
+                hour = (theView.getPatientAppointmentHourBox()); 
+                minute = (theView.getPatientAppointmentMinuteBox());
 
 
                 String str = (year +"-"+ month +"-"+day+" "+hour+":"+minute);
@@ -87,7 +87,10 @@ public class PatientRequestAppointmentController {
                 LocalDateTime appointmentDate = LocalDateTime.parse(str, formatter);
 
                 AppointmentRequest appointmentRequest = new AppointmentRequest();
-                appointmentRequest.newAppointmentRequest(doctor,patient,appointmentDate);
+                appointmentRequest.setAppointmentDate(appointmentDate);
+                appointmentRequest.setDoctor(doctor);
+                appointmentRequest.setPatient(patient);
+                appointmentRequest.newAppointmentRequest(appointmentRequest);
                 
                 
                 
