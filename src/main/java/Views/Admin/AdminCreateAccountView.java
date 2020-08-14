@@ -28,6 +28,7 @@ public class AdminCreateAccountView extends javax.swing.JPanel {
     private JLabel AdminCreateNameLabel;
     private JTextField AdminCreateNameField;
     private JButton AdminCreateSubmitButton;
+    private JButton AdminCreateBackButton;
 
     /**
      * Creates new form AdminCreateAccountView
@@ -68,6 +69,7 @@ public class AdminCreateAccountView extends javax.swing.JPanel {
         AdminCreateNameLabel = new javax.swing.JLabel();
         AdminCreateNameField = new javax.swing.JTextField();
         AdminCreateSubmitButton = new javax.swing.JButton();
+        AdminCreateBackButton = new javax.swing.JButton();
         
         
         
@@ -112,6 +114,7 @@ public class AdminCreateAccountView extends javax.swing.JPanel {
         });
 
         AdminCreateSubmitButton.setText("Submit");
+        AdminCreateBackButton.setText("Back");
         
 
         javax.swing.GroupLayout AdminCreateAccountPanelLayout = new javax.swing.GroupLayout(this);
@@ -134,7 +137,9 @@ public class AdminCreateAccountView extends javax.swing.JPanel {
                 .addContainerGap(352, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AdminCreateAccountPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(AdminCreateBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(AdminCreateSubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+               
                 .addGap(20, 20, 20))
         );
         AdminCreateAccountPanelLayout.setVerticalGroup(
@@ -160,7 +165,12 @@ public class AdminCreateAccountView extends javax.swing.JPanel {
                     .addComponent(AdminCreateAccountTypeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(AdminAccountTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
-                .addComponent(AdminCreateSubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(AdminCreateAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)    
+                .addComponent(AdminCreateBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(AdminCreateSubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                
+                
+                
                 .addContainerGap())
         );
     }
@@ -203,6 +213,10 @@ public class AdminCreateAccountView extends javax.swing.JPanel {
         AdminCreateSubmitButton.addActionListener(listenForSubmit);
     }
     
+    public void addBackListener(ActionListener listenForSubmit){
+        AdminCreateBackButton.addActionListener(listenForSubmit);
+    }
+    
     public String getAccountType(){
                 return AdminAccountTypeBox.getSelectedItem().toString();
     }
@@ -223,6 +237,8 @@ public class AdminCreateAccountView extends javax.swing.JPanel {
     public String getAccountAddress() {
         return AdminCreateAddressField.getText();
     }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
