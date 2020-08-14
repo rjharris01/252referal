@@ -9,7 +9,7 @@
 package Views;
 
 import Views.Admin.AdminCreateAccountView;
-import controllers.AdminCreateAccountController;
+import controllers.Admin.AdminCreateAccountController;
 import controllers.LoginController;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
