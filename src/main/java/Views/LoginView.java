@@ -184,6 +184,10 @@ public class LoginView extends javax.swing.JPanel {
         login.addActionListener(listenForLogin);
     }
     
+    public void addSignupListener(ActionListener listenForLogin){
+        signup.addActionListener(listenForLogin);
+    }
+    
     public void displayErrorMessage(String errorMessage){
         JOptionPane.showMessageDialog(this, errorMessage);
     }
