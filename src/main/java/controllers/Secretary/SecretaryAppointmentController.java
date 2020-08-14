@@ -100,7 +100,10 @@ public class SecretaryAppointmentController {
                 LocalDateTime appointmentDate = LocalDateTime.parse(str, formatter);
 
                 AppointmentRequest appointmentRequest = new AppointmentRequest();
-                appointmentRequest.newAppointmentRequest(doctor,patient,appointmentDate);
+                appointmentRequest.setAppointmentDate(appointmentDate);
+                appointmentRequest.setDoctor(doctor);
+                appointmentRequest.setPatient(patient);
+                appointmentRequest.newAppointmentRequest(appointmentRequest);
                 appointmentRequest.approveRequest(appointmentRequest);
                 
                 
