@@ -5,9 +5,12 @@
  */
 package Views.Secretary;
 
+import java.awt.event.ActionListener;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
+import models.NewAccountRequest;
 
 /**
  *
@@ -17,7 +20,7 @@ public class SecretaryApprovePatientView extends javax.swing.JPanel {
 
     private JButton SecretaryApprovePatientButton;
     private JScrollPane jScrollPane1;
-    private JList<Object> SecretaryAccountRequestedList;
+    private JList<NewAccountRequest> SecretaryAccountRequestedList;
     private JButton SecretaryDeclinePatientButton;
     private JButton SecretaryBackButton;
 
@@ -72,12 +75,14 @@ public class SecretaryApprovePatientView extends javax.swing.JPanel {
         this.setLayout(SecretaryApprovePatientPanelLayout);
         SecretaryApprovePatientPanelLayout.setHorizontalGroup(
             SecretaryApprovePatientPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            
             .addGroup(SecretaryApprovePatientPanelLayout.createSequentialGroup()
+                 .addGap(30, 30, 30)
                  .addComponent(SecretaryBackButton)   
             
             )
             .addGroup(SecretaryApprovePatientPanelLayout.createSequentialGroup()
-                
+                .addGap(30, 30, 30)
                 .addComponent(jScrollPane1)
                 .addGap(22, 22, 22)
                 .addContainerGap())
@@ -105,7 +110,31 @@ public class SecretaryApprovePatientView extends javax.swing.JPanel {
         );
     }
 
+    
+  
 
+    public void addSubmitListener(ActionListener listenForSecretaryApprovePatient){
+        SecretaryApprovePatientButton.addActionListener(listenForSecretaryApprovePatient);
+    }
+    
+    public void addBackListener(ActionListener listenForBack){
+        SecretaryBackButton.addActionListener(listenForBack);
+    }
+    
+    public void addDeclineListener(ActionListener listenForSecretaryDeclinePatient){
+        SecretaryDeclinePatientButton.addActionListener(listenForSecretaryDeclinePatient);
+    }
+    
+    public NewAccountRequest getSelectedUserRequest(){
+        NewAccountRequest newAccountRequest = SecretaryAccountRequestedList.getSelectedValue();
+        return newAccountRequest;
+    }
+
+    public void setUserRequests(DefaultListModel<NewAccountRequest> model){
+        SecretaryAccountRequestedList.setModel(model);
+    }    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }

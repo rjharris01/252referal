@@ -166,6 +166,35 @@ public class Secretary extends User {
              }
     }
     
+    public void declineAccountRequest(NewAccountRequest accountRequest)
+    {
+        try{
+            
+        User tempUser = accountRequest.getUser();
+        
+             
+        
+        tempUser.setUserId(tempUser.getNextUserId("P"));
+        ArrayList<Request> requests = this.getAllRequests();
+        Iterator<Request> iter = requests.iterator();
+        while (iter.hasNext())
+        {
+            Request request = iter.next();
+            if(request.getRequestId() == accountRequest.getRequestId())
+            {
+                iter.remove();
+                updateRequests(requests);
+            }
+        }
+        
+       } 
+        
+        catch (java.lang.NullPointerException e)
+             {
+                 System.out.print("No Use requests");
+             }
+    }
+    
     public void approveAppointmentRequest(NewAppointmentRequest appointmentRequest)
     {
         appointmentRequest.getAppointmentRequest().approveRequest(appointmentRequest.getAppointmentRequest());

@@ -5,11 +5,15 @@
  */
 package Views.Secretary;
 
+import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import models.user.Doctor;
+import models.user.Patient;
 
 /**
  *
@@ -17,8 +21,8 @@ import javax.swing.JPanel;
  */
 public class SecretaryAppointmentView extends javax.swing.JPanel {
 
-    private JComboBox<Object> SecretaryAppointmentDoctorBox;
-    private JComboBox<Object> SecretaryAppointmentPatientBox;
+    private JComboBox<Doctor> SecretaryAppointmentDoctorBox;
+    private JComboBox<Patient> SecretaryAppointmentPatientBox;
     private JComboBox<Object> SecretaryAppointmentMonthBox;
     private JButton SecretaryAppointmentSubmitButton;
     private JButton SecretaryAppointmentBackButton;
@@ -256,6 +260,30 @@ public class SecretaryAppointmentView extends javax.swing.JPanel {
             default:
                 break;
         }
+    }
+     
+     public String getPatient(){
+                return SecretaryAppointmentPatientBox.getSelectedItem().toString();
+    }
+     
+     public void setPatients( DefaultComboBoxModel<Patient> patientModel){
+                SecretaryAppointmentPatientBox.setModel(patientModel);
+    }
+     
+     public String getDoctor(){
+                return SecretaryAppointmentDoctorBox.getSelectedItem().toString();
+    }
+     
+     public void setDoctors(DefaultComboBoxModel<Doctor> doctorModel){
+                SecretaryAppointmentDoctorBox.setModel(doctorModel);
+    }
+     
+     public void addSubmitListener(ActionListener listenForSubmit){
+        SecretaryAppointmentSubmitButton.addActionListener(listenForSubmit);
+    }
+    
+    public void addBackListener(ActionListener listenForSubmit){
+        SecretaryAppointmentBackButton.addActionListener(listenForSubmit);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
