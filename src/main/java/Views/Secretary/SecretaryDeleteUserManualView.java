@@ -5,9 +5,13 @@
  */
 package Views.Secretary;
 
+import java.awt.event.ActionListener;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
+import models.NewAccountRequest;
+import models.user.User;
 
 /**
  *
@@ -16,7 +20,7 @@ import javax.swing.JScrollPane;
 public class SecretaryDeleteUserManualView extends javax.swing.JPanel {
 
     private JScrollPane jScrollPane4;
-    private JList<Object> AccountDeleteManualList;
+    private JList<User> AccountDeleteManualList;
     private JButton DeleteUserManualtBackButton1;
     private JButton DeleteUserManualButton1;
 
@@ -71,11 +75,12 @@ public class SecretaryDeleteUserManualView extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(SecretaryDeleteUserManualPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER, false)
                     .addGroup(SecretaryDeleteUserManualPanelLayout.createSequentialGroup()
+                        .addGap(33,33,33)
                         .addComponent(DeleteUserManualtBackButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(DeleteUserManualButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(70, Short.MAX_VALUE))
+                    
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         SecretaryDeleteUserManualPanelLayout.setVerticalGroup(
             SecretaryDeleteUserManualPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -93,6 +98,30 @@ public class SecretaryDeleteUserManualView extends javax.swing.JPanel {
         
     }
 
+    
+    public void setAccountDeleteManualList(DefaultListModel<User> users)
+    {
+        AccountDeleteManualList.setModel(users);
+    }
+    
+    public void addDeleteListener(ActionListener listenForSecretaryDeletePatient){
+        DeleteUserManualButton1.addActionListener(listenForSecretaryDeletePatient);
+    }
+    
+    public void addBackListener(ActionListener listenForBack){
+        DeleteUserManualtBackButton1.addActionListener(listenForBack);
+    }
+    
+
+    public User getSelectedUser(){
+        User user = AccountDeleteManualList.getSelectedValue();
+        return user;
+    }
+    
+    public void clearList()
+    {
+        AccountDeleteManualList.removeAll();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
