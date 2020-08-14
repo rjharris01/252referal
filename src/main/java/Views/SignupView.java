@@ -5,7 +5,9 @@
  */
 package Views;
 
+import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -34,6 +36,7 @@ public class SignupView extends javax.swing.JPanel {
     private JLabel jLabel3;
     private JComboBox<Object> SignupGenderSelector;
     private JButton SignupSubmitButton;
+    private JButton SignupBackButton;
 
     /**
      * Creates new form SignupView
@@ -80,6 +83,7 @@ public class SignupView extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         SignupGenderSelector = new javax.swing.JComboBox<>();
         SignupSubmitButton = new javax.swing.JButton();
+        SignupBackButton = new javax.swing.JButton();
         
         SignupNameField.setText("Enter Name Here ");
         SignupNameField.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -150,6 +154,8 @@ public class SignupView extends javax.swing.JPanel {
         SignupGenderSelector.setToolTipText("");
 
         SignupSubmitButton.setText("Submit");
+        
+        SignupBackButton.setText("Back");
        
 
         javax.swing.GroupLayout SignupPanelLayout = new javax.swing.GroupLayout(this);
@@ -184,11 +190,18 @@ public class SignupView extends javax.swing.JPanel {
                     .addGroup(SignupPanelLayout.createSequentialGroup()
                         .addComponent(SignupGenderSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
+                    
+                    
                     .addComponent(SignupAddressField))
+                    .addComponent(SignupBackButton)
+                    .addComponent(SignupSubmitButton)
+                    
+                    
                 .addGap(173, 173, 173))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SignupPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(SignupSubmitButton)
+                
+                
                 .addGap(80, 80, 80))
         );
         SignupPanelLayout.setVerticalGroup(
@@ -220,9 +233,13 @@ public class SignupView extends javax.swing.JPanel {
                 .addGroup(SignupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SignupDateMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SignupDateDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SignupDateYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(SignupDateYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SignupBackButton)
+                    .addComponent(SignupSubmitButton))
+                    
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
-                .addComponent(SignupSubmitButton)
+                
+                
                 .addGap(20, 20, 20))
         );
         
@@ -315,6 +332,51 @@ public class SignupView extends javax.swing.JPanel {
     }
     
 
+    
+    
+    
+    public void addSubmitListener(ActionListener listenForSubmit){
+        SignupSubmitButton.addActionListener(listenForSubmit);
+    }
+    
+    public void addBackListener(ActionListener listenForBack){
+        SignupBackButton.addActionListener(listenForBack);
+    }
+    
+        
+        
+        
+    public String getSignupName(){
+        return SignupNameField.getText();
+    }
+    
+    public String getSignupAddressName(){
+        return SignupAddressField.getText();
+    }
+    
+    public int getSignupDateMonth(){
+        return Integer.parseInt(SignupDateMonth.getSelectedItem().toString());
+    }
+    
+    public int getSignupDateDay(){
+        
+        return Integer.parseInt(SignupDateDay.getSelectedItem().toString());
+    }
+    
+    public int getSignupDateYear(){
+      
+       return Integer.parseInt(SignupDateYear.getSelectedItem().toString());
+                
+    }
+    
+    public String getSignupPasswordField(){
+        return Arrays.toString(SignupPasswordField.getPassword());
+    }
+    
+    public String getSignupGenderSelector(){
+         return SignupGenderSelector.getSelectedItem().toString();
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }
