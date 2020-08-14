@@ -1,0 +1,24 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package controllers.Doctor;
+import Views.Doctor.DoctorView;
+import models.user.Doctor;
+
+/**
+ *
+ * @author richa_bfe6tpy
+ */
+public class DoctorController {
+    private DoctorView theView;
+    private Doctor theModel;
+    
+    public DoctorController(DoctorView theView,Doctor theModel)
+    {
+        this.theView = theView;
+        this.theModel = theModel;
+        
+    }
+}
