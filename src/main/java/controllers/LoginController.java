@@ -5,8 +5,12 @@
  */
 package controllers;
 
+import controllers.Admin.AdminController;
 import Views.Admin.AdminView;
 import Views.LoginView;
+import Views.Secretary.SecretaryView;
+import Views.SignupView;
+import controllers.Secretary.SecretaryController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileInputStream;
@@ -18,6 +22,7 @@ import java.util.Arrays;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import models.user.Administrator;
+import models.user.Secretary;
 import models.user.User;
 
 /**
@@ -36,8 +41,28 @@ public class LoginController {
         this.theModel = theModel;
         
         this.theView.addLoginListener(new LoginListener());
+        this.theView.addSignupListener(new SignupListener());
     }
     
+    
+    class SignupListener implements ActionListener
+    {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            SignupView newView = new SignupView();
+            User newModel = new User() {};    
+                
+            SignupController theController = new SignupController(newView, newModel);
+            
+            theView.setVisible(false);
+            newView.setVisible(true);
+            theView.getParent().add(newView,SwingConstants.CENTER);
+            
+            
+        }
+        
+    }
     
     class LoginListener implements ActionListener
     {
@@ -99,14 +124,14 @@ public class LoginController {
         if (null != userId)
         switch (userId) {
             case "A":
-                AdminView newView = new AdminView();
-                Administrator newModel = (Administrator)user;
+                AdminView adminView = new AdminView();
+                Administrator adminModel = (Administrator)user;
                 
                 
-                AdminController newController = new AdminController(newView,newModel);
+                AdminController adminController = new AdminController(adminView,adminModel);
                 this.theView.setVisible(false);
-                newView.setVisible(true);
-                this.theView.getParent().add(newView,SwingConstants.CENTER);
+                adminView.setVisible(true);
+                this.theView.getParent().add(adminView,SwingConstants.CENTER);
                 
                 
                 break;
@@ -119,7 +144,14 @@ public class LoginController {
                 
                 break;
             case "S":
-                //to do sec
+                SecretaryView secView = new SecretaryView();
+                Secretary secModel = (Secretary)user;
+                
+                
+                SecretaryController secretaryController = new SecretaryController(secView,secModel);
+                this.theView.setVisible(false);
+                secView.setVisible(true);
+                this.theView.getParent().add(secView,SwingConstants.CENTER);
                 break;
             default:
                 break;
