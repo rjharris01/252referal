@@ -6,6 +6,7 @@
 package Views.Patient;
 
 import java.awt.Label;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -133,7 +134,39 @@ public class PatientView extends javax.swing.JPanel {
                 .addContainerGap(39, Short.MAX_VALUE))
         );
     }
-
+    
+    public void setUserWelcomeLabel(String welcomeText)
+    {
+        UserWelcomeLabel.setText(welcomeText);
+    }
+    
+    public void addPatientRequestAccountDeletionListener(ActionListener listenForPatientRequestAccountDeletion){
+        PatientRequestAccountDeletionButton.addActionListener(listenForPatientRequestAccountDeletion);
+    }
+    
+    public void addPatientViewAppointmentListener(ActionListener listenForPatientViewAppointment){
+        PatientViewAppointmentButton.addActionListener(listenForPatientViewAppointment);
+    }
+    
+    public void addPatientViewPerscriptionListener(ActionListener listenForPatientViewPerscription){
+        PatientViewPerscriptionButton.addActionListener(listenForPatientViewPerscription);
+    }
+    
+    public void addPatientViewHistoryListener(ActionListener listenForPatientViewHistory){
+        PatientViewHistoryButton.addActionListener(listenForPatientViewHistory);
+    }
+    
+    public void addPatientFeedbackListener(ActionListener listenForSecretaryPatientFeedback){
+        PatientFeedbackButton.addActionListener(listenForSecretaryPatientFeedback);
+    }
+    
+    public void addPatientAppointmentListener(ActionListener listenForPatientAppointment){
+        PatientAppointmentButton.addActionListener(listenForPatientAppointment);
+    }
+    
+    public void addPatientLogoutListener(ActionListener listenForPatientLogout){
+        PatientLogoutButton.addActionListener(listenForPatientLogout);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
