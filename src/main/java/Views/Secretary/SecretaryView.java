@@ -6,6 +6,7 @@
 package Views.Secretary;
 
 import java.awt.Label;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 /**
@@ -138,6 +139,41 @@ public class SecretaryView extends javax.swing.JPanel {
         );
     }
 
+    
+
+    
+    
+    public void addSecratryApprovePatientListener(ActionListener listenForSecratryApprovePatient){
+        SecratryApprovePatientButton.addActionListener(listenForSecratryApprovePatient);
+    }
+    
+    public void addSecratryCreateAppointmentListener(ActionListener listenForSecratryCreateAppointment){
+        SecratryCreateAppointmentButton.addActionListener(listenForSecratryCreateAppointment);
+    }
+    
+    public void addSecratryOrderMedicineListener(ActionListener listenForSecratryOrderMedicine){
+        SecratryOrderMedicineButton.addActionListener(listenForSecratryOrderMedicine);
+    }
+    
+    public void addSecratryRemovePatientListener(ActionListener listenForSecratryRemovePatient){
+        SecratryRemovePatientButton.addActionListener(listenForSecratryRemovePatient);
+    }
+    
+    public void addSecratryRemovePatientRequestListener(ActionListener listenForSecratryRemovePatientRequest){
+        SecratryRemovePatientRequestButton.addActionListener(listenForSecratryRemovePatientRequest);
+    }
+    
+    public void addSecratryCompletePerscriptionListener(ActionListener listenForSecratryCompletePerscription){
+        SecratryCompletePerscriptionButton.addActionListener(listenForSecratryCompletePerscription);
+    }
+    
+    public void addLogoutListener(ActionListener listenForLogout){
+        LogoutButton.addActionListener(listenForLogout);
+    }
+    
+    public void addSecretaryApproveAppointmentListener(ActionListener listenForSecretaryApproveAppointment){
+        SecretaryApproveAppointmentButton.addActionListener(listenForSecretaryApproveAppointment);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
