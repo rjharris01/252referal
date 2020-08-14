@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Views;
+package Views.Admin;
 
 import java.awt.event.ActionListener;
 import java.util.Arrays;

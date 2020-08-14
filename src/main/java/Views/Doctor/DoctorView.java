@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Views;
+package Views.Doctor;
 
 import java.awt.Label;
 import javax.swing.JButton;

@@ -5,8 +5,8 @@
  */
 package controllers;
 
-import Views.AdminCreateAccountView;
-import Views.AdminView;
+import Views.Admin.AdminCreateAccountView;
+import Views.Admin.AdminView;
 import Views.LoginView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
