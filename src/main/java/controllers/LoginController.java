@@ -161,7 +161,6 @@ public class LoginController {
                 this.theView.setVisible(false);
                 patView.setVisible(true);
                 this.theView.getParent().add(patView,SwingConstants.CENTER);
-                patView.setUserWelcomeLabel("Welcome " + patModel.getName() + ",");
                 
                 break;
             case "S":
