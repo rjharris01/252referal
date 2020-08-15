@@ -289,5 +289,10 @@ public class Secretary extends User {
 		}
         return appointments; 
     }
+     
+     @Override
+    public String toString() {
+        return ("Name: " + this.getName() + " ID:" + this.getUserId());
+    }
 }
 
