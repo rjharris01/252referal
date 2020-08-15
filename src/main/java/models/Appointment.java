@@ -26,6 +26,7 @@ public class Appointment implements Serializable {
     private Doctor doctor;
     private LocalDateTime appointmentDate;
     private int appointmentId;
+    private String Comments;
     
     
     public Patient getPatient() { return patient;}
@@ -39,6 +40,9 @@ public class Appointment implements Serializable {
     
     public int getAppointmentId() { return appointmentId;}
     public void setAppointmentId(int newAppointmentId){appointmentId = newAppointmentId;}
+    
+    public String getComments() { return Comments;}
+    public void setComments(String newComments){Comments = newComments;}
     
     
     
