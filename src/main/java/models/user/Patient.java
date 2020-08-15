@@ -5,10 +5,14 @@
  */
 package models.user;
 
+import controllers.RequestMaker;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -122,7 +126,8 @@ public class Patient extends User {
     
     public void requestAccountTermination()
     {
-          
+         RequestMaker rm = new RequestMaker();
+         rm.accountTerminationRequest(this);
     
     }
     
