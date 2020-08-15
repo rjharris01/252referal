@@ -74,16 +74,15 @@ public class Doctor extends User {
 
 
     public ArrayList<Rating> getRatings() { return ratings;}
-    public void setDoctor(ArrayList<Rating> newRatings){ratings = newRatings;}
+    public void setRatings(ArrayList<Rating> newRatings){ratings = newRatings;}
     
     public void addRating(Rating rating)
     {
-        ratings = getRatings();
-        ratings.add(rating);
-        updateDoctor(this);
+        this.ratings.add(rating);   
+        this.updateDoctor();
     } 
     
-    public void updateDoctor(Doctor doctor)
+    public void updateDoctor()
     {
         int index = 0;
         ArrayList<User> tempUsers  = new ArrayList<>();
@@ -103,11 +102,11 @@ public class Doctor extends User {
         
         
         for(int k = 0; k < tempUsers.size(); k++) {
-        if(tempUsers.get(k).getUserId().equals(doctor.getUserId())) {
+        if(tempUsers.get(k).getUserId().equals(this.getUserId())) {
             index = k;
             }
         }
-        tempUsers.set(index, doctor);
+        tempUsers.set(index, this);
         
         try
         {

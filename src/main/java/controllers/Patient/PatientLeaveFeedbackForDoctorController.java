@@ -69,9 +69,10 @@ public class PatientLeaveFeedbackForDoctorController {
                 doctor.addRating(rating);
                 
                 } catch(Exception ex)
+                    
                 {
 
-
+                    System.out.print(ex);
                 }
         }
     
