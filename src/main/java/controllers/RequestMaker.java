@@ -63,7 +63,7 @@ public class RequestMaker {
         NewAppointmentRequest request;
         request = new NewAppointmentRequest();
         request.setAppointmentRequest(appointment);
-        request.setType("appointmentRequest");
+        request.setType("newAppointmentRequest");
         request.setRequestId(request.getNextRequestId());
         writeRequest(request);
     }

@@ -60,15 +60,15 @@ public class Secretary extends User {
       return requests;
    }
    
-    public ArrayList<AppointmentRequest> getAllNewAppointmentRequest()
+    public ArrayList<NewAppointmentRequest> getAllNewAppointmentRequest()
    {
-      ArrayList<AppointmentRequest> requests = new ArrayList<>();
-      ArrayList<AppointmentRequest> allRequests = getAllAppointmentRequests();
-      for (AppointmentRequest request : allRequests)
+      ArrayList<NewAppointmentRequest> requests = new ArrayList<>();
+      ArrayList<Request> allRequests = getAllRequests();
+      for (Request request : allRequests)
       {
           if ("newAppointmentRequest".equals(request.getType()))
           {
-              requests.add(request);
+              requests.add((NewAppointmentRequest)request);
           }
       }
       return requests;

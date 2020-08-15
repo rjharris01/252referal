@@ -7,6 +7,7 @@ package controllers.Patient;
 
 import Views.Patient.PatientRequestAppointmentView;
 import Views.Patient.PatientView;
+import controllers.RequestMaker;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
@@ -90,7 +91,9 @@ public class PatientRequestAppointmentController {
                 appointmentRequest.setAppointmentDate(appointmentDate);
                 appointmentRequest.setDoctor(doctor);
                 appointmentRequest.setPatient(patient);
-                appointmentRequest.newAppointmentRequest(appointmentRequest);
+                
+                RequestMaker rm = new RequestMaker();
+                rm.appointmentRequest(appointmentRequest);
                 
                 
                 

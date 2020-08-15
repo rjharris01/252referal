@@ -15,5 +15,8 @@ public class NewAppointmentRequest extends Request{
     public AppointmentRequest getAppointmentRequest() { return appointment;}
     public void setAppointmentRequest(AppointmentRequest newAppointmentRequest){appointment = newAppointmentRequest;}
     
-    
+    @Override
+    public String toString() {
+        return ("Patient: " + appointment.getPatient().getName() + " Doctor:" + appointment.getDoctor().getName() + " Date:" + appointment.getAppointmentDate().toString());
+    }
 }

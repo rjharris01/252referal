@@ -8,6 +8,7 @@ package controllers.Secretary;
 import Views.LoginView;
 import Views.Secretary.SecretaryDeleteUserManualView;
 import Views.Secretary.SecretaryAppointmentView;
+import Views.Secretary.SecretaryApproveAppointmentView;
 import Views.Secretary.SecretaryApprovePatientView;
 import Views.Secretary.SecretaryDeleteUserRequestView;
 import Views.Secretary.SecretaryOrderMedicineView;
@@ -128,6 +129,8 @@ public class SecretaryController {
         
     }
     
+    
+    
     class LogoutListener implements ActionListener {
 
         @Override
@@ -148,7 +151,13 @@ public class SecretaryController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            //
+            SecretaryApproveAppointmentView newView = new SecretaryApproveAppointmentView();
+  
+              
+            SecretaryApproveAppointmentController theController = new SecretaryApproveAppointmentController(newView, theModel);
+            theView.setVisible(false);
+            newView.setVisible(true);
+            theView.getParent().add(newView,SwingConstants.CENTER);
         }
         
     }
