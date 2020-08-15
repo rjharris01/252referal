@@ -9,6 +9,7 @@ import java.awt.Label;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -74,7 +75,7 @@ public class PatientView extends javax.swing.JPanel {
         PatientRequestAccountDeletionButton.setText("Delete Account");
        
 
-        PatientViewAppointmentButton.setText("View Appointment");
+        PatientViewAppointmentButton.setText("View Upcoming Appointments");
 
         PatientViewPerscriptionButton.setText("View Perscripton");
 

@@ -5,7 +5,14 @@
  */
 package controllers.Patient;
 
+import Views.Patient.PatientView;
 import Views.Patient.PatientViewHistoryView;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
+import javax.swing.SwingConstants;
+import models.Appointment;
 import models.user.Patient;
 
 /**
@@ -21,5 +28,34 @@ public class PatientViewHistoryController {
         this.theView = theView;
         this.theModel = theModel;
     
+        this.theView.addPatientViewHistoryBackButotn(new PatientViewHistoryBackListener());
+        setHistory();
+    }
+    
+    
+    
+    public void setHistory(){
+        ArrayList<Appointment> appointments = theModel.getAllPastAppointments();
+        DefaultListModel<Appointment> tempModel = new DefaultListModel<>();
+
+        for (Appointment appointment: appointments)
+        {
+            tempModel.addElement(appointment);
+        }        
+        
+        this.theView.setPatientHistory(tempModel);
+    }
+    
+    class PatientViewHistoryBackListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            PatientView patientView = new PatientView();
+            PatientController patientController = new PatientController(patientView,theModel);
+            theView.setVisible(false);
+            patientView.setVisible(true);
+            theView.getParent().add(patientView,SwingConstants.CENTER);
+        }
+        
     }
 }
