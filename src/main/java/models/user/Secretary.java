@@ -200,6 +200,24 @@ public class Secretary extends User {
         appointmentRequest.getAppointmentRequest().approveRequest(appointmentRequest.getAppointmentRequest());
     }
     
+    public void deleteRequest(Request request)
+    {
+        ArrayList<Request> requests;
+        ArrayList<Request> toRemove = new ArrayList();
+        requests = request.getAllRequests();
+        
+        for(Request r: requests)
+        {
+            if(r.getRequestId() == request.getRequestId())
+            {
+                toRemove.add(r);
+            }
+        }
+        
+        requests.removeAll(toRemove);
+        updateRequests(requests);
+    }
+    
     public void deleteUser(String userID)
      {
          ArrayList<User> users = this.getAllUsers();

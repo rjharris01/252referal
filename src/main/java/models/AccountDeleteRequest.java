@@ -15,5 +15,9 @@ public class AccountDeleteRequest extends Request {
     public String getUserId() { return userId;}
     public void setUserId(String newUserId){userId = newUserId;}
     
+    @Override
+    public String toString() {
+        return (" ID:" + this.getUserId());
+    }
     
 }

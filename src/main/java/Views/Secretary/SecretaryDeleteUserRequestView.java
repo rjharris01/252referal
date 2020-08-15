@@ -5,10 +5,14 @@
  */
 package Views.Secretary;
 
+import java.awt.event.ActionListener;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import models.AccountDeleteRequest;
+import models.user.User;
 
 /**
  *
@@ -17,14 +21,10 @@ import javax.swing.JScrollPane;
 public class SecretaryDeleteUserRequestView extends javax.swing.JPanel {
 
     private JScrollPane jScrollPane3;
-    private JList<Object> AccountDeleteRequestsList;
+    private JList<AccountDeleteRequest> AccountDeleteRequestsList;
     private JButton DeleteUserRequestBackButton;
     private JButton DeleteUserRequestButton;
-    private JPanel SecretaryDeleteUserManualPanel;
-    private JScrollPane jScrollPane4;
-    private JList<Object> AccountDeleteManualList;
-    private JButton DeleteUserManualtBackButton1;
-    private JButton DeleteUserManualButton1;
+  
 
     /**
      * Creates new form SecretaryDeleteUserRequestView
@@ -60,11 +60,6 @@ public class SecretaryDeleteUserRequestView extends javax.swing.JPanel {
         AccountDeleteRequestsList = new javax.swing.JList<>();
         DeleteUserRequestBackButton = new javax.swing.JButton();
         DeleteUserRequestButton = new javax.swing.JButton();
-        SecretaryDeleteUserManualPanel = new javax.swing.JPanel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        AccountDeleteManualList = new javax.swing.JList<>();
-        DeleteUserManualtBackButton1 = new javax.swing.JButton();
-        DeleteUserManualButton1 = new javax.swing.JButton();
         
         AccountDeleteRequestsList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
          
@@ -84,11 +79,11 @@ public class SecretaryDeleteUserRequestView extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(SecretaryDeleteUserRequestPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(SecretaryDeleteUserRequestPanelLayout.createSequentialGroup()
+                        .addGap(33,33,33)
                         .addComponent(DeleteUserRequestBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(DeleteUserRequestButton, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(70, Short.MAX_VALUE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         SecretaryDeleteUserRequestPanelLayout.setVerticalGroup(
             SecretaryDeleteUserRequestPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,6 +98,30 @@ public class SecretaryDeleteUserRequestView extends javax.swing.JPanel {
         );
     }
 
+    
+    public void setAccountDeleteManualList(DefaultListModel<AccountDeleteRequest> users)
+    {
+        AccountDeleteRequestsList.setModel(users);
+    }
+    
+    public void addDeleteListener(ActionListener listenForSecretaryDeletePatient){
+        DeleteUserRequestButton.addActionListener(listenForSecretaryDeletePatient);
+    }
+    
+    public void addBackListener(ActionListener listenForBack){
+        DeleteUserRequestBackButton.addActionListener(listenForBack);
+    }
+    
+
+    public AccountDeleteRequest getSelectedUser(){
+        AccountDeleteRequest user = AccountDeleteRequestsList.getSelectedValue();
+        return user;
+    }
+    
+    public void clearList()
+    {
+        AccountDeleteRequestsList.removeAll();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
