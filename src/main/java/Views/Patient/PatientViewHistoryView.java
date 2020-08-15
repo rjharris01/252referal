@@ -81,7 +81,7 @@ public class PatientViewHistoryView extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    public void addPatientViewHistoryBackButotn(ActionListener listenForPatientViewHistoryBackButotn){
+    public void addPatientViewHistoryBackButton(ActionListener listenForPatientViewHistoryBackButotn){
         ViewPatientHistoryBackButton.addActionListener(listenForPatientViewHistoryBackButotn);
     }
     

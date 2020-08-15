@@ -28,7 +28,7 @@ public class PatientViewHistoryController {
         this.theView = theView;
         this.theModel = theModel;
     
-        this.theView.addPatientViewHistoryBackButotn(new PatientViewHistoryBackListener());
+        this.theView.addPatientViewHistoryBackButton(new PatientViewHistoryBackListener());
         setHistory();
     }
     

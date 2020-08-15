@@ -40,12 +40,6 @@ public class PatientLeaveFeedbackForDoctorView extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         PatientFeedbackCommentBox = new javax.swing.JTextArea();
 
-        PatientFeedbackAppointmentBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PatientFeedbackAppointmentBoxActionPerformed(evt);
-            }
-        });
-
         PatientFeedbackRatingBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
 
         PatientFeedbackSubmitButton.setText("Submit");
@@ -111,10 +105,6 @@ public class PatientLeaveFeedbackForDoctorView extends javax.swing.JPanel {
 
         PatientFeedbackAppointmentBox.getAccessibleContext().setAccessibleName("");
     }// </editor-fold>//GEN-END:initComponents
-
-    private void PatientFeedbackAppointmentBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatientFeedbackAppointmentBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PatientFeedbackAppointmentBoxActionPerformed
 
     public void addSubmitListener(ActionListener listenForSubmit){
         PatientFeedbackSubmitButton.addActionListener(listenForSubmit);
