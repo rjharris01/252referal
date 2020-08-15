@@ -7,6 +7,7 @@ package Views.Admin;
 
 import java.awt.event.ActionListener;
 import javax.swing.DefaultListModel;
+import models.user.Secretary;
 import models.user.User;
 
 /**
@@ -86,8 +87,8 @@ public class AdminModifySecretariesView extends javax.swing.JPanel {
         AdminModifySecretaryDeleteButton.addActionListener(listenForDelete);
     }
     
-    public User getSelectedUser(){
-        User user = AdminModifySecretaryListBox.getSelectedValue();
+    public Secretary getSelectedUser(){
+        Secretary user = AdminModifySecretaryListBox.getSelectedValue();
         return user;
     }
     
@@ -96,7 +97,7 @@ public class AdminModifySecretariesView extends javax.swing.JPanel {
         AdminModifySecretaryListBox.removeAll();
     }
     
-    public void setSecretaryList(DefaultListModel<User> users)
+    public void setSecretaryList(DefaultListModel<Secretary> users)
     {
         AdminModifySecretaryListBox.setModel(users);
     }
@@ -108,7 +109,7 @@ public class AdminModifySecretariesView extends javax.swing.JPanel {
     private javax.swing.JButton AdminBackButton;
     private javax.swing.JButton AdminModifySecretaryDeleteButton;
     private javax.swing.JLabel AdminModifySecretaryLabel;
-    private javax.swing.JList<User> AdminModifySecretaryListBox;
+    private javax.swing.JList<Secretary> AdminModifySecretaryListBox;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

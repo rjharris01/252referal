@@ -7,6 +7,7 @@ package Views.Admin;
 
 import java.awt.event.ActionListener;
 import javax.swing.DefaultListModel;
+import models.user.Doctor;
 import models.user.User;
 
 /**
@@ -84,8 +85,8 @@ public class AdminModifyDoctorsView extends javax.swing.JPanel {
         AdminModifyDoctorDeleteButton.addActionListener(listenForDelete);
     }
     
-    public User getSelectedUser(){
-        User user = AdminModifyDoctorsListBox.getSelectedValue();
+    public Doctor getSelectedUser(){
+        Doctor user = AdminModifyDoctorsListBox.getSelectedValue();
         return user;
     }
     
@@ -94,16 +95,16 @@ public class AdminModifyDoctorsView extends javax.swing.JPanel {
         AdminModifyDoctorsListBox.removeAll();
     }
     
-    public void setDoctorList(DefaultListModel<User> users)
+    public void setDoctorList(DefaultListModel<Doctor> doctors)
     {
-        AdminModifyDoctorsListBox.setModel(users);
+        AdminModifyDoctorsListBox.setModel(doctors);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AdminBackButton;
     private javax.swing.JButton AdminModifyDoctorDeleteButton;
     private javax.swing.JLabel AdminModifyDoctorsLabel;
-    private javax.swing.JList<User> AdminModifyDoctorsListBox;
+    private javax.swing.JList<Doctor> AdminModifyDoctorsListBox;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

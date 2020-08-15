@@ -9,8 +9,11 @@ import Views.Admin.AdminModifySecretariesView;
 import Views.Admin.AdminView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 import javax.swing.SwingConstants;
 import models.user.Administrator;
+import models.user.Secretary;
 import models.user.User;
 
 /**
@@ -52,8 +55,8 @@ public class AdminModifySecretariesController {
         public void actionPerformed(ActionEvent e) {
              
              try{
-                    User user = theView.getSelectedUser();
-                    theModel.deleteUser(user.getUserId());
+                    Secretary secretary = theView.getSelectedUser();
+                    theModel.deleteUser(secretary.getUserId());
                     setSecretaryList();
                  
                     
@@ -71,7 +74,13 @@ public class AdminModifySecretariesController {
     public void setSecretaryList()
     {
         theView.clearList();
-        theView.setSecretaryList(theModel.getAllSecretaries());
+        ArrayList<Secretary> Secretaries = theModel.getAllSecretaries();
+        DefaultListModel<Secretary> model = new DefaultListModel();
+        for(Secretary s: Secretaries)
+            {
+                model.addElement(s);
+            }
+        theView.setSecretaryList(model);
     }
     
 }

@@ -9,9 +9,11 @@ import Views.Admin.AdminModifyDoctorsView;
 import Views.Admin.AdminView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.SwingConstants;
 import models.user.Administrator;
+import models.user.Doctor;
 import models.user.User;
 
 /**
@@ -53,8 +55,8 @@ public class AdminModifyDoctorsController {
         public void actionPerformed(ActionEvent e) {
              
              try{
-                    User user = theView.getSelectedUser();
-                    theModel.deleteUser(user.getUserId());
+                    Doctor doctor = theView.getSelectedUser();
+                    theModel.deleteUser(doctor.getUserId());
                     setDoctorList();
                  
                     
@@ -72,6 +74,12 @@ public class AdminModifyDoctorsController {
     public void setDoctorList()
     {
         theView.clearList();
-        theView.setDoctorList(theModel.getAllDoctors());
+        ArrayList<Doctor> doctors = theModel.getAllDoctors();
+        DefaultListModel<Doctor> model = new DefaultListModel();
+        for(Doctor d: doctors)
+            {
+                model.addElement(d);
+            }
+        theView.setDoctorList(model);
     }
 }
