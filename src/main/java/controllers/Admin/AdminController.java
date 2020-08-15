@@ -6,6 +6,7 @@
 package controllers.Admin;
 
 import Views.Admin.AdminCreateAccountView;
+import Views.Admin.AdminModifyDoctorsView;
 import Views.Admin.AdminView;
 import Views.LoginView;
 import controllers.LoginController;
@@ -56,7 +57,13 @@ public class AdminController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                AdminModifyDoctorsView newView = new AdminModifyDoctorsView();
+                
+                
+                AdminModifyDoctorsController theController = new AdminModifyDoctorsController(newView, theModel);
+                theView.setVisible(false);
+                newView.setVisible(true);
+                theView.getParent().add(newView,SwingConstants.CENTER);
         }
         
     }
