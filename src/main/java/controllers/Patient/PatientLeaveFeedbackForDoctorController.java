@@ -66,7 +66,7 @@ public class PatientLeaveFeedbackForDoctorController {
                 rating.setComments(theView.getComment());
                 rating.setAppointment(appointment);
                 
-                rating.writeNewRating(rating);
+                doctor.addRating(rating);
                 
                 } catch(Exception ex)
                 {
