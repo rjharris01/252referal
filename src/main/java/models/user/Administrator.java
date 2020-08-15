@@ -25,15 +25,16 @@ public class Administrator extends User {
         return doctor.getRatings();
     }
     
-    public DefaultListModel<User> getAllDoctors()
+    public ArrayList<Doctor> getAllDoctors()
     {
-    DefaultListModel<User> model = new DefaultListModel<>();
+       
       
         String UserId = "D";
         
         
         
         ArrayList<User> users = this.getAllUsers();
+        ArrayList<Doctor> doctors = new  ArrayList();
         Iterator itr = users.iterator();
         while (itr.hasNext()) 
         {
@@ -43,25 +44,22 @@ public class Administrator extends User {
             {
                 itr.remove();    
             }
-            
-            
         }
-        for (User tempuser: users)
-            {
-                model.addElement(tempuser);
-            }
-        return model;
+        
+        for(User user: users){
+            doctors.add((Doctor)user);
+        }
+       
+        return doctors;
     }
     
-     public DefaultListModel<User> getAllSecretaries()
+     public ArrayList<Secretary> getAllSecretaries()
     {
-    DefaultListModel<User> model = new DefaultListModel<>();
       
         String UserId = "S";
         
-        
-        
         ArrayList<User> users = this.getAllUsers();
+        ArrayList<Secretary> secretaries = new  ArrayList();
         Iterator itr = users.iterator();
         while (itr.hasNext()) 
         {
@@ -71,14 +69,14 @@ public class Administrator extends User {
             {
                 itr.remove();    
             }
-            
-            
+
         }
-        for (User tempuser: users)
-            {
-                model.addElement(tempuser);
+        for(User u: users){
+            secretaries.add((Secretary)u);
             }
-        return model;
+            
+     
+        return secretaries;
     }
     
     public void deleteUser(String userID)

@@ -9,6 +9,7 @@ import Views.Admin.AdminCreateAccountView;
 import Views.Admin.AdminModifyDoctorsView;
 import Views.Admin.AdminModifySecretariesView;
 import Views.Admin.AdminView;
+import Views.Admin.AdminViewRatingsView;
 import Views.LoginView;
 import controllers.LoginController;
 import java.awt.event.ActionEvent;
@@ -82,7 +83,11 @@ public class AdminController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            AdminViewRatingsView newView = new AdminViewRatingsView();
+            AdminViewRatingsController theController = new AdminViewRatingsController(newView, theModel);
+            theView.setVisible(false);
+            newView.setVisible(true);
+            theView.getParent().add(newView,SwingConstants.CENTER);
         }
         
     }

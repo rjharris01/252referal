@@ -85,4 +85,8 @@ public class Rating implements Serializable {
         }    
     }
     
+    @Override
+    public String toString() {
+        return ("DR." + this.getDoctor().getName() + "  Rating:" + this.getRating() + "  Comment:" + this.getComments());
+    }
 }
