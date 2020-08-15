@@ -5,6 +5,17 @@
  */
 package Views.Patient;
 
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.event.ActionListener;
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.DefaultListModel;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.ListCellRenderer;
+import javax.swing.UIManager;
+import models.Appointment;
+
 /**
  *
  * @author richa_bfe6tpy
@@ -16,6 +27,7 @@ public class PatientViewAppointmentView extends javax.swing.JPanel {
      */
     public PatientViewAppointmentView() {
         initComponents();
+        PatientViewAppointmentListBox.setCellRenderer(createListRenderer());
     }
 
     /**
@@ -27,19 +39,80 @@ public class PatientViewAppointmentView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        PatientViewAppointmentLabel = new javax.swing.JLabel();
+        ViewPatientAppointmentBackButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        PatientViewAppointmentListBox = new javax.swing.JList<>();
+
+        PatientViewAppointmentLabel.setText("Patient Upcoming Appointments");
+
+        ViewPatientAppointmentBackButton.setText("Back");
+
+        PatientViewAppointmentListBox.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane1.setViewportView(PatientViewAppointmentListBox);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(185, 185, 185)
+                .addComponent(PatientViewAppointmentLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(185, 185, 185))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ViewPatientAppointmentBackButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(PatientViewAppointmentLabel)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ViewPatientAppointmentBackButton)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-
+public void addPatientViewAppointmentBackButton(ActionListener listenForPatientViewHistoryBackButotn){
+        ViewPatientAppointmentBackButton.addActionListener(listenForPatientViewHistoryBackButotn);
+    }
+    
+    public void setPatientHistory(DefaultListModel<Appointment>model){
+        PatientViewAppointmentListBox.setModel(model);
+    }
+    
+    private static ListCellRenderer<? super Appointment> createListRenderer() {
+      return new DefaultListCellRenderer() {
+          private Color background = new Color(0, 100, 255, 15);
+          private Color defaultBackground = (Color) UIManager.get("List.background");
+          
+          public Component getListCellRendererComponent(JList<?> list, Object value, int index,
+                                                        boolean isSelected, boolean cellHasFocus) {
+              Component c = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+              if (c instanceof JLabel) {
+                  JLabel label = (JLabel) c;
+                  Appointment app = (Appointment) value;
+                  label.setText(String.format("DR.%s         %s", app.getDoctor().getName(), app.getAppointmentDate().toString()));
+                  if (!isSelected) {
+                      label.setBackground(index % 2 == 0 ? background : defaultBackground);
+                  }
+              }
+              return c;
+          }
+      };
+  }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel PatientViewAppointmentLabel;
+    private javax.swing.JList<Appointment> PatientViewAppointmentListBox;
+    private javax.swing.JButton ViewPatientAppointmentBackButton;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

@@ -45,7 +45,7 @@ public class SignupController {
                 
                 userFactory NewUserFactory = new userFactory();
                 User user = (User) NewUserFactory.makeNewUser("Patient", theView.getSignupName(), theView.getSignupPasswordField(),theView.getSignupAddressName(),theView.getSignupGenderSelector(),tempDate);
-                JOptionPane.showMessageDialog(null, "Account\n"+ user.getUserId() + "\nCreated");
+                JOptionPane.showMessageDialog(null, "Account Requested Created");
                 
                 
                 
