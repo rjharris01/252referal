@@ -70,7 +70,7 @@ public class PatientView extends javax.swing.JPanel {
         
         
         UserWelcomeLabel.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        UserWelcomeLabel.setText("Welcome");
+        UserWelcomeLabel.setText("Patient Panel");
 
         PatientRequestAccountDeletionButton.setText("Delete Account");
        
