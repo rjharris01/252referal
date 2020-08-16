@@ -5,10 +5,13 @@
  */
 package Views.Secretary;
 
+import java.awt.event.ActionListener;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import models.Medicine;
 
 /**
  *
@@ -18,7 +21,7 @@ public class SecretaryOrderMedicineView extends javax.swing.JPanel {
 
     private JButton SecrataryOrderMedicineBackButton;
     private JButton SecrataryOrderMedicineButton;
-    private JComboBox<Object> SecretaryOrderMedecineMedicinesBox;
+    private JComboBox<Medicine> SecretaryOrderMedecineMedicinesBox;
     private JTextField SecretaryOrderMedicineQuantityField;
     private JLabel SecretaryOrderMedicineLabel;
     private JLabel SecretaryOrderQuantityLabel;
@@ -67,7 +70,7 @@ public class SecretaryOrderMedicineView extends javax.swing.JPanel {
         SecrataryOrderMedicineButton.setText("Order");
         
 
-        SecretaryOrderMedicineQuantityField.setText("Enter the quantity you wish to order");
+        SecretaryOrderMedicineQuantityField.setText("Enter order ammount");
         SecretaryOrderMedicineQuantityField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 SecretaryOrderMedicineQuantityFieldFocusGained(evt);
@@ -123,16 +126,46 @@ public class SecretaryOrderMedicineView extends javax.swing.JPanel {
         );
     }
     
-     private void SecretaryOrderMedicineQuantityFieldFocusGained(java.awt.event.FocusEvent evt) {                                                                
+    private void SecretaryOrderMedicineQuantityFieldFocusGained(java.awt.event.FocusEvent evt) {                                                                
         SecretaryOrderMedicineQuantityField.setText("");
     }                                                               
 
     private void SecretaryOrderMedicineQuantityFieldFocusLost(java.awt.event.FocusEvent evt) {                                                              
         if ("".equals(SecretaryOrderMedicineQuantityField.getText()))
         {
-            SecretaryOrderMedicineQuantityField.setText("Enter New Medicine Name");
+            SecretaryOrderMedicineQuantityField.setText("Enter order ammount");
         }
-    }   
+    }
+    
+    public void setSecretaryOrderMedecineMedicinesBox(DefaultComboBoxModel<Medicine> model){
+        SecretaryOrderMedecineMedicinesBox.setModel(model);
+    }
+    
+    public void addBackListener(ActionListener listenForBack){
+        SecrataryOrderMedicineBackButton.addActionListener(listenForBack);
+    }
+    
+    public void addOrderListener(ActionListener listenForOrder){
+        SecrataryOrderMedicineButton.addActionListener(listenForOrder);
+    }
+     
+    public Medicine getSecretaryOrderMedecineMedicinesBox(){
+        return (Medicine)SecretaryOrderMedecineMedicinesBox.getSelectedItem();
+    }
+    
+    public int getSecretaryOrderMedicineQuantityField()
+            {
+                try
+                {
+                   return Integer.parseInt(SecretaryOrderMedicineQuantityField.getText());
+                }
+                catch(Exception e)
+                {
+                    
+                }
+                
+                return 0;
+            }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
