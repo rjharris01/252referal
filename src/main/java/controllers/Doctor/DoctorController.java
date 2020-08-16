@@ -56,7 +56,11 @@ public class DoctorController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            DoctorViewAppointmentsView newView = new DoctorViewAppointmentsView();
+            DoctorViewAppointmentsController theController = new DoctorViewAppointmentsController(newView,theModel);
+            theView.setVisible(false);
+            newView.setVisible(true);
+            theView.getParent().add(newView,SwingConstants.CENTER);
         }
         
     }
