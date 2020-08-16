@@ -27,6 +27,7 @@ public class DoctorViewAppointmentsView extends javax.swing.JPanel {
      */
     public DoctorViewAppointmentsView() {
         initComponents();
+        DoctorViewAppointmentsList.setCellRenderer(createListRenderer());
     }
 
     /**
@@ -79,7 +80,6 @@ public class DoctorViewAppointmentsView extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
     public void addBackListener(ActionListener listenForBack){
         DoctorBackButton.addActionListener(listenForBack);
-        DoctorViewAppointmentsList.setCellRenderer(createListRenderer());
     }
     
     public void setDoctorViewAppointmentsList(DefaultListModel<Appointment> model){
