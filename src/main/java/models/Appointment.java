@@ -46,7 +46,46 @@ public class Appointment implements Serializable {
     
     
     
-    
+    public void updateAppointment()
+    {
+        int index = 0;
+        ArrayList<Appointment> appointments  = new ArrayList<>();
+        try {
+                        FileInputStream fis = new FileInputStream("Appointments.ser");
+			ObjectInputStream ois = new ObjectInputStream(fis);
+                        appointments = (ArrayList) ois.readObject();
+			
+			ois.close();
+                        fis.close();
+                        
+            } catch (FileNotFoundException  e) {
+			System.out.print("No file \n");
+		} catch (IOException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+        
+        
+        for(int k = 0; k < appointments.size(); k++) {
+        if(appointments.get(k).getAppointmentId() == this.getAppointmentId()) {
+            index = k;
+            }
+        }
+        appointments.set(index, this);
+        
+        try
+        {
+             FileOutputStream fos = new FileOutputStream("Appointments.ser");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(appointments);
+            oos.close();
+            fos.close();
+        } 
+         
+         catch (IOException ioe) 
+        {
+            ioe.printStackTrace();
+        }    
+     }
     
     
     public ArrayList<Appointment>  getAllAppointments()

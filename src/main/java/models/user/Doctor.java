@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import models.Appointment;
 import models.Rating;
 
 /**
@@ -81,6 +82,32 @@ public class Doctor extends User {
         this.ratings.add(rating);   
         this.updateDoctor();
     } 
+    
+    public ArrayList<Appointment>  getAllAppointments()
+    {
+        ArrayList<Appointment> appointments = new ArrayList<>();
+        try {
+                        FileInputStream fis = new FileInputStream("Appointments.ser");
+			ObjectInputStream ois = new ObjectInputStream(fis);
+                        appointments = (ArrayList) ois.readObject();
+			
+			ois.close();
+                        fis.close();
+                        
+                        for (Appointment appointment : appointments){
+                            if (!appointment.getDoctor().getUserId().equals(this.getUserId()))
+                            {
+                                appointments.remove(appointment);
+                            }
+                        }
+                        
+            } catch (FileNotFoundException  e) {
+			System.out.print("No file \n");
+		} catch (IOException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+        return appointments; 
+    }
     
     public void updateDoctor()
     {

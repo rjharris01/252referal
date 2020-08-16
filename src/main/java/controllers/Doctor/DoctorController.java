@@ -6,6 +6,7 @@
 package controllers.Doctor;
 import Views.Doctor.DoctorView;
 import Views.Doctor.DoctorCreateNewMedicineView;
+import Views.Doctor.DoctorStartAppointmentView;
 import Views.Doctor.DoctorViewPatientView;
 import Views.Doctor.DoctorViewAppointmentsView;
 import Views.LoginView;
@@ -41,7 +42,11 @@ public class DoctorController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            DoctorStartAppointmentView newView = new DoctorStartAppointmentView();
+            DoctorStartAppointmentController theController = new DoctorStartAppointmentController(newView,theModel);
+            theView.setVisible(false);
+            newView.setVisible(true);
+            theView.getParent().add(newView,SwingConstants.CENTER);
         }
         
     }
