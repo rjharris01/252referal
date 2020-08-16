@@ -5,7 +5,13 @@
  */
 package controllers.Doctor;
 import Views.Doctor.DoctorView;
+import Views.LoginView;
+import controllers.LoginController;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.SwingConstants;
 import models.user.Doctor;
+import models.user.User;
 
 /**
  *
@@ -19,6 +25,68 @@ public class DoctorController {
     {
         this.theView = theView;
         this.theModel = theModel;
+        
+        this.theView.addStartAppointmentListener(new StartAppointmentListener());
+        this.theView.addViewAppointmentListener(new ViewAppointmentListener());
+        this.theView.addViewPatientHistoryListener(new ViewPatientHistoryListener());
+        this.theView.addCreateNewMedicineListener(new CreateNewMedicineListener());
+        this.theView.addLogoutListener(new LogoutListener());
+    }
+    
+    class StartAppointmentListener implements ActionListener
+    {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+        
+    }
+    
+    class ViewAppointmentListener implements ActionListener
+    {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+        
+    }
+    
+    class ViewPatientHistoryListener implements ActionListener
+    {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+        
+    }
+    
+    class CreateNewMedicineListener implements ActionListener
+    {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+        
+    }
+    
+    class LogoutListener implements ActionListener
+    {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            theModel.setLoginStatus(false);
+            LoginView newView = new LoginView();
+            User newModel = new User() {};    
+                
+            LoginController theController = new LoginController(newView, newModel);
+            theView.setVisible(false);
+            newView.setVisible(true);
+            theView.getParent().add(newView,SwingConstants.CENTER);
+        }
         
     }
 }
