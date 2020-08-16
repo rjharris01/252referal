@@ -43,7 +43,7 @@ public class SignupController {
                 
                 LocalDate tempDate = LocalDate.of(theView.getSignupDateYear(), theView.getSignupDateMonth(), theView.getSignupDateDay());
                 
-                userFactory NewUserFactory = new userFactory();
+                UserFactory NewUserFactory = new UserFactory();
                 User user = (User) NewUserFactory.makeNewUser("Patient", theView.getSignupName(), theView.getSignupPasswordField(),theView.getSignupAddressName(),theView.getSignupGenderSelector(),tempDate);
                 JOptionPane.showMessageDialog(null, "Account Requested Created");
                 

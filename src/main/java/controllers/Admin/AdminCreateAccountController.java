@@ -7,7 +7,7 @@ package controllers.Admin;
 
 import Views.Admin.AdminCreateAccountView;
 import Views.Admin.AdminView;
-import controllers.userFactory;
+import controllers.UserFactory;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
@@ -50,7 +50,7 @@ public class AdminCreateAccountController {
             {
        
                 
-                userFactory NewUserFactory = new userFactory();
+                UserFactory NewUserFactory = new UserFactory();
                 User user = (User) NewUserFactory.makeNewUser(theView.getAccountType(), theView.getAccountName(), theView.getAccountPassword(),theView.getAccountAddress(),null,null);
                 JOptionPane.showMessageDialog(null, "Account\n"+ user.getUserId() + "\nCreated");
                 

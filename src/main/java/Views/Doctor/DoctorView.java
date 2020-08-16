@@ -6,6 +6,7 @@
 package Views.Doctor;
 
 import java.awt.Label;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 /**
@@ -115,6 +116,28 @@ public class DoctorView extends javax.swing.JPanel {
                             .addComponent(DoctorViewPatientHistoryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())))
         );
+    }
+    
+ 
+            
+    public void addStartAppointmentListener(ActionListener listenForStartAppointment){
+        DoctorStartAppointmentButton.addActionListener(listenForStartAppointment);
+    }
+    
+    public void addViewPatientHistoryListener(ActionListener listenForViewPatientHistory){
+        DoctorViewPatientHistoryButton.addActionListener(listenForViewPatientHistory);
+    }
+    
+    public void addCreateNewMedicineListener(ActionListener listenForCreateNewMedicine){
+        DoctorCreateMedicineButton.addActionListener(listenForCreateNewMedicine);
+    }
+    
+    public void addViewAppointmentListener(ActionListener listenForViewAppointment){
+        DoctorViewAppointmentsButton.addActionListener(listenForViewAppointment);
+    }
+    
+    public void addLogoutListener(ActionListener listenForLogout){
+        DoctorLogoutButton.addActionListener(listenForLogout);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
