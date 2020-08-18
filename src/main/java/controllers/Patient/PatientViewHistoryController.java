@@ -43,7 +43,7 @@ public class PatientViewHistoryController {
             tempModel.addElement(appointment);
         }        
         
-        this.theView.setPatientHistory(tempModel);
+        theView.setPatientHistory(tempModel);
     }
     
     class PatientViewHistoryBackListener implements ActionListener{
