@@ -11,6 +11,7 @@ import Views.Patient.PatientRequestAppointmentView;
 import Views.Patient.PatientView;
 import Views.Patient.PatientViewAppointmentView;
 import Views.Patient.PatientViewHistoryView;
+import Views.Patient.PatientViewPerscriptionView;
 import controllers.LoginController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -78,7 +79,11 @@ public class PatientController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            PatientViewPerscriptionView newView = new PatientViewPerscriptionView();
+            PatientViewPerscriptionController theController = new PatientViewPerscriptionController(newView, theModel);
+            theView.setVisible(false);
+            newView.setVisible(true);
+            theView.getParent().add(newView,SwingConstants.CENTER); 
         }
          
      }
