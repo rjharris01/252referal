@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import models.Rating;
 import models.Appointment;
+import models.Perscription;
 /**
  *
  * @author richa_bfe6tpy
@@ -27,12 +28,22 @@ public class Patient extends User {
     
     private String gender;
     private LocalDate birthday;
+    private ArrayList<Perscription> Perscriptions = new ArrayList();
+    
+    public ArrayList<Perscription> getPerscriptions(){return Perscriptions;}
+    public void setPerscriptions(ArrayList<Perscription> newPerscription){Perscriptions = newPerscription;}
     
     public String getGender() { return gender;}
     public void setGender(String newGender){gender = newGender;}
     
     public LocalDate getBirthday() { return birthday;}
     public void setBirthday(LocalDate newBirthday){birthday = newBirthday;}
+    
+    public void addPerscription(Perscription perscription)
+    {
+        this.Perscriptions.add(perscription);   
+        this.updateUser();
+    } 
     
     public ArrayList<Appointment>  getAllAppointments()
     {
@@ -123,6 +134,7 @@ public class Patient extends User {
 		}
         return appointments; 
     }
+    
     
     public void requestAccountTermination()
     {

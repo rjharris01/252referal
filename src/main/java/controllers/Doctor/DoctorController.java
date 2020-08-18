@@ -6,6 +6,7 @@
 package controllers.Doctor;
 import Views.Doctor.DoctorView;
 import Views.Doctor.DoctorCreateNewMedicineView;
+import Views.Doctor.DoctorCreatePerscriptionView;
 import Views.Doctor.DoctorStartAppointmentView;
 import Views.Doctor.DoctorViewPatientView;
 import Views.Doctor.DoctorViewAppointmentsView;
@@ -31,6 +32,7 @@ public class DoctorController {
         this.theModel = theModel;
         
         this.theView.addStartAppointmentListener(new StartAppointmentListener());
+        this.theView.addCreatePerscriptionListener(new CreatePerscriptionListener());
         this.theView.addViewAppointmentListener(new ViewAppointmentListener());
         this.theView.addViewPatientHistoryListener(new ViewPatientHistoryListener());
         this.theView.addCreateNewMedicineListener(new CreateNewMedicineListener());
@@ -44,6 +46,20 @@ public class DoctorController {
         public void actionPerformed(ActionEvent e) {
             DoctorStartAppointmentView newView = new DoctorStartAppointmentView();
             DoctorStartAppointmentController theController = new DoctorStartAppointmentController(newView,theModel);
+            theView.setVisible(false);
+            newView.setVisible(true);
+            theView.getParent().add(newView,SwingConstants.CENTER);
+        }
+        
+    }
+    
+    class CreatePerscriptionListener implements ActionListener
+    {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            DoctorCreatePerscriptionView newView = new DoctorCreatePerscriptionView();
+            DoctorCreatePerscriptionController theController = new DoctorCreatePerscriptionController(newView,theModel);
             theView.setVisible(false);
             newView.setVisible(true);
             theView.getParent().add(newView,SwingConstants.CENTER);

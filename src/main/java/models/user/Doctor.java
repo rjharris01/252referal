@@ -13,6 +13,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import models.Appointment;
+import models.Medicine;
 import models.Rating;
 
 /**
@@ -148,6 +149,25 @@ public class Doctor extends User {
         {
             ioe.printStackTrace();
         }    
+     }
+    
+    public ArrayList<Medicine>  getAllMedicine()
+    {
+        ArrayList<Medicine> medicines = new ArrayList<>();
+        try {
+                        FileInputStream fis = new FileInputStream("Medicines.ser");
+			ObjectInputStream ois = new ObjectInputStream(fis);
+                        medicines = (ArrayList) ois.readObject();
+			
+			ois.close();
+                        fis.close();
+                        
+            } catch (FileNotFoundException  e) {
+			System.out.print("No file \n");
+		} catch (IOException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+        return medicines; 
      }
     
     @Override

@@ -16,13 +16,91 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="400" max="32767" attributes="0"/>
+          <Component id="DoctorPanelLabel" alignment="1" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="DoctorLogoutButton" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="DoctorCreatePerscriptionButton" max="32767" attributes="0"/>
+                          <Component id="DoctorStartAppointmentButton" max="32767" attributes="0"/>
+                          <Component id="DoctorViewPatientHistoryButton" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="DoctorCreateMedicineButton" max="32767" attributes="0"/>
+                          <Component id="DoctorViewAppointmentsButton" pref="129" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace pref="88" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="300" max="32767" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="DoctorLogoutButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="79" max="32767" attributes="0"/>
+              <Component id="DoctorPanelLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="DoctorStartAppointmentButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="DoctorViewAppointmentsButton" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="DoctorViewPatientHistoryButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="DoctorCreateMedicineButton" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="DoctorCreatePerscriptionButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
   </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JButton" name="DoctorViewPatientHistoryButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="View Patient History"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="DoctorCreateMedicineButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Create Medicine"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="DoctorStartAppointmentButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Start Appointment"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="DoctorViewAppointmentsButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="View Appointments "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="DoctorLogoutButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Logout"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="DoctorCreatePerscriptionButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Create Perscription"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="DoctorPanelLabel">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="Doctor Panel"/>
+      </Properties>
+    </Component>
+  </SubComponents>
 </Form>

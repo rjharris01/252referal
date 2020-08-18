@@ -16,6 +16,7 @@ import java.io.Serializable;
 import models.user.Patient;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Perscription implements Serializable{
     private int perscriptionId;
@@ -46,6 +47,24 @@ public class Perscription implements Serializable{
     
     public int getQuantity() { return quantity;}
     public void setQuantity(int newQuantity){quantity = newQuantity;}
+    
+    public int getNextPerscriptionId()
+    {
+        ArrayList<Perscription> tempPerscriptions;
+        int perscriptionId;
+        
+        
+        if (patient.getPerscriptions().isEmpty())
+                {
+                    perscriptionId = 0;
+                    return perscriptionId;
+                }
+        
+        tempPerscriptions = patient.getPerscriptions();
+        perscriptionId = tempPerscriptions.get((tempPerscriptions.size()-1)).getPerscriptionId() + 1;
+          
+        return perscriptionId;
+    }
    
     
 }
