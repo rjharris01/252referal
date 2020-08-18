@@ -290,6 +290,31 @@ public class Secretary extends User {
         return appointments; 
     }
      
+    public ArrayList<Patient> getAllPatients()
+    {
+        ArrayList<User> tempUsers  = new ArrayList<>();
+        ArrayList<Patient> patients  = new ArrayList<>();
+        try {
+                        FileInputStream fis = new FileInputStream("User.ser");
+			ObjectInputStream ois = new ObjectInputStream(fis);
+                        tempUsers = (ArrayList) ois.readObject();
+			
+			ois.close();
+                        fis.close();
+                        
+            } catch (FileNotFoundException  e) {
+			System.out.print("No file \n");
+		} catch (IOException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+        for(User u : tempUsers)
+        {
+            if(u instanceof Patient)
+                patients.add((Patient)u);
+        }
+        return patients; 
+    }
+     
      @Override
     public String toString() {
         return ("Name: " + this.getName() + " ID:" + this.getUserId());

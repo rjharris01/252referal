@@ -45,6 +45,12 @@ public class Patient extends User {
         this.updateUser();
     } 
     
+    public void removePerscription(Perscription perscription){
+        ArrayList <Perscription> perscriptions = this.getPerscriptions();
+        perscriptions.remove(perscription);
+        this.updateUser();
+    }
+    
     public ArrayList<Appointment>  getAllAppointments()
     {
         ArrayList<Appointment> appointments = new ArrayList<>();
