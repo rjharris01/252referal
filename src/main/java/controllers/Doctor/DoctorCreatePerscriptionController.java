@@ -96,7 +96,10 @@ public class DoctorCreatePerscriptionController {
             perscription.setMedicine(theView.getSelectedMedicine());
             perscription.setPatient(selected);
             perscription.setDosage(theView.getPerscriptionDosage());
+            if(theView.getSelectedAppointment() != null && theView.getSelectedAppointment().getComments() != null ){
             perscription.setNote(theView.getSelectedAppointment().getComments());
+            }
+            else {perscription.setNote("");}
             perscription.setQuantity(theView.getPerscriptionQuantity());
             perscription.setPerscriptionId(perscription.getNextPerscriptionId());
             

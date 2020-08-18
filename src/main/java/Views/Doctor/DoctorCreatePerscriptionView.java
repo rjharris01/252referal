@@ -191,8 +191,8 @@ public class DoctorCreatePerscriptionView extends javax.swing.JPanel {
     
     public void reset(){
         DoctorCreatePerscriptionMedicineSelector.setSelectedIndex(0);
-        DoctorCreatePerscriptionAppointmentSelector.setSelectedIndex(0);
         DoctorCreatePerscriptionPatientSelector.setSelectedIndex(0);
+        DoctorCreatePerscriptionQuantitySelector.setValue(0);
         DoctorCreatePerscriptionDosageTextEntry.setText("");
         clearAppointments();
     }
