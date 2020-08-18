@@ -123,5 +123,44 @@ public abstract class User implements Serializable {
         return users; 
      }
      
-     
+     public void updateUser()
+    {
+        int index = 0;
+        ArrayList<User> tempUsers  = new ArrayList<>();
+        try {
+                        FileInputStream fis = new FileInputStream("User.ser");
+			ObjectInputStream ois = new ObjectInputStream(fis);
+                        tempUsers = (ArrayList) ois.readObject();
+			
+			ois.close();
+                        fis.close();
+                        
+            } catch (FileNotFoundException  e) {
+			System.out.print("No file \n");
+		} catch (IOException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+        
+        
+        for(int k = 0; k < tempUsers.size(); k++) {
+        if(tempUsers.get(k).getUserId().equals(this.getUserId())) {
+            index = k;
+            }
+        }
+        tempUsers.set(index, this);
+        
+        try
+        {
+            FileOutputStream fos = new FileOutputStream("User.ser");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(tempUsers);
+            oos.close();
+            fos.close();
+        } 
+         
+         catch (IOException ioe) 
+        {
+            ioe.printStackTrace();
+        }    
+     }
 }
