@@ -33,7 +33,7 @@ import models.user.User;
  *
  * @author Richard Harris
  */
-public class userFactory {
+public class UserFactory {
     
     
     public User makeNewUser(String userType,String accountName, String accountPassword, String accountAddress, String gender, LocalDate tempDate) 
