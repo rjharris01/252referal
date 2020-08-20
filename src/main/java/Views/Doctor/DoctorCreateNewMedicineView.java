@@ -11,6 +11,8 @@ import java.awt.event.ActionListener;
  *
  * @author richa_bfe6tpy
  */
+//This class provide a panel which contains the Doctor create new medicine view.
+
 public class DoctorCreateNewMedicineView extends javax.swing.JPanel {
 
     /**
@@ -79,7 +81,7 @@ public class DoctorCreateNewMedicineView extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    
+    //Button Listeners
     public void addSubmitListener(ActionListener listenForSubmit){
         DoctorSubmitButton.addActionListener(listenForSubmit);
     }
@@ -88,9 +90,13 @@ public class DoctorCreateNewMedicineView extends javax.swing.JPanel {
         DoctorBackButton.addActionListener(listenForBack);
     }
     
+    //get create medicine field
+    
     public String getDoctorCreateMedicineField (){
         return DoctorCreateMedicineField.getText();
     }
+    
+    //clear create medicine field
     
     public void clearDoctorCreateMedicineField(){
         DoctorCreateMedicineField.setText("");

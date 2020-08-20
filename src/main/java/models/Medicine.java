@@ -17,6 +17,7 @@ import java.util.ArrayList;
  *
  * @author richa_bfe6tpy
  */
+//stores the medicine class
 public class Medicine implements Serializable {
     private int medId;
     private String name;
@@ -33,6 +34,7 @@ public class Medicine implements Serializable {
     public int getStock(){return stock;}
     public void setStock(int newStock){stock = newStock;}
     
+    //updates the medicine in the medicine file
     public void updateMedicine(){
        
         int index = 0;

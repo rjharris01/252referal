@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
  *
  * @author richa_bfe6tpy
  */
+//This class provide a panel which contains the Main Doctor Control Panel view.
 public class DoctorView extends javax.swing.JPanel {
 
     /**
@@ -95,6 +96,7 @@ public class DoctorView extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    //Button Listeners 
     public void addStartAppointmentListener(ActionListener listenForStartAppointment){
         DoctorStartAppointmentButton.addActionListener(listenForStartAppointment);
     }

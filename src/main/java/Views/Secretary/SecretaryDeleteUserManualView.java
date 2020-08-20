@@ -10,13 +10,13 @@ import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
-import models.NewAccountRequest;
 import models.user.User;
 
 /**
  *
  * @author richa_bfe6tpy
  */
+//This class provide a panel which contains the Secretary delete user manual view.
 public class SecretaryDeleteUserManualView extends javax.swing.JPanel {
 
     private JScrollPane jScrollPane4;
@@ -51,7 +51,7 @@ public class SecretaryDeleteUserManualView extends javax.swing.JPanel {
             .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    //View setup code
     private void initMyComponents() {
         jScrollPane4 = new javax.swing.JScrollPane();
         AccountDeleteManualList = new javax.swing.JList<>();
@@ -97,12 +97,7 @@ public class SecretaryDeleteUserManualView extends javax.swing.JPanel {
         
         
     }
-
-    
-    public void setAccountDeleteManualList(DefaultListModel<User> users)
-    {
-        AccountDeleteManualList.setModel(users);
-    }
+    //Button listener
     
     public void addDeleteListener(ActionListener listenForSecretaryDeletePatient){
         DeleteUserManualButton1.addActionListener(listenForSecretaryDeletePatient);
@@ -112,10 +107,16 @@ public class SecretaryDeleteUserManualView extends javax.swing.JPanel {
         DeleteUserManualtBackButton1.addActionListener(listenForBack);
     }
     
+    //Set User account list model and get User element
 
     public User getSelectedUser(){
         User user = AccountDeleteManualList.getSelectedValue();
         return user;
+    }
+    
+    public void setAccountDeleteManualList(DefaultListModel<User> users)
+    {
+        AccountDeleteManualList.setModel(users);
     }
     
     public void clearList()

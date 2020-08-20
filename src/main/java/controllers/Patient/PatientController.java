@@ -24,15 +24,18 @@ import models.user.User;
  *
  * @author richa_bfe6tpy
  */
+//Controller for the patient main control panel view 
 public class PatientController {
+    //Variables declaration
     private PatientView theView;
     private Patient theModel;
     
     public PatientController(PatientView theView,Patient theModel)
     {
+        //Construct the controller
         this.theView = theView;
         this.theModel = theModel;
-        
+        //Connect buttons
         this.theView.addPatientRequestAccountDeletionListener(new PatientRequestAccountDeletionListener());
         this.theView.addPatientViewAppointmentListener(new PatientViewAppointmentListener());
         this.theView.addPatientViewPerscriptionListener(new PatientViewPerscriptionListener());
@@ -41,12 +44,12 @@ public class PatientController {
         this.theView.addPatientAppointmentListener(new PatientAppointmentListener());
         this.theView.addPatientLogoutListener(new PatientLogoutListener());
     }
-    
+     //request account delete on button press
      class PatientRequestAccountDeletionListener implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            theModel.requestAccountTermination();
+            theModel.requestAccountTermination(); //request account delete
            
             JOptionPane.showMessageDialog(null, "Account deletion requested");
             theModel.setLoginStatus(false);
@@ -60,7 +63,7 @@ public class PatientController {
         }
          
      }
-     
+     //Switch to patient view appointment view and controller on button press
      class PatientViewAppointmentListener implements ActionListener{
 
         @Override
@@ -74,7 +77,7 @@ public class PatientController {
          
      }
      
-     
+     //Switch to patient view perscription view and controller on button press
      class PatientViewPerscriptionListener implements ActionListener{
 
         @Override
@@ -88,6 +91,7 @@ public class PatientController {
          
      }
      
+     //Switch to patient view history and controller on button press
      class PatientViewHistoryListener implements ActionListener{
 
         @Override
@@ -101,6 +105,7 @@ public class PatientController {
          
      }
      
+     //Switch to patient feedback view and controller on button press
      class PatientFeedbackListener implements ActionListener{
 
         @Override
@@ -116,6 +121,7 @@ public class PatientController {
          
      }
      
+     //Switch to patient appointment view and controller on button press
      class PatientAppointmentListener implements ActionListener{
 
         @Override
@@ -132,6 +138,7 @@ public class PatientController {
          
      }
      
+     //return to login and set account login status to false
      class PatientLogoutListener implements ActionListener{
 
         @Override

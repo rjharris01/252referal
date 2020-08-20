@@ -22,6 +22,7 @@ import models.user.Patient;
  *
  * @author richa_bfe6tpy
  */
+//This class provide a panel which contains the Doctor create perscription view.
 public class DoctorCreatePerscriptionView extends javax.swing.JPanel {
 
     /**
@@ -29,7 +30,7 @@ public class DoctorCreatePerscriptionView extends javax.swing.JPanel {
      */
     public DoctorCreatePerscriptionView() {
         initComponents();
-        DoctorCreatePerscriptionAppointmentSelector.setRenderer(createListRenderer());
+        DoctorCreatePerscriptionAppointmentSelector.setRenderer(createListRenderer()); //make appointment selector use custom renderer
     }
 
     /**
@@ -140,30 +141,7 @@ public class DoctorCreatePerscriptionView extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    public void setPatientList(DefaultComboBoxModel model){
-        DoctorCreatePerscriptionPatientSelector.setModel(model);
-    }
-    
-    public Patient getSelectedPatient(){
-        return (Patient)DoctorCreatePerscriptionPatientSelector.getSelectedItem();
-    }
-    
-    public void setAppointmentsList(DefaultComboBoxModel model){
-        DoctorCreatePerscriptionAppointmentSelector.setModel(model);
-    }
-    
-    public Appointment getSelectedAppointment(){
-        return (Appointment) DoctorCreatePerscriptionAppointmentSelector.getSelectedItem();
-    }
-    
-    public void setMedicineList(DefaultComboBoxModel model){
-        DoctorCreatePerscriptionMedicineSelector.setModel(model);
-    }
-    
-    public Medicine getSelectedMedicine(){
-        return (Medicine) DoctorCreatePerscriptionMedicineSelector.getSelectedItem();
-    }
-    
+    //Button Listeners
     public void addBackListener(ActionListener listenForBack){
         DoctorCreatePerscriptionBackButton.addActionListener(listenForBack);
     }
@@ -177,16 +155,22 @@ public class DoctorCreatePerscriptionView extends javax.swing.JPanel {
         DoctorCreatePerscriptionPatientSelector.addActionListener(listenForPatientChange);
     }
     
+    
+    //set combo boxes
+    public void setPatientList(DefaultComboBoxModel model){
+        DoctorCreatePerscriptionPatientSelector.setModel(model);
+    }
+   
+    public void setAppointmentsList(DefaultComboBoxModel model){
+        DoctorCreatePerscriptionAppointmentSelector.setModel(model);
+    }
+   
+    public void setMedicineList(DefaultComboBoxModel model){
+        DoctorCreatePerscriptionMedicineSelector.setModel(model);
+    }
+    
     public void clearAppointments(){
         DoctorCreatePerscriptionAppointmentSelector.removeAll();
-    }
-    
-    public String getPerscriptionDosage(){
-        return DoctorCreatePerscriptionDosageTextEntry.getText();
-    }
-    
-    public int getPerscriptionQuantity(){
-        return (Integer)DoctorCreatePerscriptionQuantitySelector.getValue();
     }
     
     public void reset(){
@@ -196,6 +180,30 @@ public class DoctorCreatePerscriptionView extends javax.swing.JPanel {
         DoctorCreatePerscriptionDosageTextEntry.setText("");
         clearAppointments();
     }
+    
+    //getters required to create a new perscription
+    
+    public Patient getSelectedPatient(){
+        return (Patient)DoctorCreatePerscriptionPatientSelector.getSelectedItem();
+    }
+    
+   public Medicine getSelectedMedicine(){
+        return (Medicine) DoctorCreatePerscriptionMedicineSelector.getSelectedItem();
+    }
+    
+    public String getPerscriptionDosage(){
+        return DoctorCreatePerscriptionDosageTextEntry.getText();
+    }
+    
+    public Appointment getSelectedAppointment(){
+        return (Appointment) DoctorCreatePerscriptionAppointmentSelector.getSelectedItem();
+    }
+    
+    public int getPerscriptionQuantity(){
+        return (Integer)DoctorCreatePerscriptionQuantitySelector.getValue();
+    }
+    
+    //custom cell renderer just shows appointment date for appointment list box
     
      private static ListCellRenderer<? super Appointment> createListRenderer() {
       return new DefaultListCellRenderer() {

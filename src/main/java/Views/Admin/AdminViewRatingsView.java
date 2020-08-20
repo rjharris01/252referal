@@ -15,6 +15,7 @@ import models.user.Doctor;
  *
  * @author richa_bfe6tpy
  */
+//This class provide a panel which contains the Admin View ratings view.
 public class AdminViewRatingsView extends javax.swing.JPanel {
 
     /**
@@ -86,6 +87,7 @@ public class AdminViewRatingsView extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    //Button Listeners
     public void addBackListener(ActionListener listenForBack){
         AdminBackButton.addActionListener(listenForBack);
     }
@@ -94,26 +96,32 @@ public class AdminViewRatingsView extends javax.swing.JPanel {
         AdminSubmitButton.addActionListener(listenForSubmit);
     }
     
-    public void setDoctors(DefaultComboBoxModel<Doctor> doctors)
-    {
-        AdminViewRatingsDoctorsBox.setModel(doctors);
-    }
-    
-    public Doctor getDoctor(){
-        return (Doctor) AdminViewRatingsDoctorsBox.getSelectedItem();
-    }
+    //setup for ratings list box
     
     public void setRatings(DefaultListModel<Rating> ratings)
     {
         AdminViewRatingsListBox.setModel(ratings);
     }
     
+    public void clearRatingsList (){
+        AdminViewRatingsListBox.removeAll();
+    }
+    
+    //setup for doctor list box
+    
     public void clearDoctorList (){
         AdminViewRatingsDoctorsBox.removeAll();
     }
     
-    public void clearRatingsList (){
-        AdminViewRatingsListBox.removeAll();
+    public void setDoctors(DefaultComboBoxModel<Doctor> doctors)
+    {
+        AdminViewRatingsDoctorsBox.setModel(doctors);
+    }
+    
+    //get that returns selected doctor
+    
+     public Doctor getDoctor(){
+        return (Doctor) AdminViewRatingsDoctorsBox.getSelectedItem();
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

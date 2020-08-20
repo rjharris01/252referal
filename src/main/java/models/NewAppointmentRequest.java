@@ -9,6 +9,7 @@ package models;
  *
  * @author Richard Harris
  */
+//stores the new appointment request class
 public class NewAppointmentRequest extends Request{
     private AppointmentRequest appointment;
     

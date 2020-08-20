@@ -19,22 +19,27 @@ import models.user.Patient;
  *
  * @author richa_bfe6tpy
  */
+//Controller for the patient view appointment view
 public class PatientViewAppointmentController {
+    //Variables declaration
     private PatientViewAppointmentView theView;
     private Patient theModel;
     
     public PatientViewAppointmentController(PatientViewAppointmentView theView,Patient theModel)
     {
+        //Construct the controller
         this.theView = theView;
         this.theModel = theModel;
-        
+        //Connect buttons
         this.theView.addPatientViewAppointmentBackButton(new PatientViewAppointmentBackListener());
+        //set upcoming appoinments list on load
         setUpcoming();
         
     }
     
+    //set upcoming appointments list based on user logged in
     public void setUpcoming(){
-        ArrayList<Appointment> appointments = theModel.getAllFutureAppointments();
+        ArrayList<Appointment> appointments = theModel.getAllFutureAppointments();//get users appoinments list
         DefaultListModel<Appointment> tempModel = new DefaultListModel<>();
 
         for (Appointment appointment: appointments)
@@ -42,9 +47,10 @@ public class PatientViewAppointmentController {
             tempModel.addElement(appointment);
         }        
         
-        this.theView.setPatientHistory(tempModel);
+        this.theView.setPatientHistory(tempModel);//set appointment list
     }
     
+    //return to patient control panel 
     class PatientViewAppointmentBackListener implements ActionListener{
 
         @Override

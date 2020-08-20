@@ -23,13 +23,9 @@ import models.OrderMedicineRequest;
 import models.AppointmentRequest;
 import models.AccountDeleteRequest;
 import models.user.User;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.Serializable;
 import java.util.ArrayList;
 import models.Medicine;
 
@@ -37,7 +33,10 @@ import models.Medicine;
  *
  * @author Richard Harris
  */
+//class used to manage new requests 
 public class RequestMaker {  
+    
+    //generate new account request
     public void newAccountRequest(User user)
     {
         NewAccountRequest request;
@@ -48,6 +47,7 @@ public class RequestMaker {
         writeRequest(request);
     }
     
+    //generate terminate account request
     public void accountTerminationRequest(User user)
     {
         AccountDeleteRequest request;
@@ -58,6 +58,8 @@ public class RequestMaker {
         writeRequest(request);
     }
     
+    
+    //generate appointment request
     public void appointmentRequest(AppointmentRequest appointment)
     {
         NewAppointmentRequest request;
@@ -68,6 +70,8 @@ public class RequestMaker {
         writeRequest(request);
     }
     
+    
+    //generate order medicine request
     public void orderMedicineRequest(Medicine medicine)
     {
         OrderMedicineRequest request;
@@ -78,6 +82,8 @@ public class RequestMaker {
         writeRequest(request);
     }
     
+    
+    //write request to request file 
     public void writeRequest(Request request)
     {
         ArrayList<Request> requests;

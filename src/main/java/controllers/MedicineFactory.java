@@ -18,7 +18,10 @@ import models.Medicine;
  *
  * @author richa_bfe6tpy
  */
+//Class used to handle medicines creation 
 public class MedicineFactory {
+    
+    //Create a new medicine with name passed to function
     public Medicine makeNewMedicine(String MedicineName)
     {
         Medicine tempMedicine;
@@ -32,6 +35,7 @@ public class MedicineFactory {
         return tempMedicine;
     }
     
+    //Return a list of all medicines in file
     private ArrayList<Medicine>  getAllMedicine()
     {
         ArrayList<Medicine> medicines = new ArrayList<>();
@@ -51,7 +55,7 @@ public class MedicineFactory {
         return medicines; 
      }
     
-    
+    //Writes a new medicine to the medicine file
     private void writeNewMedicine(Medicine medicine)
     {
          ArrayList<Medicine> medicines;

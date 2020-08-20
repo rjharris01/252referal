@@ -15,6 +15,7 @@ import javax.swing.SwingConstants;
  *
  * @author richa_bfe6tpy
  */
+//This class provide a panel which contains the Patient Main control panel view.
 public class PatientView extends javax.swing.JPanel {
 
     private JPanel PatientPanel;
@@ -56,7 +57,7 @@ public class PatientView extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     public void myInitComponents() {
-        
+        //View setup code
         
         UserWelcomeLabel = new java.awt.Label();
         PatientRequestAccountDeletionButton = new javax.swing.JButton();
@@ -135,11 +136,13 @@ public class PatientView extends javax.swing.JPanel {
                 .addContainerGap(39, Short.MAX_VALUE))
         );
     }
-    
+    //set the welcome label
     public void setUserWelcomeLabel(String welcomeText)
     {
         UserWelcomeLabel.setText(welcomeText);
     }
+    
+    //Button Listeners
     
     public void addPatientRequestAccountDeletionListener(ActionListener listenForPatientRequestAccountDeletion){
         PatientRequestAccountDeletionButton.addActionListener(listenForPatientRequestAccountDeletion);

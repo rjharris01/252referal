@@ -7,24 +7,28 @@ package models.user;
 
 
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
-import javax.swing.DefaultListModel;
 import models.Rating;
 
 /**
  *
  * @author Richard Harris
  */
+//stores the administrator user class
 public class Administrator extends User {
+    //returns doctors ratings
     public ArrayList<Rating> getDoctorRatings(Doctor doctor)
     {
         return doctor.getRatings();
     }
-    
+    //retunrs a list of all doctors
     public ArrayList<Doctor> getAllDoctors()
     {
        
@@ -52,7 +56,7 @@ public class Administrator extends User {
        
         return doctors;
     }
-    
+    //returns a list of all secretaries 
      public ArrayList<Secretary> getAllSecretaries()
     {
       
@@ -78,7 +82,7 @@ public class Administrator extends User {
      
         return secretaries;
     }
-    
+    //deletes a user
     public void deleteUser(String userID)
      {
          ArrayList<User> users = this.getAllUsers();
@@ -107,4 +111,6 @@ public class Administrator extends User {
             ioe.printStackTrace();
         }    
      }
+    //gets a list of all users
+    
 }

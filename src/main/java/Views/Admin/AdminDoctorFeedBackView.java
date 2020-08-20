@@ -13,6 +13,8 @@ import models.user.Doctor;
  *
  * @author richa_bfe6tpy
  */
+
+//This class provide a panel which contains the Admin Create Feedback view.
 public class AdminDoctorFeedBackView extends javax.swing.JPanel {
 
     /**
@@ -90,6 +92,7 @@ public class AdminDoctorFeedBackView extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
     
+    //Button Listeners
     public void addBackListener(ActionListener listenForSubmit){
         AdminBackButton.addActionListener(listenForSubmit);
     }
@@ -98,18 +101,23 @@ public class AdminDoctorFeedBackView extends javax.swing.JPanel {
         AdminDoctorFeedBackSubmitButton.addActionListener(listenForFeedBack);
     } 
     
+    public void addChangeDoctor (ActionListener listenForDoctorChange)
+    {
+        AdminDoctorFeedBackDoctorBox.addActionListener(listenForDoctorChange);
+    }
+    
+    //get to return doctor
+    
     public Doctor getDoctor(){
         return (Doctor) AdminDoctorFeedBackDoctorBox.getSelectedItem();
     }
+    
+    //setters to set model to view
     
     public void setDoctors(DefaultComboBoxModel <Doctor> model){
         AdminDoctorFeedBackDoctorBox.setModel(model);
     }
     
-    public void addChangeDoctor (ActionListener listenForDoctorChange)
-    {
-        AdminDoctorFeedBackDoctorBox.addActionListener(listenForDoctorChange);
-    }
     
     public void setAdminDoctorFeedBackBox(String feedback){
         AdminDoctorFeedBackBox.setText(feedback);

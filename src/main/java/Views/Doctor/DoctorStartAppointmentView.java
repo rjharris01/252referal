@@ -13,6 +13,7 @@ import models.Appointment;
  *
  * @author richa_bfe6tpy
  */
+//This class provide a panel which contains the Doctor Start Appointment view.
 public class DoctorStartAppointmentView extends javax.swing.JPanel {
 
     /**
@@ -87,6 +88,7 @@ public class DoctorStartAppointmentView extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    //Button Listeners
     
     public void addSubmitListener(ActionListener listenForSubmit){
         DoctorSubmitButton.addActionListener(listenForSubmit);
@@ -96,24 +98,25 @@ public class DoctorStartAppointmentView extends javax.swing.JPanel {
         DoctorBackButton.addActionListener(listenForBack);
     }
     
+    //Get and reset appointment comments field 
     public String getAppointmentComments(){
         return DoctorStartAppointmentCommentsField.getText();
-    }
-    
-    public void setAppointments(DefaultComboBoxModel<Appointment> model)
-    {
-        DoctorStartAppointmentListBox.setModel(model);
     }
     
     public void resetComments(){
         DoctorStartAppointmentCommentsField.setText("");
     }
     
+    //Get and set Appointment model and element from listbox
+    
     public Appointment getAppointment(){
         return (Appointment)DoctorStartAppointmentListBox.getSelectedItem();
     }
     
-    
+    public void setAppointments(DefaultComboBoxModel<Appointment> model)
+    {
+        DoctorStartAppointmentListBox.setModel(model);
+    }
      
      
 

@@ -16,6 +16,8 @@ import models.NewAccountRequest;
  *
  * @author richa_bfe6tpy
  */
+
+//This class provide a panel which contains the Secretary approve patient view.
 public class SecretaryApprovePatientView extends javax.swing.JPanel {
 
     private JButton SecretaryApprovePatientButton;
@@ -51,7 +53,7 @@ public class SecretaryApprovePatientView extends javax.swing.JPanel {
             .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    //View setup code
     private void initMyComponents() {
         SecretaryApprovePatientButton = new javax.swing.JButton();
         SecretaryDeclinePatientButton = new javax.swing.JButton();
@@ -111,7 +113,7 @@ public class SecretaryApprovePatientView extends javax.swing.JPanel {
     }
 
     
-  
+    //Button Listeners 
 
     public void addSubmitListener(ActionListener listenForSecretaryApprovePatient){
         SecretaryApprovePatientButton.addActionListener(listenForSecretaryApprovePatient);
@@ -124,6 +126,8 @@ public class SecretaryApprovePatientView extends javax.swing.JPanel {
     public void addDeclineListener(ActionListener listenForSecretaryDeclinePatient){
         SecretaryDeclinePatientButton.addActionListener(listenForSecretaryDeclinePatient);
     }
+    
+    //Set NewAccountRequest list Model and get NewAccountRequest element
     
     public NewAccountRequest getSelectedUserRequest(){
         NewAccountRequest newAccountRequest = SecretaryAccountRequestedList.getSelectedValue();

@@ -17,20 +17,24 @@ import models.user.Doctor;
  *
  * @author richa_bfe6tpy
  */
+//Controller for the login view 
 public class DoctorCreateNewMedicineController {
+    //Variables declaration
     private DoctorCreateNewMedicineView theView;
     private Doctor theModel;
     
     public DoctorCreateNewMedicineController(DoctorCreateNewMedicineView theView, Doctor theModel){
-        
+        //Construct the controller
         this.theView = theView;
         this.theModel = theModel;
-        
+        //Connect buttons
         this.theView.addSubmitListener(new SubmitListener());
         this.theView.addBackListener(new BackListener());
         
         
     }
+    
+    //return to doctor control panel on button press
     
      class BackListener implements ActionListener{
 
@@ -45,13 +49,15 @@ public class DoctorCreateNewMedicineController {
         
         
     }
+     
+     //create new medicine on button press
     
     class SubmitListener implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            MedicineFactory mf = new MedicineFactory();
-            mf.makeNewMedicine(theView.getDoctorCreateMedicineField());
+            MedicineFactory mf = new MedicineFactory();//create new instance of medicine factory
+            mf.makeNewMedicine(theView.getDoctorCreateMedicineField());//uses medicine factory to create new medicine
             theView.clearDoctorCreateMedicineField();
         }
         

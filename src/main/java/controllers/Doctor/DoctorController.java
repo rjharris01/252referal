@@ -22,15 +22,18 @@ import models.user.User;
  *
  * @author richa_bfe6tpy
  */
+//Controller for the doctor main control view 
 public class DoctorController {
+    //Variables declaration
     private DoctorView theView;
     private Doctor theModel;
     
     public DoctorController(DoctorView theView,Doctor theModel)
     {
+        //Construct the controller
         this.theView = theView;
         this.theModel = theModel;
-        
+        //Connect buttons
         this.theView.addStartAppointmentListener(new StartAppointmentListener());
         this.theView.addCreatePerscriptionListener(new CreatePerscriptionListener());
         this.theView.addViewAppointmentListener(new ViewAppointmentListener());
@@ -39,6 +42,7 @@ public class DoctorController {
         this.theView.addLogoutListener(new LogoutListener());
     }
     
+    //Switch to doctor start appointment view and controller on button press
     class StartAppointmentListener implements ActionListener
     {
 
@@ -53,6 +57,7 @@ public class DoctorController {
         
     }
     
+    //Switch to doctor create perscription view and controller on button press
     class CreatePerscriptionListener implements ActionListener
     {
 
@@ -67,6 +72,7 @@ public class DoctorController {
         
     }
     
+    //Switch to doctor view appointment view and controller on button press
     class ViewAppointmentListener implements ActionListener
     {
 
@@ -81,6 +87,7 @@ public class DoctorController {
         
     }
     
+    //Switch to doctor view patient view and controller on button press
     class ViewPatientHistoryListener implements ActionListener
     {
 
@@ -95,9 +102,9 @@ public class DoctorController {
         
     }
     
+    //Switch to doctor create new medicine view and controller on button press
     class CreateNewMedicineListener implements ActionListener
     {
-
         @Override
         public void actionPerformed(ActionEvent e) {
             DoctorCreateNewMedicineView newView = new DoctorCreateNewMedicineView();
@@ -109,6 +116,7 @@ public class DoctorController {
         
     }
     
+    //return to sign-in view and controller on button press
     class LogoutListener implements ActionListener
     {
 

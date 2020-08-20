@@ -21,21 +21,25 @@ import models.user.Patient;
  *
  * @author richa_bfe6tpy
  */
+//Controller for the doctor view patient view
 public class DoctorViewPatientController {
+    //Variables declaration
     private DoctorViewPatientView theView;
     private Doctor theModel;
     
     public DoctorViewPatientController(DoctorViewPatientView theView,Doctor theModel)
     {
+        //Construct the controller
         this.theView = theView;
         this.theModel = theModel;
-        
+        //set patients list on load
         setPatients();
-        
+        //Connect buttons
         this.theView.addBackListener(new BackListener());
         this.theView.addSelectListener(new SelectListener());
     }
     
+    //on button set the list to all of the selected users appointments 
     class SelectListener implements ActionListener
     {
 
@@ -54,7 +58,7 @@ public class DoctorViewPatientController {
         }
         
     }
-    
+    //return to doctor control panel on button press
     class BackListener implements ActionListener
     {
 
@@ -69,6 +73,7 @@ public class DoctorViewPatientController {
         
     }
     
+    //set the patients list 
     public void setPatients()
     {
         ArrayList<Patient> patients = theModel.getAllPatients();

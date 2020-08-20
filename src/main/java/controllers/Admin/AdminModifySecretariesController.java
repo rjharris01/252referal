@@ -14,29 +14,30 @@ import javax.swing.DefaultListModel;
 import javax.swing.SwingConstants;
 import models.user.Administrator;
 import models.user.Secretary;
-import models.user.User;
 
 /**
  *
  * @author richa_bfe6tpy
  */
+//Controller for the login view
 public class AdminModifySecretariesController {
+    //Variables declaration
     private AdminModifySecretariesView theView;
     private Administrator theModel;
     
     
     public AdminModifySecretariesController(AdminModifySecretariesView theView, Administrator theModel){
-        
+         //Construct the controller
         this.theView = theView;
         this.theModel = theModel;
-        
-        
+        //Connect buttons
         this.theView.addBackListener(new BackListener());
         this.theView.addDeleteListener(new DeleteListener());
-        
+        //Set the secretary list
         setSecretaryList();
     }
     
+    //return to admin control panel on button press
     class BackListener implements ActionListener{
 
         @Override
@@ -47,17 +48,18 @@ public class AdminModifySecretariesController {
             adminView.setVisible(true);
             theView.getParent().add(adminView,SwingConstants.CENTER);
         }
-        }
+    }
     
+    //delete selected user on button press
     class DeleteListener implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent e) {
              
              try{
-                    Secretary secretary = theView.getSelectedUser();
-                    theModel.deleteUser(secretary.getUserId());
-                    setSecretaryList();
+                    Secretary secretary = theView.getSelectedUser();//gets selected user
+                    theModel.deleteUser(secretary.getUserId());//delete user from user.ser file
+                    setSecretaryList();//resets the list of users
                  
                     
                    
@@ -71,6 +73,7 @@ public class AdminModifySecretariesController {
         }
     }
     
+     //set the list model of Secretarys
     public void setSecretaryList()
     {
         theView.clearList();

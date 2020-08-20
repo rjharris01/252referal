@@ -16,28 +16,31 @@ import javax.swing.SwingConstants;
 import models.Rating;
 import models.user.Administrator;
 import models.user.Doctor;
-import models.user.User;
 
 /**
  *
  * @author richa_bfe6tpy
  */
+//Controller for the admin view ratings view 
 public class AdminViewRatingsController {
+    //Variables declaration
     private AdminViewRatingsView theView;
     private Administrator theModel;
     
     
     public AdminViewRatingsController(AdminViewRatingsView theView, Administrator theModel){
-        
+        //Construct the controller
         this.theView = theView;
         this.theModel = theModel;
+        //set the doctors list
         setDoctors();
-       
+        //Connect buttons
         this.theView.addBackListener(new BackListener());
         this.theView.addSubmitListener(new SubmitListener());
         
     }
     
+    //set the doctors list
     public void setDoctors(){
         theView.clearDoctorList();
         ArrayList<Doctor> doctors = theModel.getAllDoctors();
@@ -49,6 +52,7 @@ public class AdminViewRatingsController {
         theView.setDoctors(model);
     }
     
+    //on button press view all ratings of selected doctor
     class SubmitListener implements ActionListener{
         
        
@@ -73,7 +77,7 @@ public class AdminViewRatingsController {
         
     }
     
-    
+    //on button press return to admin main control panel
     class BackListener implements ActionListener{
 
         @Override

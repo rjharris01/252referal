@@ -19,6 +19,7 @@ import models.user.Patient;
  *
  * @author richa_bfe6tpy
  */
+//This class provide a panel which contains the Patient request appointment view.
 public class PatientRequestAppointmentView extends javax.swing.JPanel {
 
     private JComboBox<Doctor> PatientAppointmentDoctorBox;
@@ -66,6 +67,7 @@ public class PatientRequestAppointmentView extends javax.swing.JPanel {
             .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+    //setup code for view
     public void initMyComponents() {
         PatientAppointmentDoctorBox = new javax.swing.JComboBox<>();
         PatientAppointmentMonthBox = new javax.swing.JComboBox<>();
@@ -191,6 +193,9 @@ public class PatientRequestAppointmentView extends javax.swing.JPanel {
 
         
     }
+    
+    //Set date Selector 
+    
      private void setAppointmentYears()
     {
         for (int i = LocalDateTime.now().getYear();i < (LocalDateTime.now().getYear()+20);i++)
@@ -251,6 +256,7 @@ public class PatientRequestAppointmentView extends javax.swing.JPanel {
     }
      
      
+     //Set doctor model and get doctor element 
      
      public Doctor getDoctor(){
                 return (Doctor)PatientAppointmentDoctorBox.getSelectedItem();
@@ -260,14 +266,8 @@ public class PatientRequestAppointmentView extends javax.swing.JPanel {
                 PatientAppointmentDoctorBox.setModel(doctorModel);
     }
      
-     public void addSubmitListener(ActionListener listenForSubmit){
-        PatientAppointmentSubmitButton.addActionListener(listenForSubmit);
-    }
-    
-    public void addBackListener(ActionListener listenForSubmit){
-        PatientAppointmentBackButton.addActionListener(listenForSubmit);
-    }
-    
+     
+    //Other getters required for patient to request appointment view
     public String getPatientAppointmentDay(){
         return PatientAppointmentDayBox.getSelectedItem().toString();
     }
@@ -286,6 +286,16 @@ public class PatientRequestAppointmentView extends javax.swing.JPanel {
       
     public String getPatientAppointmentMinuteBox(){
         return PatientAppointmentMinuteBox.getSelectedItem().toString();
+    }
+    
+    //Button Listeners
+    
+    public void addSubmitListener(ActionListener listenForSubmit){
+        PatientAppointmentSubmitButton.addActionListener(listenForSubmit);
+    }
+    
+    public void addBackListener(ActionListener listenForSubmit){
+        PatientAppointmentBackButton.addActionListener(listenForSubmit);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -11,6 +11,7 @@ package models;
  *
  * @author Richard Harris
  */
+//sotres the order medicine request class
 public class OrderMedicineRequest extends Request {
     private Medicine medicine;
     

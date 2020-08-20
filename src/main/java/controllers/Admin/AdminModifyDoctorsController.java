@@ -14,29 +14,32 @@ import javax.swing.DefaultListModel;
 import javax.swing.SwingConstants;
 import models.user.Administrator;
 import models.user.Doctor;
-import models.user.User;
 
 /**
  *
  * @author richa_bfe6tpy
  */
+//Controller for the admin modify doctors view 
 public class AdminModifyDoctorsController {
+    
+    //Variables declaration
     private AdminModifyDoctorsView theView;
     private Administrator theModel;
     
     
     public AdminModifyDoctorsController(AdminModifyDoctorsView theView, Administrator theModel){
-        
+        //Construct the controller
         this.theView = theView;
         this.theModel = theModel;
-        
+        //Connect buttons
         this.theView.addDeleteListener(new DeleteListener());
         this.theView.addBackListener(new BackListener());
-        
+        //set the doctors list 
         setDoctorList();
         
     }
     
+    //return to admin view on button press
     class BackListener implements ActionListener{
 
         @Override
@@ -49,15 +52,17 @@ public class AdminModifyDoctorsController {
         }
     }
     
+    //delete selected user on button press
+    
     class DeleteListener implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent e) {
              
              try{
-                    Doctor doctor = theView.getSelectedUser();
-                    theModel.deleteUser(doctor.getUserId());
-                    setDoctorList();
+                    Doctor doctor = theView.getSelectedUser(); //gets selected user
+                    theModel.deleteUser(doctor.getUserId()); //delete user from user.ser file
+                    setDoctorList(); //resets the list of users
                  
                     
                    
@@ -70,6 +75,8 @@ public class AdminModifyDoctorsController {
                      
         }
     }
+    
+    //set the list model of doctors
     
     public void setDoctorList()
     {

@@ -20,6 +20,7 @@ import java.util.ArrayList;
  *
  * @author Richard Harris
  */
+//stores the rating class
 public class Rating implements Serializable {
     private Patient patient;
     private Doctor doctor;
@@ -41,50 +42,7 @@ public class Rating implements Serializable {
     
     public String getComments() { return comment;}
     public void setComments(String newComment){comment = newComment;}
-    
-    
-    
-     public ArrayList<Rating>  getAllRatings()
-    {
-        ArrayList<Rating> ratings = new ArrayList<>();
-        try {
-                        FileInputStream fis = new FileInputStream("Ratings.ser");
-			ObjectInputStream ois = new ObjectInputStream(fis);
-                        ratings = (ArrayList) ois.readObject();
-			
-			ois.close();
-                        fis.close();
-                        
-            } catch (FileNotFoundException  e) {
-			System.out.print("No file \n");
-		} catch (IOException | ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-        return ratings; 
-    }
-    
-    public void writeNewRating(Rating rating)
-    {
-         ArrayList<Rating> ratings;
-         ratings = getAllRatings();
-         
-         ratings.add(rating);
-         
-         try
-        {
-            FileOutputStream fos = new FileOutputStream("Ratings.ser");
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(ratings);
-            oos.close();
-            fos.close();
-        } 
-         
-         catch (IOException ioe) 
-        {
-            ioe.printStackTrace();
-        }    
-    }
-    
+  
     @Override
     public String toString() {
         return ("DR." + this.getDoctor().getName() + "  Rating:" + this.getRating() + "  Comment:" + this.getComments());

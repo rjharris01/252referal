@@ -9,6 +9,7 @@ package models;
  *
  * @author richa_bfe6tpy
  */
+//class for account delete request
 public class AccountDeleteRequest extends Request {
     private String userId;
     

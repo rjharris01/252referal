@@ -12,6 +12,7 @@ import models.user.User;
  *
  * @author Richard Harris
  */
+//class to store new account requests
 public class NewAccountRequest extends Request {
     private User user;
     

@@ -14,39 +14,42 @@ import javax.swing.DefaultListModel;
 import javax.swing.SwingConstants;
 import models.AccountDeleteRequest;
 import models.user.Secretary;
-import models.user.User;
 
 /**
  *
  * @author richa_bfe6tpy
  */
+//Controller for the delete user request view 
 public class SecretaryDeleteUserRequestController {
+    //Variables declaration
     private SecretaryDeleteUserRequestView theView;
     private Secretary theModel;
     
     
     public SecretaryDeleteUserRequestController(SecretaryDeleteUserRequestView theView, Secretary theModel){
-        
+        //Construct the controller
         this.theView = theView;
         this.theModel = theModel;
-       
+        //Connect buttons
         this.theView.addBackListener(new BackListener());
         this.theView.addDeleteListener(new DeleteListener());
-        
+        //set patient list on load
         setPatientList();
     }
     
+    //set patient list based on account delete requests
     public void setPatientList(){
         DefaultListModel<AccountDeleteRequest> model = new DefaultListModel<>();
         theView.clearList();
-        ArrayList<AccountDeleteRequest> allUsers = theModel.getAllAccountDeleteRequest();
+        ArrayList<AccountDeleteRequest> allUsers = theModel.getAllAccountDeleteRequest(); //get accounts requested to be delete
          for (AccountDeleteRequest request: allUsers)
             {
-                model.addElement(request);
+                model.addElement(request);//set each request
             }
-        theView.setAccountDeleteManualList(model);
+        theView.setAccountDeleteManualList(model);//set model
     }
     
+    //return to secretary control panel
     class BackListener implements ActionListener{
 
         @Override
@@ -60,15 +63,16 @@ public class SecretaryDeleteUserRequestController {
         
     }
     
+    //on button press delete selected user
     class DeleteListener implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent e) {
             try{
-                    AccountDeleteRequest user = theView.getSelectedUser();
-                    theModel.deleteUser(user.getUserId());
-                    theModel.deleteRequest(user);
-                    setPatientList();
+                    AccountDeleteRequest user = theView.getSelectedUser();//get selected user
+                    theModel.deleteUser(user.getUserId());//delete user
+                    theModel.deleteRequest(user);//remove the request
+                    setPatientList();//reset the patient list
                  
                     
                    

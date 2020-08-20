@@ -19,20 +19,24 @@ import models.user.Doctor;
  *
  * @author richa_bfe6tpy
  */
+//Controller for the doctor view appointment view
 public class DoctorViewAppointmentsController {
+    //Variables declaration
     private DoctorViewAppointmentsView theView;
     private Doctor theModel;
     
     public DoctorViewAppointmentsController(DoctorViewAppointmentsView theView,Doctor theModel)
             {
+                //Construct the controller
                 this.theView = theView;
                 this.theModel = theModel;
-                
+                //set appointments list
                 setAppointments();
-                
+                //Connect buttons
                 this.theView.addBackListener(new BackListener());
             }
     
+    //set appointments list model based of logged in user
     public void setAppointments()
     {
         ArrayList<Appointment> appointments = theModel.getAllAppointments();
@@ -46,6 +50,7 @@ public class DoctorViewAppointmentsController {
         theView.setDoctorViewAppointmentsList(model);
     }
     
+    //retunr to the doctor control panel
     class BackListener implements ActionListener
     {
         @Override

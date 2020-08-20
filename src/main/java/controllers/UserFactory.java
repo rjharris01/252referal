@@ -12,10 +12,7 @@ package controllers;
  */
 
 
-import Views.SignupView;
-import Views.soft252ReferalView;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.io.FileNotFoundException;
 import java.io.FileInputStream;
@@ -33,6 +30,7 @@ import models.user.User;
  *
  * @author Richard Harris
  */
+//Class used to handle all new account creation
 public class UserFactory {
     
     
@@ -44,50 +42,21 @@ public class UserFactory {
         
         tempInput = null;
         User tempUser = null;
-        
-        
-    
-        
-        
-        
-        
-      
+
+        //create new patient 
         if(userType.equals("Patient"))
         {
             Patient tempPatient;
             tempPatient = new Patient();
-            
-            System.out.print("Please enter the patients name: ");
-            
             tempPatient.setName(accountName);
-            
-            System.out.print("Please enter a password: ");
-           
             tempPatient.setPassword(accountPassword);
-            
-            System.out.print("Please enter the patients address: ");
-            
             tempPatient.setAddress(accountAddress);
-            
-            
-            System.out.print("Please enter the patients gender: ");
-          
             tempPatient.setGender(gender);
-            
-            System.out.print("Please enter the patients birthday in format dd/mm/yyyy: ");
-           
-           
             tempPatient.setBirthday(tempDate);
-            
-            
             tempPatient.setRegisterDate(tempDate.now());
-            
             userId = getNextUserId("P");
             tempPatient.setUserId(userId);
-     
-            System.out.println("\n Patient Requested");
-            
-            
+
             RequestMaker newRequestMaker = new RequestMaker();
             newRequestMaker.newAccountRequest(tempPatient);
             
@@ -95,23 +64,14 @@ public class UserFactory {
 
         }
         
-        
+        //create new doctor
         else if (userType.equals("Doctor"))
         {
             Doctor tempDoctor;
             tempDoctor = new Doctor();
-            System.out.print("Please enter the Doctors name: ");
-            
             tempDoctor.setName(accountName);
-            
-            System.out.print("Please enter a password: ");
-          
             tempDoctor.setPassword(accountPassword);
-            
-            System.out.print("Please enter the Doctors address: ");
-          
             tempDoctor.setAddress(accountAddress);
-            
             userId = getNextUserId("D");
             tempDoctor.setUserId(userId);
             
@@ -119,23 +79,13 @@ public class UserFactory {
             tempUser = tempDoctor;
         }
         
-        
+        //create new secretary
          else if (userType.equals("Secretary"))
         {
-            
-            
             Secretary tempSecretary;
             tempSecretary = new Secretary();
-            System.out.print("Please enter the Secretarys name: ");
-           
             tempSecretary.setName(accountName);
-            
-            System.out.print("Please enter a password: ");
-        
             tempSecretary.setPassword(accountPassword);
-            
-            System.out.print("Please enter the Secretary address: ");
-           
             tempSecretary.setAddress(accountAddress);
             
             userId = getNextUserId("S");
@@ -145,22 +95,14 @@ public class UserFactory {
             tempUser = tempSecretary;
             
         }
-        
+        //create new admin 
          else if (userType.equals("Administrator"))
         {
             
             Administrator tempAdministrator;
             tempAdministrator = new Administrator();
-            System.out.print("Please enter the Admins name: ");
-          
             tempAdministrator.setName(accountName);
-            
-            System.out.print("Please enter a password: ");
-           
             tempAdministrator.setPassword(accountPassword);
-            
-            System.out.print("Please enter the Admins address: ");
-           
             tempAdministrator.setAddress(tempInput);
             
             userId = getNextUserId("A");
@@ -173,7 +115,7 @@ public class UserFactory {
         
         return tempUser;
     }
-    
+    //gets the next free user id of given type
     private String getNextUserId(String UserType) {
         ArrayList<User> users = new ArrayList<> ();
         ArrayList<User> tempUsers;
@@ -208,6 +150,7 @@ public class UserFactory {
         return userId;
     }
     
+    //writes the user to the user file
      private void writeNewUser(User user)
      {
          ArrayList<User> users;
@@ -230,6 +173,7 @@ public class UserFactory {
         }    
      }
      
+     //returns a list of all 
      public ArrayList<User>  getAllUsers()
      {
         ArrayList<User> users = new ArrayList<>();

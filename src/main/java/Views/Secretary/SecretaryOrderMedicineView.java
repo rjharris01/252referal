@@ -17,6 +17,7 @@ import models.Medicine;
  *
  * @author richa_bfe6tpy
  */
+//This class provide a panel which contains the Secretary order medicine view.
 public class SecretaryOrderMedicineView extends javax.swing.JPanel {
 
     private JButton SecrataryOrderMedicineBackButton;
@@ -53,7 +54,7 @@ public class SecretaryOrderMedicineView extends javax.swing.JPanel {
             .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    //View setup code
     private void initMyComponents() {
         
         SecrataryOrderMedicineBackButton = new javax.swing.JButton();
@@ -126,6 +127,7 @@ public class SecretaryOrderMedicineView extends javax.swing.JPanel {
         );
     }
     
+    //Clear and reset quantity on focus
     private void SecretaryOrderMedicineQuantityFieldFocusGained(java.awt.event.FocusEvent evt) {                                                                
         SecretaryOrderMedicineQuantityField.setText("");
     }                                                               
@@ -137,9 +139,8 @@ public class SecretaryOrderMedicineView extends javax.swing.JPanel {
         }
     }
     
-    public void setSecretaryOrderMedecineMedicinesBox(DefaultComboBoxModel<Medicine> model){
-        SecretaryOrderMedecineMedicinesBox.setModel(model);
-    }
+    
+    //Button listeners
     
     public void addBackListener(ActionListener listenForBack){
         SecrataryOrderMedicineBackButton.addActionListener(listenForBack);
@@ -148,11 +149,17 @@ public class SecretaryOrderMedicineView extends javax.swing.JPanel {
     public void addOrderListener(ActionListener listenForOrder){
         SecrataryOrderMedicineButton.addActionListener(listenForOrder);
     }
+    
+    //Set medicine list model and get medicine element 
+    public void setSecretaryOrderMedecineMedicinesBox(DefaultComboBoxModel<Medicine> model){
+        SecretaryOrderMedecineMedicinesBox.setModel(model);
+    }
      
     public Medicine getSecretaryOrderMedecineMedicinesBox(){
         return (Medicine)SecretaryOrderMedecineMedicinesBox.getSelectedItem();
     }
     
+    //get quantity int
     public int getSecretaryOrderMedicineQuantityField()
             {
                 try

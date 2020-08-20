@@ -22,6 +22,7 @@ import models.user.Patient;
  *
  * @author richa_bfe6tpy
  */
+//This class provide a panel which contains the Doctor view.
 public class DoctorViewPatientView extends javax.swing.JPanel {
 
     /**
@@ -96,6 +97,7 @@ public class DoctorViewPatientView extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    //Button Listeners
     public void addSelectListener(ActionListener listenForSelect){
         DoctorViewPatientSelectButton.addActionListener(listenForSelect);
     }
@@ -103,6 +105,8 @@ public class DoctorViewPatientView extends javax.swing.JPanel {
     public void addBackListener(ActionListener listenForBack){
         DoctorBackButton.addActionListener(listenForBack);
     }
+    
+    //Set Doctors Patient History combo box and get Element
     
     public void setDoctorViewPatientHistoryPatientBox(DefaultComboBoxModel<Patient> model)
     {
@@ -114,10 +118,14 @@ public class DoctorViewPatientView extends javax.swing.JPanel {
         return (Patient) DoctorViewPatientHistoryPatientBox.getSelectedItem();
     }
     
+    //Set patient history list 
+    
     public void setDoctorViewPatientHistoryList(DefaultListModel<Appointment> model)
     {
         DoctorViewPatientHistoryList.setModel(model);
     }
+    
+    //Custom appointment renderer for appointments Date:comments 
     
     private static ListCellRenderer<? super Appointment> createListRenderer() {
       return new DefaultListCellRenderer() {

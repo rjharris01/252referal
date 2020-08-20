@@ -20,6 +20,9 @@ import javax.swing.JTextField;
  *
  * @author richa_bfe6tpy
  */
+
+
+//This class provide a panel which contains the login view.
 public class LoginView extends javax.swing.JPanel {
 
     private JTextField userNameInput;
@@ -57,7 +60,9 @@ public class LoginView extends javax.swing.JPanel {
             .addGap(0, 400, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-    public void myInitComponents(){
+    public void myInitComponents(){  
+        
+        //setup code for the initial view
         
         userNameInput = new javax.swing.JTextField();
         
@@ -144,7 +149,7 @@ public class LoginView extends javax.swing.JPanel {
         );
     }
     
-    
+    //clear username field on focus & reset after
     
     private void userNameInputFocusGained(java.awt.event.FocusEvent evt) {                                          
 
@@ -158,6 +163,8 @@ public class LoginView extends javax.swing.JPanel {
         }
     } 
     
+    //clear password field on focus & reset after
+    
      private void passwordInputFocusLost(java.awt.event.FocusEvent evt) {                                        
         if (passwordInput.getPassword().length == 0)
         {
@@ -169,6 +176,7 @@ public class LoginView extends javax.swing.JPanel {
         passwordInput.setText("");
     }     
 
+    //getters required for login view
     
     public String getUserName(){
         return userNameInput.getText();
@@ -179,6 +187,7 @@ public class LoginView extends javax.swing.JPanel {
         return passwordInput.getPassword();
     }
    
+    //button listeners 
     
     public void addLoginListener(ActionListener listenForLogin){
         login.addActionListener(listenForLogin);
@@ -186,10 +195,6 @@ public class LoginView extends javax.swing.JPanel {
     
     public void addSignupListener(ActionListener listenForLogin){
         signup.addActionListener(listenForLogin);
-    }
-    
-    public void displayErrorMessage(String errorMessage){
-        JOptionPane.showMessageDialog(this, errorMessage);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

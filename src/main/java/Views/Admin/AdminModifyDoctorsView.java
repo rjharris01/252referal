@@ -14,6 +14,8 @@ import models.user.User;
  *
  * @author richa_bfe6tpy
  */
+
+//This class provide a panel which contains the Admin Modify Doctors view.
 public class AdminModifyDoctorsView extends javax.swing.JPanel {
 
     /**
@@ -77,6 +79,8 @@ public class AdminModifyDoctorsView extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+    
+    //Button listeners
     public void addBackListener(ActionListener listenForSubmit){
         AdminBackButton.addActionListener(listenForSubmit);
     }
@@ -85,10 +89,14 @@ public class AdminModifyDoctorsView extends javax.swing.JPanel {
         AdminModifyDoctorDeleteButton.addActionListener(listenForDelete);
     }
     
+    //Get to return doctor
+    
     public Doctor getSelectedUser(){
         Doctor user = AdminModifyDoctorsListBox.getSelectedValue();
         return user;
     }
+    
+    //Functions to setup the doctor list box
     
     public void clearList()
     {

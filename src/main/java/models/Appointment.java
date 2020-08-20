@@ -21,6 +21,7 @@ import models.user.Patient;
  *
  * @author richa_bfe6tpy
  */
+//class for appointment
 public class Appointment implements Serializable {
     private Patient patient;
     private Doctor doctor;
@@ -45,7 +46,7 @@ public class Appointment implements Serializable {
     public void setComments(String newComments){Comments = newComments;}
     
     
-    
+    //updates the appointment in the file 
     public void updateAppointment()
     {
         int index = 0;
@@ -87,7 +88,7 @@ public class Appointment implements Serializable {
         }    
      }
     
-    
+    //returns all appointments
     public ArrayList<Appointment>  getAllAppointments()
     {
         ArrayList<Appointment> appointments = new ArrayList<>();
@@ -107,6 +108,7 @@ public class Appointment implements Serializable {
         return appointments; 
     }
     
+    //writes a new appointment 
     public void writeNewAppointment(Appointment appointment)
     {
          ArrayList<Appointment> appointments;

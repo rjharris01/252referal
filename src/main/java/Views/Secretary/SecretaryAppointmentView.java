@@ -19,6 +19,8 @@ import models.user.Patient;
  *
  * @author richa_bfe6tpy
  */
+
+//This class provide a panel which contains the Secretary view appointment view.
 public class SecretaryAppointmentView extends javax.swing.JPanel {
 
     private JComboBox<Doctor> SecretaryAppointmentDoctorBox;
@@ -67,7 +69,7 @@ public class SecretaryAppointmentView extends javax.swing.JPanel {
             .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    //View setup code
     public void initMyComponents() {
         SecretaryAppointmentDoctorBox = new javax.swing.JComboBox<>();
         SecretaryAppointmentPatientBox = new javax.swing.JComboBox<>();
@@ -203,6 +205,8 @@ public class SecretaryAppointmentView extends javax.swing.JPanel {
 
         
     }
+    
+    //Setup date selector
      private void setAppointmentYears()
     {
         for (int i = LocalDateTime.now().getYear();i < (LocalDateTime.now().getYear()+20);i++)
@@ -262,6 +266,8 @@ public class SecretaryAppointmentView extends javax.swing.JPanel {
         }
     }
      
+     //Set patient list model and get patient element
+     
      public Patient getPatient(){
                 return (Patient)SecretaryAppointmentPatientBox.getSelectedItem();
     }
@@ -269,6 +275,8 @@ public class SecretaryAppointmentView extends javax.swing.JPanel {
      public void setPatients( DefaultComboBoxModel<Patient> patientModel){
                 SecretaryAppointmentPatientBox.setModel(patientModel);
     }
+     
+     //set doctor list model and get doctor element
      
      public Doctor getDoctor(){
                 return (Doctor)SecretaryAppointmentDoctorBox.getSelectedItem();
@@ -278,6 +286,8 @@ public class SecretaryAppointmentView extends javax.swing.JPanel {
                 SecretaryAppointmentDoctorBox.setModel(doctorModel);
     }
      
+    //Button Listeners 
+     
      public void addSubmitListener(ActionListener listenForSubmit){
         SecretaryAppointmentSubmitButton.addActionListener(listenForSubmit);
     }
@@ -285,6 +295,8 @@ public class SecretaryAppointmentView extends javax.swing.JPanel {
     public void addBackListener(ActionListener listenForSubmit){
         SecretaryAppointmentBackButton.addActionListener(listenForSubmit);
     }
+    
+    //Other getters to create a new appointment 
     
     public String getSecretaryAppointmentDay(){
         return SecretaryAppointmentDayBox.getSelectedItem().toString();

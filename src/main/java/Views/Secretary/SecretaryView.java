@@ -13,6 +13,7 @@ import javax.swing.JButton;
  *
  * @author richa_bfe6tpy
  */
+//This class provide a panel which contains the Secretary main control panel view.
 public class SecretaryView extends javax.swing.JPanel {
 
     private Label label1;
@@ -52,7 +53,7 @@ public class SecretaryView extends javax.swing.JPanel {
             .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    //view setup
     private void initMyComponents() {
        label1 = new java.awt.Label();
        SecratryApprovePatientButton = new javax.swing.JButton();
@@ -142,7 +143,7 @@ public class SecretaryView extends javax.swing.JPanel {
     
 
     
-    
+    //Button listeners
     public void addSecratryApprovePatientListener(ActionListener listenForSecratryApprovePatient){
         SecratryApprovePatientButton.addActionListener(listenForSecratryApprovePatient);
     }

@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import models.NewAccountRequest;
 import models.user.Secretary;
@@ -19,18 +20,20 @@ import models.user.Secretary;
  *
  * @author richa_bfe6tpy
  */
+//Controller for the secretary approve patient view 
 public class SecretaryApprovePatientController {
+    //Variables declaration
     private SecretaryApprovePatientView theView;
     private Secretary theModel;
     
     
     public SecretaryApprovePatientController(SecretaryApprovePatientView theView, Secretary theModel){
-        
+        //Construct the controller
         this.theView = theView;
         this.theModel = theModel;
-       
+        //set patient list on load
         setPatientList();
-        
+        //Connect buttons
         this.theView.addSubmitListener(new SubmitListener());
         this.theView.addBackListener(new BackListener());
         this.theView.addDeclineListener(new DeclineListener());
@@ -39,20 +42,23 @@ public class SecretaryApprovePatientController {
         
     }
     
+    //set patient account request list from newaccount requests
     public void setPatientList(){
         
-        ArrayList<NewAccountRequest> newAccountRequests = theModel.getAllNewAccountRequests();
+        ArrayList<NewAccountRequest> newAccountRequests = theModel.getAllNewAccountRequests();//get all new account requests
         DefaultListModel<NewAccountRequest> tempModel = new DefaultListModel<>();
 
         for (NewAccountRequest request: newAccountRequests)
         {
-            tempModel.addElement(request);
+            tempModel.addElement(request);//add to list model
         }        
         
-        this.theView.setUserRequests(tempModel);
+        this.theView.setUserRequests(tempModel);//set list model in view
         
     }
     
+    
+    //on button press delete new account request
     class DeclineListener implements ActionListener{
 
         @Override
@@ -64,7 +70,7 @@ public class SecretaryApprovePatientController {
         
     }
     
-    
+    //on button press return to secretary control panel
     class BackListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -77,12 +83,15 @@ public class SecretaryApprovePatientController {
         
     }
     
+    //on button press create the new user based on seleceted request and output the new user id
     class SubmitListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
-            NewAccountRequest newAccount = theView.getSelectedUserRequest();
-            theModel.approveAccountRequest(newAccount);
-            setPatientList();
+            NewAccountRequest newAccount = theView.getSelectedUserRequest();//get selected request
+            String userid = theModel.approveAccountRequest(newAccount);//create the new account 
+            JOptionPane.showMessageDialog(null, "Account\n"+ userid + "\nCreated");//return the user to the id
+            setPatientList();//reset the patient request account list
+            
         }
         
     }

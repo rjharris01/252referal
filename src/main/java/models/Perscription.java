@@ -10,7 +10,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import models.user.Doctor;
-import java.io.Serializable;
 import models.user.Patient;
 
 import java.io.Serializable;
@@ -18,6 +17,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
 
+//stores the perscription class
 public class Perscription implements Serializable{
     private int perscriptionId;
     private Medicine medicine;
@@ -48,6 +48,7 @@ public class Perscription implements Serializable{
     public int getQuantity() { return quantity;}
     public void setQuantity(int newQuantity){quantity = newQuantity;}
     
+    //gets the next available peracription id
     public int getNextPerscriptionId()
     {
         ArrayList<Perscription> tempPerscriptions;
@@ -66,6 +67,7 @@ public class Perscription implements Serializable{
         return perscriptionId;
     }
     
+    //outputs the perscription
     public void outputPerscription()
     {
 
@@ -127,14 +129,6 @@ public class Perscription implements Serializable{
                     System.out.print("No file \n");
                 }
                     
-                
-                    
-                
-            }
-        
-        
-    
-   
-    
+            }  
 }
 

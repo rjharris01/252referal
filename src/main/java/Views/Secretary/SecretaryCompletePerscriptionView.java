@@ -22,6 +22,7 @@ import models.user.Patient;
  *
  * @author richa_bfe6tpy
  */
+//This class provide a panel which contains the Secretary Complete Perscription view.
 public class SecretaryCompletePerscriptionView extends javax.swing.JPanel {
 
     /**
@@ -29,7 +30,7 @@ public class SecretaryCompletePerscriptionView extends javax.swing.JPanel {
      */
     public SecretaryCompletePerscriptionView() {
         initComponents();
-        SecretaryCompletePerscriptionPerscriptionsListBox.setCellRenderer(perscriptionRenderer());
+        SecretaryCompletePerscriptionPerscriptionsListBox.setCellRenderer(perscriptionRenderer()); //Set perscirpiton listbox to use custom cell renderer
     }
     
 
@@ -106,6 +107,8 @@ public class SecretaryCompletePerscriptionView extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+    
+    //Button listeners 
     public void addPatientSelectListener (ActionListener listenForPatientChange)
     {
         SecretaryCompletePerscriptionPatientComboBox.addActionListener(listenForPatientChange);
@@ -119,6 +122,8 @@ public class SecretaryCompletePerscriptionView extends javax.swing.JPanel {
         SecretaryCompletePerscriptionCompleteSubmitButton.addActionListener(listenForSubmit);
     }
      
+    //Set Perscription List model and get Perscription element 
+     
      public void clearPerscriptionsList(){
          SecretaryCompletePerscriptionPerscriptionsListBox.removeAll();
      }
@@ -127,6 +132,13 @@ public class SecretaryCompletePerscriptionView extends javax.swing.JPanel {
          return SecretaryCompletePerscriptionPerscriptionsListBox.getSelectedValue();
      }
      
+     public void setPerscriptionList(DefaultListModel model){
+         SecretaryCompletePerscriptionPerscriptionsListBox.setModel(model);
+     }
+     
+     
+     //Set Patient List model and get Perscription element 
+     
      public Patient getPatient(){
          return (Patient)SecretaryCompletePerscriptionPatientComboBox.getSelectedItem();
      }
@@ -134,11 +146,8 @@ public class SecretaryCompletePerscriptionView extends javax.swing.JPanel {
      public void setPatientList(DefaultComboBoxModel Model){
          SecretaryCompletePerscriptionPatientComboBox.setModel(Model);
      }
-     
-     public void setPerscriptionList(DefaultListModel model){
-         SecretaryCompletePerscriptionPerscriptionsListBox.setModel(model);
-     }
-     
+    
+     //Custom cell renderer for perscription Medicine:Dosage:Quantity
      private static ListCellRenderer<? super Perscription> perscriptionRenderer() {
       return new DefaultListCellRenderer() {
           private Color background = new Color(0, 100, 255, 15);

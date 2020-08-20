@@ -35,32 +35,30 @@ import models.user.User;
  *
  * @author richa_bfe6tpy
  */
+//Controller for the login view 
 public class LoginController {
     
-    
+    //Variables declaration
     private LoginView theView;
     private User theModel;
     
     public LoginController(LoginView theView, User theModel){
-        
+        //Construct the controller
         this.theView = theView;
         this.theModel = theModel;
-        
+        //Connect buttons
         this.theView.addLoginListener(new LoginListener());
         this.theView.addSignupListener(new SignupListener());
     }
     
-    
+    //Switch to signup view and controller on button press
     class SignupListener implements ActionListener
     {
-
         @Override
         public void actionPerformed(ActionEvent e) {
             SignupView newView = new SignupView();
             User newModel = new User() {};    
-                
             SignupController theController = new SignupController(newView, newModel);
-            
             theView.setVisible(false);
             newView.setVisible(true);
             theView.getParent().add(newView,SwingConstants.CENTER);
@@ -70,6 +68,8 @@ public class LoginController {
         
     }
     
+    
+    //check login details on button press
     class LoginListener implements ActionListener
     {
 
@@ -85,9 +85,9 @@ public class LoginController {
                     password = Arrays.toString(theView.getPassword());
             for(User user : users)
             {
-                if (user.getUserId().equals(username))
+                if (user.getUserId().equals(username)) //check if username exists
                 {
-                    if(user.getPassword().equals(password))
+                    if(user.getPassword().equals(password))//check if password is correct
                     {
                         user.setLoginStatus(true);
                         theView.setVisible(false);
@@ -98,7 +98,7 @@ public class LoginController {
                     }
                     
                     else{
-                        JOptionPane.showMessageDialog(null, "Incorrect login details / User not found");
+                        JOptionPane.showMessageDialog(null, "Incorrect login details / User not found"); 
                     }
                 }
                 
@@ -123,6 +123,8 @@ public class LoginController {
     
     }
     
+    
+    //Switch to correct user view and controller on button press
     public void openCurrentPanel(User user)
     {
         String userId = user.getUserId();
@@ -130,10 +132,9 @@ public class LoginController {
         if (null != userId)
         switch (userId) {
             case "A":
+                //Admin
                 AdminView adminView = new AdminView();
                 Administrator adminModel = (Administrator)user;
-                
-                
                 AdminController adminController = new AdminController(adminView,adminModel);
                 this.theView.setVisible(false);
                 adminView.setVisible(true);
@@ -142,32 +143,29 @@ public class LoginController {
                 
                 break;
             case "D":
+                //Doctor
                 DoctorView docView = new DoctorView();
                 Doctor docModel = (Doctor) user;
-                
                 DoctorController DoctorController = new DoctorController(docView,docModel);
-                
                 this.theView.setVisible(false);
                 docView.setVisible(true);
                 this.theView.getParent().add(docView,SwingConstants.CENTER);
                 break;
                 
             case "P":
+                //Patient
                 PatientView patView = new PatientView();
                 Patient patModel = (Patient) user;
-                
                 PatientController patientController = new PatientController(patView,patModel);
-                
                 this.theView.setVisible(false);
                 patView.setVisible(true);
                 this.theView.getParent().add(patView,SwingConstants.CENTER);
                 
                 break;
             case "S":
+                //Secretary
                 SecretaryView secView = new SecretaryView();
-                Secretary secModel = (Secretary)user;
-                
-                
+                Secretary secModel = (Secretary)user;              
                 SecretaryController secretaryController = new SecretaryController(secView,secModel);
                 this.theView.setVisible(false);
                 secView.setVisible(true);

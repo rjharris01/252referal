@@ -19,21 +19,25 @@ import models.user.User;
  *
  * @author richa_bfe6tpy
  */
+//Controller for the signup view 
 public class SignupController {
     
+    //Variables declaration
     private SignupView theView;
     private User theModel;
     
     public SignupController(SignupView theView,User theModel)
     {
+        //Construct the controller
         this.theView = theView;
         this.theModel = theModel;
-        
+        //Connect buttons
         this.theView.addSubmitListener(new SubmitListener());
         this.theView.addBackListener(new BackListener());
         
     }
     
+    //Create a new account request and Switch to login view and controller on button press
     class SubmitListener implements ActionListener{
 
         @Override
@@ -41,13 +45,24 @@ public class SignupController {
             try
             {
                 
-                LocalDate tempDate = LocalDate.of(theView.getSignupDateYear(), theView.getSignupDateMonth(), theView.getSignupDateDay());
+                LocalDate tempDate = LocalDate.of(theView.getSignupDateYear(), theView.getSignupDateMonth(), theView.getSignupDateDay()); //set temp date from view ints 
                 
-                UserFactory NewUserFactory = new UserFactory();
-                User user = (User) NewUserFactory.makeNewUser("Patient", theView.getSignupName(), theView.getSignupPasswordField(),theView.getSignupAddressName(),theView.getSignupGenderSelector(),tempDate);
+                UserFactory NewUserFactory = new UserFactory(); //new user factory instance
+                User user = (User) NewUserFactory.makeNewUser("Patient", theView.getSignupName(), theView.getSignupPasswordField(),theView.getSignupAddressName(),theView.getSignupGenderSelector(),tempDate); //pass values to create new account request
+               
+                //display pop to user
                 JOptionPane.showMessageDialog(null, "Account Requested Created");
                 
                 
+                //return to the login view
+                theModel.setLoginStatus(false);
+                LoginView newView = new LoginView();
+                User newModel = new User() {};    
+                
+                LoginController theController = new LoginController(newView, newModel);
+                theView.setVisible(false);
+                newView.setVisible(true);
+                theView.getParent().add(newView,SwingConstants.CENTER);
                 
             
             } catch(Exception ex)
@@ -59,6 +74,8 @@ public class SignupController {
             }
     }
     
+    
+    //Switch to login view and controller on button press
     class BackListener implements ActionListener{
 
         @Override

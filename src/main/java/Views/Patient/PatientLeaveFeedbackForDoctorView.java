@@ -13,6 +13,8 @@ import models.Appointment;
  *
  * @author richa_bfe6tpy
  */
+
+//This class provide a panel which contains the Patient leave feedback for doctor view.
 public class PatientLeaveFeedbackForDoctorView extends javax.swing.JPanel {
 
     /**
@@ -106,6 +108,7 @@ public class PatientLeaveFeedbackForDoctorView extends javax.swing.JPanel {
         PatientFeedbackAppointmentBox.getAccessibleContext().setAccessibleName("");
     }// </editor-fold>//GEN-END:initComponents
 
+    //Button Listners 
     public void addSubmitListener(ActionListener listenForSubmit){
         PatientFeedbackSubmitButton.addActionListener(listenForSubmit);
     }
@@ -114,16 +117,20 @@ public class PatientLeaveFeedbackForDoctorView extends javax.swing.JPanel {
         PatientFeedbackBackButton.addActionListener(listenForSubmit);
     }
     
+    //Set and get (element) patient appointments list
+    
     public void setPatientFeedbackAppointmentBox(DefaultComboBoxModel<Appointment> appointmentModel ){
         PatientFeedbackAppointmentBox.setModel(appointmentModel);
     }
     
-    public int getRating(){
-        return Integer.parseInt(PatientFeedbackRatingBox.getSelectedItem().toString());
-    }
-    
     public Appointment getAppointment(){
                 return (Appointment)PatientFeedbackAppointmentBox.getSelectedItem();
+    }
+    
+    //Other getters required for feedback view
+    
+    public int getRating(){
+        return Integer.parseInt(PatientFeedbackRatingBox.getSelectedItem().toString());
     }
     
     public String getComment(){

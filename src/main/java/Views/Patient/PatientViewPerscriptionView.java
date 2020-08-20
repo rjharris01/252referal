@@ -20,6 +20,7 @@ import models.Perscription;
  *
  * @author richa_bfe6tpy
  */
+//This class provide a panel which contains the Patient view perscription details view.
 public class PatientViewPerscriptionView extends javax.swing.JPanel {
 
     /**
@@ -27,7 +28,7 @@ public class PatientViewPerscriptionView extends javax.swing.JPanel {
      */
     public PatientViewPerscriptionView() {
         initComponents();
-        PatientViewPerscriptionPerscriptionList.setCellRenderer(createListRenderer());
+        PatientViewPerscriptionPerscriptionList.setCellRenderer(createListRenderer());//Sets patient perscription list box to use custom renderer
     }
 
     /**
@@ -85,6 +86,7 @@ public class PatientViewPerscriptionView extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    //Button Listeners
     public void addPatientBackButton(ActionListener listenForBack){
         PatientBackButton.addActionListener(listenForBack);
     }
@@ -93,6 +95,7 @@ public class PatientViewPerscriptionView extends javax.swing.JPanel {
         PatientViewPerscriptionPrintButton.addActionListener(listenForPrint);
     }
     
+    //Set Perscription model & get perscription element 
     public Perscription getPerscriptionToPrint(){
         return (Perscription) PatientViewPerscriptionPerscriptionList.getSelectedValue();
     }
@@ -100,6 +103,8 @@ public class PatientViewPerscriptionView extends javax.swing.JPanel {
     public void setPerscription(DefaultListModel model){
         PatientViewPerscriptionPerscriptionList.setModel(model);
     }
+    
+    //custom cell renderer for perscription Medicine:Dosage
     
     private static ListCellRenderer<? super Perscription> createListRenderer() {
       return new DefaultListCellRenderer() {

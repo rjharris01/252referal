@@ -13,22 +13,20 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
-import models.user.Doctor;
-import models.user.Patient;
 
 /**
  *
  * @author Richard Harris
  */
+//stores the appointment request class
 public class AppointmentRequest extends Appointment implements Serializable {
     private String type;
     public String getType() { return type;}
     public void setType(String newType){type = newType;}
     
-    
+    //method to approve an appointment request
     public void approveRequest(AppointmentRequest appointmentRequest) 
     {
          Appointment appointment = (Appointment)appointmentRequest; 
@@ -36,11 +34,13 @@ public class AppointmentRequest extends Appointment implements Serializable {
          deleteRequest(appointmentRequest);
     }
     
+    //method to decline an appointment request
     public void declineRequest(AppointmentRequest appointmentRequest)
     {
        deleteRequest(appointmentRequest);
     }
     
+    //method to create a new appointment request
     public void newAppointmentRequest(AppointmentRequest appointmentRequest)
     {
             AppointmentRequest tempRequest;
@@ -52,7 +52,7 @@ public class AppointmentRequest extends Appointment implements Serializable {
     }
     
     
-    
+    //method to add an appointment requests to appointment requests
     public void addAppointmentRequest(AppointmentRequest appointmentRequest)
     {
          ArrayList<AppointmentRequest> appointmentRequests;
@@ -74,6 +74,7 @@ public class AppointmentRequest extends Appointment implements Serializable {
         }   
     }
     
+    //method to return all appointment requests currently stored
     public ArrayList<AppointmentRequest>  getAllAppointmentRequests()
     {
         ArrayList<AppointmentRequest> appointments = new ArrayList<>();
@@ -93,6 +94,7 @@ public class AppointmentRequest extends Appointment implements Serializable {
         return appointments; 
     }
     
+    //returns the next available appointment id
     public int getNextAppointmentId() {
         ArrayList<AppointmentRequest> tempAppointments;
         int appointmentId = 0;
@@ -112,6 +114,7 @@ public class AppointmentRequest extends Appointment implements Serializable {
         return appointmentId;
     }
     
+    //deletes appointment request from request file
     public void deleteRequest(AppointmentRequest appointmentRequest)
     {
         Iterator<AppointmentRequest> it = getAllAppointmentRequests().iterator();

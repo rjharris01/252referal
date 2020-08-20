@@ -20,6 +20,7 @@ import java.util.ArrayList;
  *
  * @author Richard Harris
  */
+//stores the request abstract class
 public abstract class Request implements Serializable {
     
     private String type;
@@ -31,7 +32,7 @@ public abstract class Request implements Serializable {
     public int getRequestId() { return requestId;}
     public void setRequestId(int newRequestId){requestId = newRequestId;}
     
-    
+    //returns all requests
     public ArrayList<Request>  getAllRequests()
      {
         ArrayList<Request> requests = new ArrayList<>();
@@ -51,6 +52,7 @@ public abstract class Request implements Serializable {
         return requests; 
      }
     
+    //gets the next available request id
     public int getNextRequestId()
     {
         ArrayList<Request> requests = getAllRequests();

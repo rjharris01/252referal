@@ -14,6 +14,8 @@ import models.user.User;
  *
  * @author richa_bfe6tpy
  */
+
+//This class provide a panel which contains the Admin Modify Secretaries  view.
 public class AdminModifySecretariesView extends javax.swing.JPanel {
 
     /**
@@ -79,6 +81,8 @@ public class AdminModifySecretariesView extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+    
+    //Button listeners
     public void addBackListener(ActionListener listenForSubmit){
         AdminBackButton.addActionListener(listenForSubmit);
     }
@@ -87,10 +91,14 @@ public class AdminModifySecretariesView extends javax.swing.JPanel {
         AdminModifySecretaryDeleteButton.addActionListener(listenForDelete);
     }
     
+    
+     //Get to return Secretary
     public Secretary getSelectedUser(){
         Secretary user = AdminModifySecretaryListBox.getSelectedValue();
         return user;
     }
+    
+    //Functions to setup the Secretary list box
     
     public void clearList()
     {

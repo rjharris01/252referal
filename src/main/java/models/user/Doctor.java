@@ -20,10 +20,12 @@ import models.Rating;
  *
  * @author richa_bfe6tpy
  */
+//stores the doctor user class
 public class Doctor extends User {
     
     private ArrayList<Rating> ratings = new ArrayList();
     
+    //returns a list of all doctors 
     public ArrayList<Doctor>  getAllDoctors()
     {
         ArrayList<User> tempUsers  = new ArrayList<>();
@@ -49,6 +51,7 @@ public class Doctor extends User {
         return doctors; 
     }
     
+    //returns a list of all patients
     public ArrayList<Patient> getAllPatients()
     {
         ArrayList<User> tempUsers  = new ArrayList<>();
@@ -74,16 +77,18 @@ public class Doctor extends User {
         return patients; 
     }
 
-
+    //get and set rating
     public ArrayList<Rating> getRatings() { return ratings;}
     public void setRatings(ArrayList<Rating> newRatings){ratings = newRatings;}
     
+    //adds a new rating to the doctor
     public void addRating(Rating rating)
     {
         ratings.add(rating);   
         updateUser();
     } 
     
+    //returns all appointments that a doctor has
     public ArrayList<Appointment>  getAllAppointments()
     {
         ArrayList<Appointment> appointments = new ArrayList<>();
@@ -110,6 +115,7 @@ public class Doctor extends User {
         return appointments; 
     }
     
+    //updates the doctor 
     public void updateDoctor()
     {
         int index = 0;
@@ -151,6 +157,7 @@ public class Doctor extends User {
         }    
      }
     
+    //retunrs an array list of all medicine objects
     public ArrayList<Medicine>  getAllMedicine()
     {
         ArrayList<Medicine> medicines = new ArrayList<>();

@@ -19,21 +19,26 @@ import models.user.Doctor;
  *
  * @author richa_bfe6tpy
  */
+//Controller for the Doctor start appointment view 
 public class DoctorStartAppointmentController {
+    //Variables declaration
     private DoctorStartAppointmentView theView;
     private Doctor theModel;
     
     public DoctorStartAppointmentController(DoctorStartAppointmentView theView,Doctor theModel)
     {
+        //Construct the controller
         this.theView = theView;
         this.theModel = theModel;
-        
+        //set appointments list
         setAppointments();
         
+        //Connect buttons
         this.theView.addBackListener(new BackListener());
         this.theView.addSubmitListener(new SubmitListener());
     }
     
+    //set appointments list model
     public void setAppointments()
     {
         ArrayList<Appointment> appointments = theModel.getAllAppointments();
@@ -44,18 +49,20 @@ public class DoctorStartAppointmentController {
         theView.setAppointments(model);
     }
     
+    //on button press set the seleceted appointments notes to the user field 
     class SubmitListener implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            Appointment tempAppointment = theView.getAppointment();
-            tempAppointment.setComments(theView.getAppointmentComments());
-            tempAppointment.updateAppointment();
-            theView.resetComments();
+            Appointment tempAppointment = theView.getAppointment(); //selected user appointment 
+            tempAppointment.setComments(theView.getAppointmentComments()); //set notes 
+            tempAppointment.updateAppointment(); //write the update to file 
+            theView.resetComments();//clear the comment section
         }
         
     }
     
+    //return to the doctor main control panel
     class BackListener implements ActionListener{
 
         @Override

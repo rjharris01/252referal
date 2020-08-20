@@ -17,6 +17,8 @@ import javax.swing.JTextField;
  *
  * @author richa_bfe6tpy
  */
+
+//This class provide a panel which contains the Admin Create Account view.
 public class AdminCreateAccountView extends javax.swing.JPanel {
 
     private JComboBox<Object> AdminAccountTypeBox;
@@ -59,6 +61,7 @@ public class AdminCreateAccountView extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void initMyComponents() {
+        //initial setup details for panel
         
         AdminAccountTypeBox = new javax.swing.JComboBox<>();
         AdminCreateAccountTypeLabel = new javax.swing.JLabel();
@@ -176,12 +179,19 @@ public class AdminCreateAccountView extends javax.swing.JPanel {
     }
 
     
+    //clear Name field on focus & reset after
     private void AdminCreateNameFieldFocusLost(java.awt.event.FocusEvent evt) {                                               
         if (AdminCreateNameField.getText().equals(""))
         {
             AdminCreateNameField.setText("Enter Name Here");
         }
-    }                                              
+    }   
+    
+    private void AdminCreateNameFieldFocusGained(java.awt.event.FocusEvent evt) {                                                 
+        AdminCreateNameField.setText("");
+    }     
+    
+    //clear Address on focus & reset after
 
     private void AdminCreateAddressFieldFocusLost(java.awt.event.FocusEvent evt) {                                                  
         if (AdminCreateAddressField.getText().equals(""))
@@ -190,13 +200,11 @@ public class AdminCreateAccountView extends javax.swing.JPanel {
         }
     }                                                 
 
-    private void AdminCreateNameFieldFocusGained(java.awt.event.FocusEvent evt) {                                                 
-        AdminCreateNameField.setText("");
-    }                                                
-
     private void AdminCreateAddressFieldFocusGained(java.awt.event.FocusEvent evt) {                                                    
         AdminCreateAddressField.setText("");
-    }                                                   
+    }        
+    
+    //clear Password on focus & reset afte
 
     private void AdminCreatePasswordFieldFocusGained(java.awt.event.FocusEvent evt) {                                                     
         AdminCreatePasswordField.setText("");
@@ -209,6 +217,7 @@ public class AdminCreateAccountView extends javax.swing.JPanel {
         }
     }    
     
+    //Button listeners for admin create account view
     public void addSubmitListener(ActionListener listenForSubmit){
         AdminCreateSubmitButton.addActionListener(listenForSubmit);
     }
@@ -216,6 +225,8 @@ public class AdminCreateAccountView extends javax.swing.JPanel {
     public void addBackListener(ActionListener listenForSubmit){
         AdminCreateBackButton.addActionListener(listenForSubmit);
     }
+    
+    //getters required for admin account signup 
     
     public String getAccountType(){
                 return AdminAccountTypeBox.getSelectedItem().toString();

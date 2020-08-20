@@ -18,6 +18,7 @@ import models.user.User;
  *
  * @author richa_bfe6tpy
  */
+//This class provide a panel which contains the Secretary delete user request view.
 public class SecretaryDeleteUserRequestView extends javax.swing.JPanel {
 
     private JScrollPane jScrollPane3;
@@ -53,7 +54,7 @@ public class SecretaryDeleteUserRequestView extends javax.swing.JPanel {
             .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    //view setup code
     private void initMyComponents() {
         
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -98,11 +99,7 @@ public class SecretaryDeleteUserRequestView extends javax.swing.JPanel {
         );
     }
 
-    
-    public void setAccountDeleteManualList(DefaultListModel<AccountDeleteRequest> users)
-    {
-        AccountDeleteRequestsList.setModel(users);
-    }
+    //Button listeners
     
     public void addDeleteListener(ActionListener listenForSecretaryDeletePatient){
         DeleteUserRequestButton.addActionListener(listenForSecretaryDeletePatient);
@@ -111,6 +108,14 @@ public class SecretaryDeleteUserRequestView extends javax.swing.JPanel {
     public void addBackListener(ActionListener listenForBack){
         DeleteUserRequestBackButton.addActionListener(listenForBack);
     }
+    
+    //Set Account list and get account Element  
+    
+    public void setAccountDeleteManualList(DefaultListModel<AccountDeleteRequest> users)
+    {
+        AccountDeleteRequestsList.setModel(users);
+    }
+    
     
 
     public AccountDeleteRequest getSelectedUser(){

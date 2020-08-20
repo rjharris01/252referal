@@ -5,6 +5,7 @@
  */
 package models.user;
 
+import controllers.UserFactory;
 import models.Medicine;
 import models.NewAccountRequest;
 import models.Request;
@@ -25,7 +26,10 @@ import java.util.Iterator;
  *
  * @author Richard Harris
  */
+//stores the secretary user class
 public class Secretary extends User {
+    
+    //returns a list of all requests
     public ArrayList<Request> getAllRequests()
     {
        
@@ -45,7 +49,9 @@ public class Secretary extends User {
 		}
         return requests; 
     }
+   
     
+    //returns a list of all new account requests
    public ArrayList<NewAccountRequest> getAllNewAccountRequests()
    {
       ArrayList<NewAccountRequest> requests = new ArrayList<>();
@@ -60,6 +66,8 @@ public class Secretary extends User {
       return requests;
    }
    
+   
+   //returns a list of all appointment requests
     public ArrayList<NewAppointmentRequest> getAllNewAppointmentRequest()
    {
       ArrayList<NewAppointmentRequest> requests = new ArrayList<>();
@@ -74,7 +82,7 @@ public class Secretary extends User {
       return requests;
    }
     
-    
+    //returns a list of all delete account requests
     public ArrayList<AccountDeleteRequest> getAllAccountDeleteRequest()
    {
       ArrayList<AccountDeleteRequest> requests = new ArrayList<>();
@@ -89,6 +97,7 @@ public class Secretary extends User {
       return requests;
    }
     
+    //method for secretary to order more medicine
     public ArrayList<Medicine> orderMedicine(int medicineId, int orderAmount) //void later
     {
         ArrayList<Medicine> medicines;
@@ -118,6 +127,7 @@ public class Secretary extends User {
         return medicines;
     }
    
+    //returns a list of all medicines
     public ArrayList<Medicine>  getAllMedicine()
     {
         ArrayList<Medicine> medicines = new ArrayList<>();
@@ -137,15 +147,17 @@ public class Secretary extends User {
         return medicines; 
      }
     
-    public void approveAccountRequest(NewAccountRequest accountRequest)
+    
+    //method to approve a account request and returns user id string
+    public String approveAccountRequest(NewAccountRequest accountRequest)
     {
         try{
-             User tempUser = accountRequest.getUser();
+            
+             UserFactory uf = new UserFactory();
+             Patient tempUser = (Patient) accountRequest.getUser();
         
              
-        
-        tempUser.setUserId(tempUser.getNextUserId("P"));
-        tempUser.writeNewUser();
+        tempUser = (Patient) uf.makeNewUser("Patient", tempUser.getName(), tempUser.getPassword(), tempUser.getAddress(), tempUser.getGender(), tempUser.getRegisterDate());
         ArrayList<Request> requests = this.getAllRequests();
         Iterator<Request> iter = requests.iterator();
         while (iter.hasNext())
@@ -157,24 +169,23 @@ public class Secretary extends User {
                 updateRequests(requests);
             }
         }
+        return tempUser.getUserId();
         
        } 
         
         catch (java.lang.NullPointerException e)
              {
-                 System.out.print("No Use requests");
+                 return ("No User requests");
              }
     }
     
+    
+    //method to decline a new account request
     public void declineAccountRequest(NewAccountRequest accountRequest)
     {
         try{
             
         User tempUser = accountRequest.getUser();
-        
-             
-        
-        tempUser.setUserId(tempUser.getNextUserId("P"));
         ArrayList<Request> requests = this.getAllRequests();
         Iterator<Request> iter = requests.iterator();
         while (iter.hasNext())
@@ -195,11 +206,13 @@ public class Secretary extends User {
              }
     }
     
+    //method to approve a new appointment request
     public void approveAppointmentRequest(NewAppointmentRequest appointmentRequest)
     {
         appointmentRequest.getAppointmentRequest().approveRequest(appointmentRequest.getAppointmentRequest());
     }
     
+    //method to delete any request
     public void deleteRequest(Request request)
     {
         ArrayList<Request> requests;
@@ -218,6 +231,8 @@ public class Secretary extends User {
         updateRequests(requests);
     }
     
+    
+    //method to delete user
     public void deleteUser(String userID)
      {
          ArrayList<User> users = this.getAllUsers();
@@ -247,6 +262,7 @@ public class Secretary extends User {
         }    
      }
      
+    //method to update requests file
     public void updateRequests(ArrayList<Request> requests)
     {
         try
@@ -271,6 +287,7 @@ public class Secretary extends User {
         
     }
     
+    //method returns all appointment requests
      public ArrayList<AppointmentRequest>  getAllAppointmentRequests()
     {
         ArrayList<AppointmentRequest> appointments = null;
@@ -290,6 +307,7 @@ public class Secretary extends User {
         return appointments; 
     }
      
+    //method returns all patients 
     public ArrayList<Patient> getAllPatients()
     {
         ArrayList<User> tempUsers  = new ArrayList<>();

@@ -16,23 +16,25 @@ import models.user.User;
  *
  * @author richa_bfe6tpy
  */
+//Controller for the login view 
 public class SecretaryDeleteUserManualController {
-    
+    //Variables declaration
     private SecretaryDeleteUserManualView theView;
     private Secretary theModel;
     
     
     public SecretaryDeleteUserManualController(SecretaryDeleteUserManualView theView, Secretary theModel){
-        
+         //Construct the controller
         this.theView = theView;
         this.theModel = theModel;
-       
+       //Connect buttons
         this.theView.addBackListener(new BackListener());
         this.theView.addDeleteListener(new DeleteListener());
-        
+        //set patient list on load
         setPatientList();
     }
     
+    //return to secretary control panel view and controller
     class BackListener implements ActionListener{
 
         @Override
@@ -45,15 +47,17 @@ public class SecretaryDeleteUserManualController {
         }
     }
     
+    
+    //on button press delete selected user
     class DeleteListener implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent e) {
              
              try{
-                    User user = theView.getSelectedUser();
-                    theModel.deleteUser(user.getUserId());
-                    setPatientList();
+                    User user = theView.getSelectedUser();//get selected user
+                    theModel.deleteUser(user.getUserId());//delete user
+                    setPatientList();//update list
                  
                     
                    
@@ -67,6 +71,7 @@ public class SecretaryDeleteUserManualController {
         }
     }
     
+    //set patient list 
     public void setPatientList()
     {
         DefaultListModel<User> model = new DefaultListModel<>();

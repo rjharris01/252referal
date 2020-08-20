@@ -23,15 +23,17 @@ import models.user.User;
  *
  * @author richa_bfe6tpy
  */
+//Controller for the Admin control panel view 
 public class AdminController {
     private AdminView theView;
     private Administrator theModel;
     
     public AdminController(AdminView theView,Administrator theModel)
     {
+        //Construct the controller
         this.theView = theView;
         this.theModel = theModel;
-        
+        //Connect buttons
         this.theView.addAdminCreateAccountListener(new AdminCreateAccountListener());
         this.theView.addAdminModifyDoctorsListener(new AdminModifyDoctorsListener());
         this.theView.addAdminViewRatingsListener(new AdminViewRatingsListener());
@@ -40,14 +42,13 @@ public class AdminController {
         this.theView.addDoctorFeedbackListener(new AdminDoctorFeedbackListener());
     }
     
+    //Switch to admin create account view and controller on button press
     class AdminCreateAccountListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
             
                 AdminCreateAccountView newView = new AdminCreateAccountView();
-                
-                
                 AdminCreateAccountController theController = new AdminCreateAccountController(newView, theModel, false);
                 theView.setVisible(false);
                 newView.setVisible(true);
@@ -56,6 +57,7 @@ public class AdminController {
         
     }
     
+    //Switch to admin modifiy doctors view and controller on button press
     class AdminModifyDoctorsListener implements ActionListener {
 
         @Override
@@ -71,6 +73,7 @@ public class AdminController {
         
     }
     
+    //Switch to admin generate doctor feedback view and controller on button press
     class AdminDoctorFeedbackListener implements ActionListener {
 
         @Override
@@ -86,6 +89,7 @@ public class AdminController {
         
     }
     
+    //Switch to admin view ratings and controller on button press
     class AdminViewRatingsListener implements ActionListener {
 
         @Override
@@ -99,6 +103,7 @@ public class AdminController {
         
     }
     
+    //Switch to login and set account login status to false view and controller on button press
     class AdminLogoutListener implements ActionListener {
 
         @Override
@@ -116,6 +121,7 @@ public class AdminController {
         
     }
     
+    //Switch to admin modify secretaries view and controller on button press
     class AdminModifySecretariesListener implements ActionListener {
 
         @Override

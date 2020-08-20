@@ -25,16 +25,19 @@ import models.user.User;
  *
  * @author richa_bfe6tpy
  */
+//Controller for the secretary main control panel view 
 public class SecretaryController {
+    //Variables declaration
     private SecretaryView theView;
     private Secretary theModel;
     
     public SecretaryController(SecretaryView theView,Secretary theModel)
     {
+        //Construct the controller
         this.theView = theView;
         this.theModel = theModel;
        
-        
+        //Connect buttons
         this.theView.addSecratryApprovePatientListener(new SecretaryApprovePatientListener());
         this.theView.addSecratryCreateAppointmentListener(new SecretaryCreateAppointmentListener());
         this.theView.addSecratryOrderMedicineListener(new SecretaryOrderMedicineListener());
@@ -47,6 +50,7 @@ public class SecretaryController {
         
     }
     
+    //Switch to Secretary Approve Patient view and controller on button press
     class SecretaryApprovePatientListener implements ActionListener {
 
         @Override
@@ -62,6 +66,7 @@ public class SecretaryController {
         
     }
     
+    //Switch to Secretary create appointment view and controller on button press
     class SecretaryCreateAppointmentListener implements ActionListener {
 
        @Override
@@ -77,6 +82,7 @@ public class SecretaryController {
         
     }
     
+    //Switch to Secretary order medicine view and controller on button press
     class SecretaryOrderMedicineListener implements ActionListener {
 
         @Override
@@ -92,6 +98,7 @@ public class SecretaryController {
         
     }
     
+    //Switch to Secretary delete patient request view and controller on button press
     class SecretaryDeletePatientRequestListener implements ActionListener {
 
         @Override
@@ -106,6 +113,7 @@ public class SecretaryController {
         }
     }
     
+    //Switch to Secretary delete patient manual view and controller on button press
     class SecretaryDeleteUserListener implements ActionListener {
 
         @Override
@@ -121,6 +129,7 @@ public class SecretaryController {
         
     }
     
+    //Switch to Secretary complete perscription view and controller on button press
     class SecretaryCompletePerscriptionListener implements ActionListener {
 
         @Override
@@ -137,7 +146,7 @@ public class SecretaryController {
     }
     
     
-    
+    //return to login view and controller on button press
     class LogoutListener implements ActionListener {
 
         @Override
@@ -154,6 +163,8 @@ public class SecretaryController {
         
     }
     
+    
+    //Switch to Secretary approve appointment request view and controller on button press
     class SecretaryApproveAppointmentListener implements ActionListener {
 
         @Override

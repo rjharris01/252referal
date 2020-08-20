@@ -19,46 +19,52 @@ import models.user.Secretary;
  *
  * @author richa_bfe6tpy
  */
+//Controller for the secretary order medicine view 
 public class SecretaryOrderMedicineController {
+    
+    //Variables declaration
     private SecretaryOrderMedicineView theView;
     private Secretary theModel;
     
     
     public SecretaryOrderMedicineController(SecretaryOrderMedicineView theView, Secretary theModel){
-        
+        //Construct the controller
         this.theView = theView;
         this.theModel = theModel;
-        
+        //set medicine list on load
         setMedicines();
-        
+        //Connect buttons
         this.theView.addBackListener(new BackListener());
         this.theView.addOrderListener(new OrderListener());
        
     }
     
+    //set combo box medicines 
     public void setMedicines(){
-        ArrayList<Medicine> medicines = theModel.getAllMedicine();
+        ArrayList<Medicine> medicines = theModel.getAllMedicine();//get medicines
         DefaultComboBoxModel<Medicine> model = new DefaultComboBoxModel();
         for(Medicine m : medicines)
         {
-            model.addElement(m);
+            model.addElement(m);//add each medicine to model
         }
-        theView.setSecretaryOrderMedecineMedicinesBox(model);
+        theView.setSecretaryOrderMedecineMedicinesBox(model);//set model
     }
     
+    
+    //on button press oder medicine
     class OrderListener implements ActionListener
     {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            Medicine m = theView.getSecretaryOrderMedecineMedicinesBox();
-            m.setStock(m.getStock() + theView.getSecretaryOrderMedicineQuantityField());
-            m.updateMedicine();
+            Medicine m = theView.getSecretaryOrderMedecineMedicinesBox();//medicine to order
+            m.setStock(m.getStock() + theView.getSecretaryOrderMedicineQuantityField());// increase the stock
+            m.updateMedicine();//save the medicine 
         }
     
     }
     
-    
+    //return to secretary control panel
     class BackListener implements ActionListener
     {
 

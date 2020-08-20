@@ -20,6 +20,7 @@ import models.Appointment;
  *
  * @author richa_bfe6tpy
  */
+//This class provide a panel which contains the Patient view appointment view.
 public class PatientViewAppointmentView extends javax.swing.JPanel {
 
     /**
@@ -27,7 +28,7 @@ public class PatientViewAppointmentView extends javax.swing.JPanel {
      */
     public PatientViewAppointmentView() {
         initComponents();
-        PatientViewAppointmentListBox.setCellRenderer(createListRenderer());
+        PatientViewAppointmentListBox.setCellRenderer(createListRenderer()); //Sets patient appointment list box to use custom renderer
     }
 
     /**
@@ -80,14 +81,17 @@ public class PatientViewAppointmentView extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-public void addPatientViewAppointmentBackButton(ActionListener listenForPatientViewHistoryBackButotn){
+    //Button Listeners
+    public void addPatientViewAppointmentBackButton(ActionListener listenForPatientViewHistoryBackButotn){
         ViewPatientAppointmentBackButton.addActionListener(listenForPatientViewHistoryBackButotn);
     }
     
+    //Set patient appointments  list model 
     public void setPatientHistory(DefaultListModel<Appointment>model){
         PatientViewAppointmentListBox.setModel(model);
     }
     
+    //Custom cell renderer for appointment DR:DATE  
     private static ListCellRenderer<? super Appointment> createListRenderer() {
       return new DefaultListCellRenderer() {
           private Color background = new Color(0, 100, 255, 15);

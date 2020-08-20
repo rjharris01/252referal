@@ -6,24 +6,21 @@
 package models.user;
 
 import controllers.RequestMaker;
-import java.io.File;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Scanner;
-import models.Rating;
 import models.Appointment;
 import models.Perscription;
 /**
  *
  * @author richa_bfe6tpy
  */
+//stores the patient user class
 public class Patient extends User {
     
     private String gender;
@@ -38,19 +35,20 @@ public class Patient extends User {
     
     public LocalDate getBirthday() { return birthday;}
     public void setBirthday(LocalDate newBirthday){birthday = newBirthday;}
-    
+    //adds a perscription to the users perscription list
     public void addPerscription(Perscription perscription)
     {
         this.Perscriptions.add(perscription);   
         this.updateUser();
     } 
-    
+    //deletes a perscription from a user
     public void removePerscription(Perscription perscription){
         ArrayList <Perscription> perscriptions = this.getPerscriptions();
         perscriptions.remove(perscription);
         this.updateUser();
     }
     
+    //returns a list of all the users's appointments 
     public ArrayList<Appointment>  getAllAppointments()
     {
         ArrayList<Appointment> appointments = new ArrayList<>();
@@ -77,6 +75,7 @@ public class Patient extends User {
         return appointments; 
     }
     
+    //returns a list of all users pass appointments
     public ArrayList<Appointment>  getAllPastAppointments()
     {
         ArrayList<Appointment> appointments = new ArrayList<>();
@@ -109,6 +108,7 @@ public class Patient extends User {
         return appointments; 
     }
     
+    //returns a list of all patients future appointments
     public ArrayList<Appointment>  getAllFutureAppointments()
     {
         ArrayList<Appointment> appointments = new ArrayList<>();
@@ -141,7 +141,33 @@ public class Patient extends User {
         return appointments; 
     }
     
+    //returns a list of all doctors 
+    public ArrayList<Doctor> getAllDoctors()
+    {
+        ArrayList<User> tempUsers  = new ArrayList<>();
+        ArrayList<Doctor> doctors  = new ArrayList<>();
+        try {
+                        FileInputStream fis = new FileInputStream("User.ser");
+			ObjectInputStream ois = new ObjectInputStream(fis);
+                        tempUsers = (ArrayList) ois.readObject();
+			
+			ois.close();
+                        fis.close();
+                        
+            } catch (FileNotFoundException  e) {
+			System.out.print("No file \n");
+		} catch (IOException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+        for(User u : tempUsers)
+        {
+            if(u instanceof Doctor)
+                doctors.add((Doctor)u);
+        }
+        return doctors; 
+    }
     
+    //creates a request for account deletion
     public void requestAccountTermination()
     {
          RequestMaker rm = new RequestMaker();

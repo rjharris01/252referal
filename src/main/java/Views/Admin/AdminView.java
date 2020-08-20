@@ -13,6 +13,8 @@ import javax.swing.JButton;
  *
  * @author richa_bfe6tpy
  */
+
+//This class provide a panel which contains the Admin main control panel view.
 public class AdminView extends javax.swing.JPanel {
 
     private Label label2;
@@ -52,6 +54,7 @@ public class AdminView extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    //panel setup code
     public void myInitComponents() {
         label2 = new java.awt.Label();
         AdminCreateAccountButton = new javax.swing.JButton();
@@ -128,7 +131,7 @@ public class AdminView extends javax.swing.JPanel {
     
     
     
-    
+    //button listeners
     
     public void addAdminCreateAccountListener(ActionListener listenForAdminCreateAccount){
         AdminCreateAccountButton.addActionListener(listenForAdminCreateAccount);

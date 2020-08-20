@@ -20,23 +20,28 @@ import models.user.Doctor;
  *
  * @author richa_bfe6tpy
  */
+//Controller for the doctor feedback view 
 public class AdminDoctorFeedBackController {
+    //Variables declaration
     private AdminDoctorFeedBackView theView;
     private Administrator theModel;
     
     
     public AdminDoctorFeedBackController(AdminDoctorFeedBackView theView, Administrator theModel){
-        
+        //Construct the controller
         this.theView = theView;
         this.theModel = theModel;
         
+        //set Doctors list
         setDoctors();
         
+        //Connect buttons
         this.theView.addBackListener(new BackListener());
         this.theView.addGenerateFeedBackListener(new FeedBackListener());
         
     }
     
+    //set docors combo box
     public void setDoctors(){
         ArrayList<Doctor> doctors = theModel.getAllDoctors();
         DefaultComboBoxModel <Doctor> model = new DefaultComboBoxModel();
@@ -49,6 +54,7 @@ public class AdminDoctorFeedBackController {
         theView.setDoctors(model);
     }
     
+    //return to admin control panel
     class BackListener implements ActionListener{
 
         @Override
@@ -61,15 +67,16 @@ public class AdminDoctorFeedBackController {
         }
     }
     
+    //on button click generate feedback for selected doctor
     class FeedBackListener implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            Doctor selectedDoctor = theView.getDoctor();
+            Doctor selectedDoctor = theView.getDoctor(); //gets selected doctor 
             Integer average = 0;
-            ArrayList<Rating> ratings = selectedDoctor.getRatings();
+            ArrayList<Rating> ratings = selectedDoctor.getRatings(); 
             selectedDoctor.getRatings();
-            for (Rating r : ratings)
+            for (Rating r : ratings)//gets average of rating
             {
                 average = average + r.getRating();
             }

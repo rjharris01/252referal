@@ -7,7 +7,6 @@ package controllers.Secretary;
 
 import Views.Secretary.SecretaryAppointmentView;
 import Views.Secretary.SecretaryView;
-import controllers.Admin.AdminCreateAccountController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
@@ -25,28 +24,35 @@ import models.user.User;
  *
  * @author richa_bfe6tpy
  */
+//Controller for the Secretary Appointment view 
 public class SecretaryAppointmentController {
+        //Variables declaration
         private SecretaryAppointmentView theView;
         private Secretary theModel;
 
 
         public SecretaryAppointmentController(SecretaryAppointmentView theView, Secretary theModel){
-
+            //Construct the controller
             this.theView = theView;
             this.theModel = theModel;
             
+            //Set Doctors and patients lists on load
             setDoctorsPatients();
             
-             this.theView.addSubmitListener(new SecretaryAppointmentController.SubmitListener());
-             this.theView.addBackListener(new SecretaryAppointmentController.BackListener());
+
+            //Connect buttons
+            this.theView.addSubmitListener(new SecretaryAppointmentController.SubmitListener());
+            this.theView.addBackListener(new SecretaryAppointmentController.BackListener());
             
            
 
         }
         
+        
+        //set all doctors and patients in to correct list boxes
         public void setDoctorsPatients(){
             ArrayList<User> users;
-            DefaultComboBoxModel<Patient> patientModel = new DefaultComboBoxModel<>();
+            DefaultComboBoxModel<Patient> patientModel = new DefaultComboBoxModel<>(); 
             DefaultComboBoxModel<Doctor> doctorModel = new DefaultComboBoxModel<>();
             
             users =  theModel.getAllUsers();
@@ -54,37 +60,38 @@ public class SecretaryAppointmentController {
             {
                 if ("D".equals(String.valueOf(user.getUserId().charAt(0))))
                 {
-                    doctorModel.addElement((Doctor) user);
+                    doctorModel.addElement((Doctor) user); //create list of doctors 
 
                 }
 
                 else if ("P".equals(String.valueOf(user.getUserId().charAt(0))))
                 {
-                    patientModel.addElement((Patient) user);
+                    patientModel.addElement((Patient) user); //create list of patients 
                 }
             }
             
-            setDoctors(doctorModel);
-            setPatients(patientModel);
+            setDoctors(doctorModel); //set list model
+            setPatients(patientModel);// set list model
             
         }
         
-        
+        //set model in view
         public void   setDoctors (DefaultComboBoxModel<Doctor> Doctors){
             this.theView.setDoctors(Doctors);
         }
         
+        //set model in view
         public void   setPatients (DefaultComboBoxModel<Patient> Patients){
             this.theView.setPatients(Patients);
         }
         
-        
+        //on submit create appointment between patient and doctor on a given date
         class SubmitListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
             try{
-                Doctor doctor =  theView.getDoctor();
-                Patient patient = theView.getPatient();
+                Doctor doctor =  theView.getDoctor(); //the patient 
+                Patient patient = theView.getPatient();//the doctor 
         
                 String day,month,year,hour,minute;
 
@@ -97,14 +104,14 @@ public class SecretaryAppointmentController {
 
                 String str = (year +"-"+ month +"-"+day+" "+hour+":"+minute);
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-                LocalDateTime appointmentDate = LocalDateTime.parse(str, formatter);
+                LocalDateTime appointmentDate = LocalDateTime.parse(str, formatter); //the date
 
-                AppointmentRequest appointmentRequest = new AppointmentRequest();
-                appointmentRequest.setAppointmentDate(appointmentDate);
+                AppointmentRequest appointmentRequest = new AppointmentRequest();//new appointment request
+                appointmentRequest.setAppointmentDate(appointmentDate);//set appointment request
                 appointmentRequest.setDoctor(doctor);
                 appointmentRequest.setPatient(patient);
                 appointmentRequest.newAppointmentRequest(appointmentRequest);
-                appointmentRequest.approveRequest(appointmentRequest);
+                appointmentRequest.approveRequest(appointmentRequest);//approved by secretary 
                 
                 
             
@@ -117,6 +124,7 @@ public class SecretaryAppointmentController {
     
         }
         
+        //return to secretary control panel view on button press
         class BackListener implements ActionListener{
 
         @Override

@@ -13,6 +13,8 @@ import models.NewAppointmentRequest;
  *
  * @author richa_bfe6tpy
  */
+
+//This class provide a panel which contains the Secretary approve appointment view.
 public class SecretaryApproveAppointmentView extends javax.swing.JPanel {
 
     /**
@@ -107,6 +109,8 @@ public class SecretaryApproveAppointmentView extends javax.swing.JPanel {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
+    
+    //Button listeners
     public void addAcceptListener(ActionListener listenForSecretaryApproveAppointment){
         SecretaryApprovePatientApproveButton.addActionListener(listenForSecretaryApproveAppointment);
     }
@@ -118,6 +122,8 @@ public class SecretaryApproveAppointmentView extends javax.swing.JPanel {
     public void addDeclineListener(ActionListener listenForSecretaryDeclineAppointment){
         SecretaryApprovePatientDeclineButton.addActionListener(listenForSecretaryDeclineAppointment);
     }
+    
+    //set newappointmentRequests list model and get newappointmentRequests element
     
     public NewAppointmentRequest getSelectedAppointmentRequest(){
         NewAppointmentRequest newAppointmentRequest = SecretaryApprovePatientListBox.getSelectedValue();

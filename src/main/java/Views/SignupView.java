@@ -18,6 +18,8 @@ import javax.swing.JTextField;
  *
  * @author richa_bfe6tpy
  */
+
+//This class provide a panel which contains the signup view.
 public class SignupView extends javax.swing.JPanel {
 
     private JTextField SignupNameField;
@@ -245,6 +247,8 @@ public class SignupView extends javax.swing.JPanel {
         
     }
     
+    
+   //clear password field on focus & reset after
     private void SignupPasswordFieldFocusLost(java.awt.event.FocusEvent evt) {                                              
        if (SignupPasswordField.getPassword().length == 0)
         {
@@ -255,6 +259,8 @@ public class SignupView extends javax.swing.JPanel {
     private void SignupPasswordFieldFocusGained(java.awt.event.FocusEvent evt) {                                                
         SignupPasswordField.setText("");
     }  
+    
+    //Set date selector group box's
     
     private void SignupDateYearItemStateChanged(java.awt.event.ItemEvent evt) {                                                
          setSignupDays(Integer.parseInt(SignupDateMonth.getSelectedItem().toString()));
@@ -303,6 +309,8 @@ public class SignupView extends javax.swing.JPanel {
                 break;
         }
     }
+    
+    //clear Address field on focus & reset after
     private void SignupAddressFieldFocusGained(java.awt.event.FocusEvent evt) {                                               
         SignupAddressField.setText("");
     }                                              
@@ -313,6 +321,9 @@ public class SignupView extends javax.swing.JPanel {
             SignupAddressField.setText("Enter Address Here");
         }
     }    
+    
+    
+    //clear Name field on focus & reset after
     private void SignupNameFieldFocusLost(java.awt.event.FocusEvent evt) {                                          
         if (SignupNameField.getText().equals(""))
         {
@@ -321,7 +332,11 @@ public class SignupView extends javax.swing.JPanel {
     }                                         
     private void SignupNameFieldFocusGained(java.awt.event.FocusEvent evt) {                                            
         SignupNameField.setText("");
-    }                                           
+    }      
+    
+    
+    
+    //function to provide current date - 130 years and return 
     
     private void setSignupYears()
     {
@@ -333,7 +348,7 @@ public class SignupView extends javax.swing.JPanel {
     
 
     
-    
+    //button listeners
     
     public void addSubmitListener(ActionListener listenForSubmit){
         SignupSubmitButton.addActionListener(listenForSubmit);
@@ -344,7 +359,7 @@ public class SignupView extends javax.swing.JPanel {
     }
     
         
-        
+    //getters required for signup    
         
     public String getSignupName(){
         return SignupNameField.getText();

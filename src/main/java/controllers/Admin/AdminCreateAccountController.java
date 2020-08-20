@@ -21,6 +21,8 @@ import models.user.User;
  * @author richa_bfe6tpy
  */
 public class AdminCreateAccountController {
+    
+    //Variables declaration
     private AdminCreateAccountView theView;
     private Administrator theModel;
     private Boolean first;
@@ -28,20 +30,24 @@ public class AdminCreateAccountController {
     
     public AdminCreateAccountController(AdminCreateAccountView theView, Administrator theModel, Boolean first){
         
+        //Construct the controller
         this.theView = theView;
         this.theModel = theModel;
         this.first = first;
         
+        //listen if the account is the first account created
         if (first)
         {
             theView.setFirstAccountType();
         }
         
+        //Connect buttons
         this.theView.addSubmitListener(new SubmitListener());
         this.theView.addBackListener(new BackListener());
         
     }
     
+     //Create account on button press
     class SubmitListener implements ActionListener{
 
         @Override
@@ -51,8 +57,8 @@ public class AdminCreateAccountController {
        
                 
                 UserFactory NewUserFactory = new UserFactory();
-                User user = (User) NewUserFactory.makeNewUser(theView.getAccountType(), theView.getAccountName(), theView.getAccountPassword(),theView.getAccountAddress(),null,null);
-                JOptionPane.showMessageDialog(null, "Account\n"+ user.getUserId() + "\nCreated");
+                User user = (User) NewUserFactory.makeNewUser(theView.getAccountType(), theView.getAccountName(), theView.getAccountPassword(),theView.getAccountAddress(),null,null); //new user factory that creates a new user
+                JOptionPane.showMessageDialog(null, "Account\n"+ user.getUserId() + "\nCreated");// notify that the account has been created
                 
                 
                 
@@ -67,6 +73,7 @@ public class AdminCreateAccountController {
     
     }
     
+    //return to admin pannel on button press
     class BackListener implements ActionListener{
 
         @Override

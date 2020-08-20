@@ -24,35 +24,39 @@ import models.user.User;
  *
  * @author richa_bfe6tpy
  */
+//Controller for the patient request appointment view 
 public class PatientRequestAppointmentController {
+    //Variables declaration
     private PatientRequestAppointmentView theView;
     private Patient theModel;
     
     public PatientRequestAppointmentController(PatientRequestAppointmentView theView,Patient theModel)
     {
+        //Construct the controller
         this.theView = theView;
         this.theModel = theModel;
+        //Connect buttons
         this.theView.addBackListener(new BackListener());
         this.theView.addSubmitListener(new SubmitListener());
+        //set doctors list on load
         setDoctors();
        
     }
     
+    //set doctors combo list box
     public void setDoctors(){
-            ArrayList<User> users;
+            ArrayList<Doctor> doctors;
             DefaultComboBoxModel<Doctor> doctorModel = new DefaultComboBoxModel<>();
             
-            users =  theModel.getAllUsers();
-            for (User user: users)
+            doctors =  theModel.getAllDoctors();
+            for (Doctor d: doctors)
             {
-                if ("D".equals(String.valueOf(user.getUserId().charAt(0))))
-                {
-                    doctorModel.addElement((Doctor) user);
-                }
+               doctorModel.addElement(d);  
             }
             this.theView.setDoctors(doctorModel);
         }
     
+    //return to patient control panel on button press
     class BackListener implements ActionListener{
 
         @Override
@@ -66,6 +70,7 @@ public class PatientRequestAppointmentController {
         
     }
     
+    //on button press create a request for a new appointment
     class SubmitListener implements ActionListener{
 
         @Override
@@ -87,13 +92,13 @@ public class PatientRequestAppointmentController {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
                 LocalDateTime appointmentDate = LocalDateTime.parse(str, formatter);
 
-                AppointmentRequest appointmentRequest = new AppointmentRequest();
-                appointmentRequest.setAppointmentDate(appointmentDate);
+                AppointmentRequest appointmentRequest = new AppointmentRequest(); //create new request object
+                appointmentRequest.setAppointmentDate(appointmentDate);//set request object data
                 appointmentRequest.setDoctor(doctor);
                 appointmentRequest.setPatient(patient);
                 
-                RequestMaker rm = new RequestMaker();
-                rm.appointmentRequest(appointmentRequest);
+                RequestMaker rm = new RequestMaker(); //create request maker instance 
+                rm.appointmentRequest(appointmentRequest); // generate request
                 
                 
                 

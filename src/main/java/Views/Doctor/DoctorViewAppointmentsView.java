@@ -20,6 +20,7 @@ import models.Appointment;
  *
  * @author richa_bfe6tpy
  */
+//This class provide a panel which contains the Doctor view appointments View.
 public class DoctorViewAppointmentsView extends javax.swing.JPanel {
 
     /**
@@ -78,14 +79,19 @@ public class DoctorViewAppointmentsView extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+    //Button Listener
     public void addBackListener(ActionListener listenForBack){
         DoctorBackButton.addActionListener(listenForBack);
     }
+    
+    //Set Appointment list
     
     public void setDoctorViewAppointmentsList(DefaultListModel<Appointment> model){
         DoctorViewAppointmentsList.setModel(model);
     }
     
+    
+    //Custom cell renderer for appointments Patient:Appointment date
     private static ListCellRenderer<? super Appointment> createListRenderer() {
       return new DefaultListCellRenderer() {
           private Color background = new Color(0, 100, 255, 15);

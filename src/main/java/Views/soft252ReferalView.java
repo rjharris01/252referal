@@ -30,11 +30,13 @@ public class soft252ReferalView extends javax.swing.JFrame {
      * Creates new form soft252ReferalView
      */
     
+    //entry point for the program
+    
     private JPanel panelMain;
     
     private User theUser = new User() {};
     
-    public soft252ReferalView() {   
+    public soft252ReferalView() {    //main loop 
         panelMain = new JPanel();
         add(panelMain);
        
@@ -83,7 +85,7 @@ public class soft252ReferalView extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    //Check wether user.ser file has been created and has a user if not run first inistilisation
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
        
        if(theUser.getAllUsers().isEmpty())
@@ -102,7 +104,7 @@ public class soft252ReferalView extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]) { //main function
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
