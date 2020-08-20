@@ -57,7 +57,19 @@ public class PatientLeaveFeedbackForDoctorController {
         public void actionPerformed(ActionEvent e) {
             try{
                 Appointment appointment = theView.getAppointment();
-                Doctor doctor =  appointment.getDoctor();
+                Doctor doctor = new Doctor();
+                ArrayList<Doctor> doctors = doctor.getAllDoctors();
+                for(Doctor d : doctors)
+                {
+                    if(doctor.getUserId() == appointment.getDoctor().getUserId())
+                    {
+                        doctor = d;
+                    }
+                }
+                    
+                
+                
+                
                 Patient patient = appointment.getPatient();
                 Rating rating = new Rating();
                 rating.setDoctor(doctor);
@@ -67,6 +79,7 @@ public class PatientLeaveFeedbackForDoctorController {
                 rating.setAppointment(appointment);
                 
                 doctor.addRating(rating);
+                doctor.updateDoctor();
                 
                 } catch(Exception ex)
                     

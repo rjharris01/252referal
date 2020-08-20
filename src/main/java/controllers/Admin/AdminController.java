@@ -6,6 +6,7 @@
 package controllers.Admin;
 
 import Views.Admin.AdminCreateAccountView;
+import Views.Admin.AdminDoctorFeedBackView;
 import Views.Admin.AdminModifyDoctorsView;
 import Views.Admin.AdminModifySecretariesView;
 import Views.Admin.AdminView;
@@ -74,7 +75,13 @@ public class AdminController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                AdminDoctorFeedBackView newView = new AdminDoctorFeedBackView();
+                
+                
+                AdminDoctorFeedBackController theController = new AdminDoctorFeedBackController(newView, theModel);
+                theView.setVisible(false);
+                newView.setVisible(true);
+                theView.getParent().add(newView,SwingConstants.CENTER);
         }
         
     }

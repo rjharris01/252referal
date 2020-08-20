@@ -80,8 +80,8 @@ public class Doctor extends User {
     
     public void addRating(Rating rating)
     {
-        this.ratings.add(rating);   
-        this.updateDoctor();
+        ratings.add(rating);   
+        updateUser();
     } 
     
     public ArrayList<Appointment>  getAllAppointments()
