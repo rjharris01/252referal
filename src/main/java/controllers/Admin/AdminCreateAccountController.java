@@ -7,6 +7,8 @@ package controllers.Admin;
 
 import Views.Admin.AdminCreateAccountView;
 import Views.Admin.AdminView;
+import Views.LoginView;
+import controllers.LoginController;
 import controllers.UserFactory;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -58,8 +60,16 @@ public class AdminCreateAccountController {
                 
                 UserFactory NewUserFactory = new UserFactory();
                 User user = (User) NewUserFactory.makeNewUser(theView.getAccountType(), theView.getAccountName(), theView.getAccountPassword(),theView.getAccountAddress(),null,null); //new user factory that creates a new user
-                JOptionPane.showMessageDialog(null, "Account\n"+ user.getUserId() + "\nCreated");// notify that the account has been created
                 
+                if(first == true)
+                {
+                       AdminView adminView = new AdminView();
+                       AdminController adminController = new AdminController(adminView,theModel);
+                       theView.setVisible(false);
+                       adminView.setVisible(true);
+                       theView.getParent().add(adminView,SwingConstants.CENTER);
+                }
+                JOptionPane.showMessageDialog(null, "Account\n"+ user.getUserId() + "\nCreated");// notify that the account has been created
                 
                 
             

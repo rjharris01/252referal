@@ -226,16 +226,21 @@ public class AdminCreateAccountView extends javax.swing.JPanel {
         AdminCreateBackButton.addActionListener(listenForSubmit);
     }
     
+    //Function used to set the view when loading for the first time
+    public void setFirstAccountType(){
+        AdminAccountTypeBox.removeAll();
+        AdminAccountTypeBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"Administrator" }));
+        AdminCreateBackButton.setVisible(false);
+        
+    }
+    
+    
     //getters required for admin account signup 
     
     public String getAccountType(){
                 return AdminAccountTypeBox.getSelectedItem().toString();
     }
     
-    public void setFirstAccountType(){
-        AdminAccountTypeBox.removeAll();
-        AdminAccountTypeBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"Administrator" }));
-    }
     
     public String getAccountName(){
         return AdminCreateNameField.getText();
