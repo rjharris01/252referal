@@ -10,7 +10,9 @@ import Views.Doctor.DoctorView;
 import controllers.MedicineFactory;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
+import models.Medicine;
 import models.user.Doctor;
 
 /**
@@ -57,8 +59,9 @@ public class DoctorCreateNewMedicineController {
         @Override
         public void actionPerformed(ActionEvent e) {
             MedicineFactory mf = new MedicineFactory();//create new instance of medicine factory
-            mf.makeNewMedicine(theView.getDoctorCreateMedicineField(),theModel);//uses medicine factory to create new medicine
+            Medicine m = mf.makeNewMedicine(theView.getDoctorCreateMedicineField(),theModel);//uses medicine factory to create new medicine
             theView.clearDoctorCreateMedicineField();
+            JOptionPane.showMessageDialog(null, "Medcine\n"+ m.getName() +"\nCreated");// notify that the account has been created
         }
         
         

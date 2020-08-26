@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import models.Medicine;
 import models.user.Secretary;
@@ -72,6 +73,7 @@ public class SecretaryOrderMedicineController {
             }
             theModel.getMedicineOutOfStock().remove(temp);
             m.updateMedicine();//save the medicine 
+            JOptionPane.showMessageDialog(null, "Medcine:"+ m.getName() +"\nCurrent Stock:" + m.getStock());// notify that the account has been created
         }
     
     }
