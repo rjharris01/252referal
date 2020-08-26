@@ -21,13 +21,20 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
+import models.Observer;
 
 /**
  *
  * @author Richard Harris
  */
 //stores the secretary user class
-public class Secretary extends User {
+public class Secretary extends User implements Observer{
+    
+    ArrayList<Medicine> medicineOutOfStock = new ArrayList();
+    
+    public ArrayList<Medicine> getMedicineOutOfStock(){
+        return medicineOutOfStock;
+    }
     
     //returns a list of all requests
     public ArrayList<Request> getAllRequests()
@@ -336,6 +343,29 @@ public class Secretary extends User {
      @Override
     public String toString() {
         return ("Name: " + this.getName() + " ID:" + this.getUserId());
+    }
+    
+
+            
+    //update observer method
+    @Override
+    public void update(Object o) {
+        Medicine m = (Medicine)o;
+        ArrayList<Medicine>toRemove = new ArrayList();
+        
+        for(Medicine medicine: medicineOutOfStock)
+        {
+            if(medicine.getMedId() == m.getMedId() || medicine.getInstock())
+            {
+                toRemove.add(medicine); //remove all instock medicine
+            }
+        }
+        
+        medicineOutOfStock.add(m);
+        medicineOutOfStock.removeAll(toRemove);
+        
+        
+        this.updateUser();
     }
 }
 

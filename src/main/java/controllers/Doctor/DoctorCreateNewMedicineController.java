@@ -57,7 +57,7 @@ public class DoctorCreateNewMedicineController {
         @Override
         public void actionPerformed(ActionEvent e) {
             MedicineFactory mf = new MedicineFactory();//create new instance of medicine factory
-            mf.makeNewMedicine(theView.getDoctorCreateMedicineField());//uses medicine factory to create new medicine
+            mf.makeNewMedicine(theView.getDoctorCreateMedicineField(),theModel);//uses medicine factory to create new medicine
             theView.clearDoctorCreateMedicineField();
         }
         

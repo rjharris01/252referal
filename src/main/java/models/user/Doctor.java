@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Iterator;
 import models.Appointment;
 import models.Medicine;
 import models.Rating;
@@ -176,6 +177,32 @@ public class Doctor extends User {
 		}
         return medicines; 
      }
+    
+    public ArrayList<Secretary> getAllSecretaries()
+    {
+      
+        String UserId = "S";
+        
+        ArrayList<User> users = this.getAllUsers();
+        ArrayList<Secretary> secretaries = new  ArrayList();
+        Iterator itr = users.iterator();
+        while (itr.hasNext()) 
+        {
+            User user = (User)itr.next();
+            String userId = user.getUserId();
+            if(UserId.charAt(0) != userId.charAt(0))
+            {
+                itr.remove();    
+            }
+
+        }
+        for(User u: users){
+            secretaries.add((Secretary)u);
+            }
+            
+     
+        return secretaries;
+    }
     
     @Override
     public String toString() {

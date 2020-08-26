@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package models;
+import java.awt.List;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -12,17 +13,20 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import models.user.Secretary;
+import models.user.User;
 
 /**
  *
  * @author richa_bfe6tpy
  */
 //stores the medicine class
-public class Medicine implements Serializable {
+public class Medicine implements Serializable,Observable {
     private int medId;
     private String name;
     private int stock;
-    
+    private boolean inStock = false;
+    private ArrayList<User> users = new ArrayList<User>(); //stores secretarys when they need to be notified of a medicine that is low stock
     
     
     public int getMedId(){return medId;}
@@ -33,6 +37,14 @@ public class Medicine implements Serializable {
     
     public int getStock(){return stock;}
     public void setStock(int newStock){stock = newStock;}
+    
+    public void setInStock(boolean inStock){
+        this.inStock = inStock;
+        notifyObservers();
+    }
+    
+    public boolean getInstock(){return inStock;}
+    
     
     //updates the medicine in the medicine file
     public void updateMedicine(){
@@ -82,6 +94,27 @@ public class Medicine implements Serializable {
         return (this.getName());
     }
     
-    
-    
+    //overiding the observable class methods
+
+    @Override
+    public void addObserver(User u) {
+        users.add((User)u);
+    }
+
+    @Override
+    public void removeObserver(User u) {
+        users.remove((User)u);
+    }
+
+    @Override
+    public void notifyObservers()
+    {
+        Secretary temp = new Secretary();
+        for(User user:users){
+            temp = (Secretary)user;
+            temp.update(this);
+        }
+        
+        
+    }
 }

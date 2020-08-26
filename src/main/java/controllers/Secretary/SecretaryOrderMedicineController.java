@@ -59,6 +59,18 @@ public class SecretaryOrderMedicineController {
         public void actionPerformed(ActionEvent e) {
             Medicine m = theView.getSecretaryOrderMedecineMedicinesBox();//medicine to order
             m.setStock(m.getStock() + theView.getSecretaryOrderMedicineQuantityField());// increase the stock
+            Medicine temp = new Medicine();
+            if (m.getStock() > 0){
+                 m.setInStock(true); //set the in stock flag to true 
+            }
+            for(Medicine medicine: theModel.getMedicineOutOfStock())
+            {
+                if(medicine.getMedId() == m.getMedId())
+                {
+                    temp = medicine;
+                }
+            }
+            theModel.getMedicineOutOfStock().remove(temp);
             m.updateMedicine();//save the medicine 
         }
     

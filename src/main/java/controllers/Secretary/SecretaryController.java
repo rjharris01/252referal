@@ -17,7 +17,9 @@ import Views.Secretary.SecretaryView;
 import controllers.LoginController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
+import models.Medicine;
 import models.user.Secretary;
 import models.user.User;
 
@@ -48,6 +50,8 @@ public class SecretaryController {
         this.theView.addSecretaryApproveAppointmentListener(new SecretaryApproveAppointmentListener());
         
         
+        if (!theModel.getMedicineOutOfStock().isEmpty()){SecretaryMedicineRequest();};
+    
     }
     
     //Switch to Secretary Approve Patient view and controller on button press
@@ -179,6 +183,27 @@ public class SecretaryController {
         }
         
     }
+    
+    public void SecretaryMedicineRequest(){
+        
+        //Creates a new thread to improve flow of program
+        Thread t = new Thread(new Runnable(){
+            public void run(){
+                String message = "";
+                for (Medicine m : theModel.getMedicineOutOfStock())
+                {
+                    message = message.concat(m + "\n"); //displays all medicines out of stock
+                }
+                JOptionPane.showMessageDialog(null, message, "These medicines are out of stock:", JOptionPane.PLAIN_MESSAGE);
+            }
+            });
+        
+        t.start();
+        
+        
+    }
+    
+    
     
     
 }

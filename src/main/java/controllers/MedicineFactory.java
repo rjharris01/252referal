@@ -13,6 +13,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import models.Medicine;
+import models.user.Doctor;
+import models.user.Secretary;
+
 
 /**
  *
@@ -22,13 +25,22 @@ import models.Medicine;
 public class MedicineFactory {
     
     //Create a new medicine with name passed to function
-    public Medicine makeNewMedicine(String MedicineName)
+    public Medicine makeNewMedicine(String MedicineName, Doctor doctor)
     {
+        ArrayList<Secretary>Secretaries = new ArrayList();
         Medicine tempMedicine;
         tempMedicine = new Medicine();
         tempMedicine.setMedId(getNextMedicineId());
         tempMedicine.setName(MedicineName);
         tempMedicine.setStock(0);
+        
+        Secretaries = doctor.getAllSecretaries();
+        for(Secretary s : Secretaries)
+        {
+            tempMedicine.addObserver((Secretary)s);
+        }
+        
+        tempMedicine.setInStock(false);
         
         writeNewMedicine(tempMedicine);
         
