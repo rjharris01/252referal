@@ -5,8 +5,15 @@
  */
 package Views.Doctor;
 
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.event.ActionListener;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.ListCellRenderer;
+import javax.swing.UIManager;
 import models.Appointment;
 
 /**
@@ -21,6 +28,7 @@ public class DoctorStartAppointmentView extends javax.swing.JPanel {
      */
     public DoctorStartAppointmentView() {
         initComponents();
+        DoctorStartAppointmentListBox.setRenderer(createListRenderer());
     }
 
     /**
@@ -118,7 +126,29 @@ public class DoctorStartAppointmentView extends javax.swing.JPanel {
         DoctorStartAppointmentListBox.setModel(model);
     }
      
-     
+     private static ListCellRenderer<? super Appointment> createListRenderer() {
+      return new DefaultListCellRenderer() {
+          private Color background = new Color(0, 100, 255, 15);
+          private Color defaultBackground = (Color) UIManager.get("List.background");
+          
+          public Component getListCellRendererComponent(JList<?> list, Object value, int index,
+                                                        boolean isSelected, boolean cellHasFocus) {
+              Component c = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+              if (c instanceof JLabel) {
+                  JLabel label = (JLabel) c;
+                  Appointment app = (Appointment) value;
+                  if(app != null){
+                      label.setText(String.format("Date: %s   Patient: %s ",app.getAppointmentDate().toString(),app.getPatient().getName()));
+                  }
+                  
+                  if (!isSelected) {
+                      label.setBackground(index % 2 == 0 ? background : defaultBackground);
+                  }
+              }
+              return c;
+          }
+      };
+     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton DoctorBackButton;

@@ -216,7 +216,9 @@ public class SecretaryController {
                     message = message.concat("Type:" + m.getType() +"\nDetails:\n"+m.toString()+"\n\n"); //displays all medicines out of stock
                     }
                 }
-                JOptionPane.showMessageDialog(null, message, "Current Requests:", JOptionPane.PLAIN_MESSAGE);
+                if (!"".equals(message)){
+                    JOptionPane.showMessageDialog(null, message, "Current Requests:", JOptionPane.PLAIN_MESSAGE);
+                    }
             }
             });
         

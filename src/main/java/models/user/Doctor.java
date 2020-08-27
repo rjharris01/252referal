@@ -93,6 +93,7 @@ public class Doctor extends User {
     public ArrayList<Appointment>  getAllAppointments()
     {
         ArrayList<Appointment> appointments = new ArrayList<>();
+        ArrayList<Appointment> toRemove = new ArrayList<>();
         try {
                         FileInputStream fis = new FileInputStream("Appointments.ser");
 			ObjectInputStream ois = new ObjectInputStream(fis);
@@ -104,10 +105,11 @@ public class Doctor extends User {
                         for (Appointment appointment : appointments){
                             if (!appointment.getDoctor().getUserId().equals(this.getUserId()))
                             {
-                                appointments.remove(appointment);
+                                toRemove.add(appointment);
+                                
                             }
                         }
-                        
+                        appointments.removeAll(toRemove);
             } catch (FileNotFoundException  e) {
 			System.out.print("No file \n");
 		} catch (IOException | ClassNotFoundException e) {

@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import models.Appointment;
 import models.Rating;
@@ -59,8 +60,9 @@ public class PatientLeaveFeedbackForDoctorController {
         @Override
         public void actionPerformed(ActionEvent e) {
             try{
-                Appointment appointment = theView.getAppointment(); //get the appointment
-                Doctor doctor = new Doctor();
+                Appointment appointment = (Appointment)theView.getAppointment(); //get the appointment
+                Doctor doctor = theView.getAppointment().getDoctor();
+                
                 ArrayList<Doctor> doctors = doctor.getAllDoctors(); 
                 for(Doctor d : doctors)
                 {
@@ -70,9 +72,6 @@ public class PatientLeaveFeedbackForDoctorController {
                     }
                 }
                     
-                
-                
-                
                 Patient patient = appointment.getPatient();
                 Rating rating = new Rating(); //create the new rating 
                 rating.setDoctor(doctor);//set the rating 
@@ -83,6 +82,15 @@ public class PatientLeaveFeedbackForDoctorController {
                 
                 doctor.addRating(rating);//add rating to doctor
                 doctor.updateDoctor();//update the doctor to write to file
+                
+                JOptionPane.showMessageDialog(null, "The Doctor rating has been added");
+                
+                PatientView patientView = new PatientView();
+                PatientController patientController = new PatientController(patientView,theModel);
+                theView.setVisible(false);
+                patientView.setVisible(true);
+                theView.getParent().add(patientView,SwingConstants.CENTER);
+                
                 
                 } catch(Exception ex)
                     

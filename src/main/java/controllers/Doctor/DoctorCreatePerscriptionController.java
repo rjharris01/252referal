@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import models.Appointment;
 import models.Medicine;
@@ -115,6 +116,14 @@ public class DoctorCreatePerscriptionController {
             selected.addPerscription(perscription); //add perscription to user
             
             theView.reset(); // update view
+            
+            JOptionPane.showMessageDialog(null, "The Perscription has been created sucessfully");
+            
+            DoctorView doctorView = new DoctorView();
+            DoctorController DoctorController = new DoctorController(doctorView,theModel);
+            theView.setVisible(false);
+            doctorView.setVisible(true);
+            theView.getParent().add(doctorView,SwingConstants.CENTER);
         }
     
     }

@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import models.Appointment;
 import models.user.Doctor;
@@ -58,6 +59,14 @@ public class DoctorStartAppointmentController {
             tempAppointment.setComments(theView.getAppointmentComments()); //set notes 
             tempAppointment.updateAppointment(); //write the update to file 
             theView.resetComments();//clear the comment section
+            
+            JOptionPane.showMessageDialog(null, "The Appointment has concluded and notes have been added");
+            
+            DoctorView doctorView = new DoctorView();
+            DoctorController DoctorController = new DoctorController(doctorView,theModel);
+            theView.setVisible(false);
+            doctorView.setVisible(true);
+            theView.getParent().add(doctorView,SwingConstants.CENTER);
         }
         
     }
