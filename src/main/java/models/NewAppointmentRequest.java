@@ -11,7 +11,7 @@ package models;
  */
 //stores the new appointment request class
 public class NewAppointmentRequest extends Request{
-    private AppointmentRequest appointment;
+    private AppointmentRequest appointment = new AppointmentRequest();
     
     public AppointmentRequest getAppointmentRequest() { return appointment;}
     public void setAppointmentRequest(AppointmentRequest newAppointmentRequest){appointment = newAppointmentRequest;}

@@ -21,6 +21,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
+import models.Appointment;
 import models.Observer;
 
 /**
@@ -226,9 +227,15 @@ public class Secretary extends User implements Observer{
     //method to approve a new appointment request
     public void approveAppointmentRequest(NewAppointmentRequest appointmentRequest)
     {
+        Appointment temp = (Appointment)appointmentRequest.getAppointmentRequest();
+        temp.writeNewAppointment(temp);
         appointmentRequest.setCompleted(true);
     }
-    
+    //method to approve any request
+    public void approveRequest(Request request)
+    {
+        request.setCompleted(true);
+    }
     //method to delete any request
    
     public void deleteRequest(Request request)
@@ -387,7 +394,18 @@ public class Secretary extends User implements Observer{
     public void updateRequests(Object o)
     {
         Request r = (Request)o;
+        ArrayList<Request>toRemove = new ArrayList();
+        
+        for(Request request: requestsList)
+        {
+            if(request == r || request.getCompleted())
+            {
+                toRemove.add(request); //remove all instock medicine
+            }
+        }
+        
         requestsList.add(r);
+        requestsList.removeAll(toRemove);
         this.updateUser();
     }
 }

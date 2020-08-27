@@ -71,21 +71,20 @@ public class RequestMaker {
         request.setType("accountDeleteRequest");
         
         requestObserverFunctions(request);
-        writeRequest(request);
     }
     
     
     //generate appointment request
-    public void appointmentRequest(AppointmentRequest appointment)
+    public void newAppointmentRequest(NewAppointmentRequest appointment)
     {
         NewAppointmentRequest request;
         request = new NewAppointmentRequest();
-        request.setAppointmentRequest(appointment);
+        request.setAppointmentRequest(appointment.getAppointmentRequest());
         request.setType("newAppointmentRequest");
         
         requestObserverFunctions(request);
         
-        writeRequest(request);
+        
     }
     
     

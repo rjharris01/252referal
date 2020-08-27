@@ -7,14 +7,18 @@ package controllers.Secretary;
 
 import Views.Secretary.SecretaryAppointmentView;
 import Views.Secretary.SecretaryView;
+import controllers.RequestMaker;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import models.AppointmentRequest;
+import models.NewAppointmentRequest;
+import models.Request;
 import models.user.Doctor;
 import models.user.Patient;
 import models.user.Secretary;
@@ -106,14 +110,16 @@ public class SecretaryAppointmentController {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
                 LocalDateTime appointmentDate = LocalDateTime.parse(str, formatter); //the date
 
-                AppointmentRequest appointmentRequest = new AppointmentRequest();//new appointment request
-                appointmentRequest.setAppointmentDate(appointmentDate);//set appointment request
-                appointmentRequest.setDoctor(doctor);
-                appointmentRequest.setPatient(patient);
-                appointmentRequest.newAppointmentRequest(appointmentRequest);
-                appointmentRequest.approveRequest(appointmentRequest);//approved by secretary 
+                NewAppointmentRequest appointmentRequest = new NewAppointmentRequest();//new appointment request
+                appointmentRequest.getAppointmentRequest().setAppointmentDate(appointmentDate);//set appointment request
+                appointmentRequest.getAppointmentRequest().setDoctor(doctor);
+                appointmentRequest.getAppointmentRequest().setPatient(patient);
+                RequestMaker rm = new RequestMaker(); //create request maker instance 
+                rm.newAppointmentRequest(appointmentRequest); // generate request
+                theModel.approveAppointmentRequest(appointmentRequest);
                 
                 
+                JOptionPane.showMessageDialog(null, "Appointment Created:" + appointmentRequest);
             
                 } catch(Exception ex)
                 {

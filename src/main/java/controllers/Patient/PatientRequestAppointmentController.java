@@ -14,8 +14,10 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import models.AppointmentRequest;
+import models.NewAppointmentRequest;
 import models.user.Doctor;
 import models.user.Patient;
 import models.user.User;
@@ -92,14 +94,14 @@ public class PatientRequestAppointmentController {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
                 LocalDateTime appointmentDate = LocalDateTime.parse(str, formatter);
 
-                AppointmentRequest appointmentRequest = new AppointmentRequest(); //create new request object
-                appointmentRequest.setAppointmentDate(appointmentDate);//set request object data
-                appointmentRequest.setDoctor(doctor);
-                appointmentRequest.setPatient(patient);
-                
+                NewAppointmentRequest appointmentRequest = new NewAppointmentRequest();//new appointment request
+                appointmentRequest.getAppointmentRequest().setAppointmentDate(appointmentDate);//set appointment request
+                appointmentRequest.getAppointmentRequest().setDoctor(doctor);
+                appointmentRequest.getAppointmentRequest().setPatient(patient);
+                JOptionPane.showMessageDialog(null, "Appointment Created:" + appointmentRequest);
                 
                 RequestMaker rm = new RequestMaker(); //create request maker instance 
-                rm.appointmentRequest(appointmentRequest); // generate request
+                rm.newAppointmentRequest(appointmentRequest); // generate request
                 
                 
                 

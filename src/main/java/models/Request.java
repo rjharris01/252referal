@@ -41,10 +41,6 @@ public abstract class Request implements Observable, Serializable {
     public String getType() { return type;}
     public void setType(String newType){type = newType;}
     
-   // public int getRequestId() { return requestId;}
-   // public void setRequestId(int newRequestId){requestId = newRequestId;}
-    
-    //returns all requests
     public ArrayList<Request>  getAllRequests()
      {
         ArrayList<Request> requests = new ArrayList<>();
