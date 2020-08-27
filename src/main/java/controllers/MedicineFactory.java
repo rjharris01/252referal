@@ -27,14 +27,15 @@ public class MedicineFactory {
     //Create a new medicine with name passed to function
     public Medicine makeNewMedicine(String MedicineName, Doctor doctor)
     {
-        ArrayList<Secretary>Secretaries = new ArrayList();
+        
         Medicine tempMedicine;
         tempMedicine = new Medicine();
         tempMedicine.setMedId(getNextMedicineId());
         tempMedicine.setName(MedicineName);
         tempMedicine.setStock(0);
         
-        Secretaries = doctor.getAllSecretaries();
+        
+        ArrayList<Secretary>Secretaries  = doctor.getAllSecretaries();
         for(Secretary s : Secretaries)
         {
             tempMedicine.addObserver((Secretary)s);
