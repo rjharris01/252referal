@@ -398,7 +398,7 @@ public class Secretary extends User implements Observer{
         
         for(Request request: requestsList)
         {
-            if(request.equals(r) && r.getCompleted())
+             if(request.equals(r) && r.getCompleted())
             {
                 toRemove.add((Request)request); //remove all instock medicine
             }

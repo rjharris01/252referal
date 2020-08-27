@@ -117,7 +117,7 @@ public class SecretaryAppointmentController {
                 RequestMaker rm = new RequestMaker(); //create request maker instance 
                 rm.newAppointmentRequest(appointmentRequest); // generate request
                 theModel.approveAppointmentRequest(appointmentRequest);
-                
+                theModel.updateUser();
                 
                 JOptionPane.showMessageDialog(null, "Appointment Created:" + appointmentRequest);
             

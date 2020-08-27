@@ -89,6 +89,7 @@ public class SecretaryApprovePatientController {
         public void actionPerformed(ActionEvent e) {
             NewAccountRequest newAccount = theView.getSelectedUserRequest();//get selected request
             String userid = theModel.approveAccountRequest(newAccount);//create the new account 
+            theModel.updateUser();
             JOptionPane.showMessageDialog(null, "Account\n"+ userid + "\nCreated");//return the user to the id
             setPatientList();//reset the patient request account list
             

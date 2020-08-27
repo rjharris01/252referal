@@ -62,6 +62,7 @@ public class SecretaryApproveAppointmentController {
             theModel.approveAppointmentRequest(newAppointment);//approve request
             theModel.deleteRequest((Request)newAppointment);//remove it from requests
             setAppointmentList();//reset the appointment request list
+            theModel.updateUser();
         }
         
     }
