@@ -391,16 +391,16 @@ public class Secretary extends User implements Observer{
         this.updateUser();
     }
     
-    public void updateRequests(Object o)
+    public void updateAllRequests(Object o)
     {
         Request r = (Request)o;
         ArrayList<Request>toRemove = new ArrayList();
         
         for(Request request: requestsList)
         {
-            if(request == r || request.getCompleted())
+            if(request.equals(r) && r.getCompleted())
             {
-                toRemove.add(request); //remove all instock medicine
+                toRemove.add((Request)request); //remove all instock medicine
             }
         }
         

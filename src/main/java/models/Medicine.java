@@ -69,6 +69,10 @@ public class Medicine implements Serializable,Observable {
         for(int k = 0; k < medicines.size(); k++) {
         if(medicines.get(k).getMedId() == this.getMedId()) {
             index = k;
+            if(medicines.get(k).getStock() > 0)
+            {
+                this.setInStock(true);
+            }
             }
         }
         medicines.set(index, this);

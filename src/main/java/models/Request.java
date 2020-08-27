@@ -77,7 +77,7 @@ public abstract class Request implements Observable, Serializable {
         Secretary temp = new Secretary();
         for(User user:users){
             temp = (Secretary)user;
-            temp.updateRequests(this);
+            temp.updateAllRequests(this);
         }
         
         

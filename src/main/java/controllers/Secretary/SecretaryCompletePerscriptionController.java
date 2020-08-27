@@ -67,17 +67,35 @@ public class SecretaryCompletePerscriptionController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            
             Perscription selectPerscription = theView.getPerscription(); //get selected perscription
             Patient patient = theView.getPatient(); //get selected patient
             Medicine medicine = selectPerscription.getMedicine();//get medicine
             Integer Quantity = selectPerscription.getQuantity();//get quantity
             
             patient.removePerscription(selectPerscription);//remove the perscription from the patient
-            medicine.setStock(medicine.getStock() - Quantity);//update the medicine stock
-            medicine.updateMedicine();//save 
             
-            setPerscriptionList();//reset the patient perscription list
-            JOptionPane.showMessageDialog(null, "Persciption Completed");
+            int tempStock = medicine.getStock();
+            if (tempStock  - Quantity > 0)
+            {
+                medicine.setStock(medicine.getStock() - Quantity);//update the medicine stock
+                if(medicine.getStock() == 0){
+                    medicine.setInStock(false);
+                }
+                
+                else{medicine.setInStock(true);}
+                
+                medicine.updateMedicine();//save 
+                setPerscriptionList();//reset the patient perscription list
+                JOptionPane.showMessageDialog(null, "Persciption Completed");
+            }
+            
+            else{
+                medicine.setInStock(false);
+                medicine.updateMedicine();
+                JOptionPane.showMessageDialog(null, "Note Enough Stock\nStock:" + tempStock);
+            }
+            
             
             
         }
