@@ -27,7 +27,7 @@ public abstract class User implements Serializable {
     private String password;
     private String address;
     private LocalDate registerDate;
-    private Boolean loginStatus;
+    private Boolean loginStatus = false;
     
     
     public String getUserId() { return userId;}

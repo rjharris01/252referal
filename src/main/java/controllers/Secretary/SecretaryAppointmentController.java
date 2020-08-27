@@ -73,9 +73,9 @@ public class SecretaryAppointmentController {
                     patientModel.addElement((Patient) user); //create list of patients 
                 }
             }
-            
+            setPatients(patientModel); // set list model
             setDoctors(doctorModel); //set list model
-            setPatients(patientModel);// set list model
+           
             
         }
         

@@ -91,7 +91,7 @@ public class SecretaryAppointmentView extends javax.swing.JPanel {
         SecretaryApprovePatientButton = new javax.swing.JButton();
         
         
-        SecretaryAppointmentPatientBox.setEditor(null);
+      
         SecretaryAppointmentMonthBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
         SecretaryAppointmentSubmitButton.setText("Submit");
         SecretaryAppointmentBackButton.setText("Back");
