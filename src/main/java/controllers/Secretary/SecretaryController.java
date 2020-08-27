@@ -20,6 +20,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import models.Medicine;
+import models.Request;
 import models.user.Secretary;
 import models.user.User;
 
@@ -51,7 +52,7 @@ public class SecretaryController {
         
         
         if (!theModel.getMedicineOutOfStock().isEmpty()){SecretaryMedicineRequest();};
-    
+        if (!theModel.getAllRequests().isEmpty()){requestsDialog();};
     }
     
     //Switch to Secretary Approve Patient view and controller on button press
@@ -201,6 +202,25 @@ public class SecretaryController {
         t.start();
         
         
+    }
+    
+    public void requestsDialog(){
+        //Creates a new thread to improve flow of program
+        Thread t = new Thread(new Runnable(){
+            public void run(){
+                String message = "";
+                for (Request m : theModel.getAllRequests())
+                {
+                    if(!m.getCompleted())
+                    {  
+                    message = message.concat("Type:" + m.getType() +"\nDetails:\n"+m.toString()+"\n\n"); //displays all medicines out of stock
+                    }
+                }
+                JOptionPane.showMessageDialog(null, message, "Current Requests:", JOptionPane.PLAIN_MESSAGE);
+            }
+            });
+        
+        t.start();
     }
     
     

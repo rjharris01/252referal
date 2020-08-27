@@ -43,7 +43,7 @@ public class UserFactory {
         tempInput = null;
         User tempUser = null;
 
-        //create new patient 
+        //create new patient request 
         if(userType.equals("Patient"))
         {
             Patient tempPatient;
@@ -60,6 +60,25 @@ public class UserFactory {
             RequestMaker newRequestMaker = new RequestMaker();
             newRequestMaker.newAccountRequest(tempPatient);
             
+            tempUser = tempPatient;
+
+        }
+        
+        //creats a patient instead of creaating a request
+        else if(userType.equals("NoRequestPatient"))
+        {
+            userType = "Patient";
+            Patient tempPatient;
+            tempPatient = new Patient();
+            tempPatient.setName(accountName);
+            tempPatient.setPassword(accountPassword);
+            tempPatient.setAddress(accountAddress);
+            tempPatient.setGender(gender);
+            tempPatient.setBirthday(tempDate);
+            tempPatient.setRegisterDate(tempDate.now());
+            userId = getNextUserId("P");
+            tempPatient.setUserId(userId);
+            writeNewUser(tempPatient);
             tempUser = tempPatient;
 
         }

@@ -97,6 +97,7 @@ public class PatientRequestAppointmentController {
                 appointmentRequest.setDoctor(doctor);
                 appointmentRequest.setPatient(patient);
                 
+                
                 RequestMaker rm = new RequestMaker(); //create request maker instance 
                 rm.appointmentRequest(appointmentRequest); // generate request
                 

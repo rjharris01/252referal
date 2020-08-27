@@ -28,6 +28,8 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import models.Medicine;
+import models.user.Administrator;
+import models.user.Secretary;
 
 /**
  *
@@ -36,6 +38,17 @@ import models.Medicine;
 //class used to manage new requests 
 public class RequestMaker {  
     
+    private Administrator temp = new Administrator();
+    
+    public Request requestObserverFunctions(Request request){
+        ArrayList<Secretary>Secretaries  = temp.getAllSecretaries();
+        for(Secretary s : Secretaries)
+        {
+            request.addObserver((Secretary)s);
+        }
+        request.setCompleted(false);
+        return request;
+    }
     //generate new account request
     public void newAccountRequest(User user)
     {
@@ -43,8 +56,10 @@ public class RequestMaker {
         request = new NewAccountRequest();
         request.setUser(user);
         request.setType("newAccountRequest");
-        request.setRequestId(request.getNextRequestId());
-        writeRequest(request);
+        
+        requestObserverFunctions(request);
+        
+      
     }
     
     //generate terminate account request
@@ -54,7 +69,8 @@ public class RequestMaker {
         request = new AccountDeleteRequest();
         request.setUserId(user.getUserId());
         request.setType("accountDeleteRequest");
-        request.setRequestId(request.getNextRequestId());
+        
+        requestObserverFunctions(request);
         writeRequest(request);
     }
     
@@ -66,7 +82,9 @@ public class RequestMaker {
         request = new NewAppointmentRequest();
         request.setAppointmentRequest(appointment);
         request.setType("newAppointmentRequest");
-        request.setRequestId(request.getNextRequestId());
+        
+        requestObserverFunctions(request);
+        
         writeRequest(request);
     }
     
@@ -78,7 +96,10 @@ public class RequestMaker {
         request = new OrderMedicineRequest();
         request.setMedicine(medicine);
         request.setType("orderMedicineRequest");
-        request.setRequestId(request.getNextRequestId());
+        //request.setRequestId(request.getNextRequestId());
+        
+        requestObserverFunctions(request);
+        
         writeRequest(request);
     }
     

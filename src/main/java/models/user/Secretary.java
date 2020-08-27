@@ -31,6 +31,7 @@ import models.Observer;
 public class Secretary extends User implements Observer{
     
     ArrayList<Medicine> medicineOutOfStock = new ArrayList();
+    ArrayList<Request> requestsList = new ArrayList();
     
     public ArrayList<Medicine> getMedicineOutOfStock(){
         return medicineOutOfStock;
@@ -40,21 +41,26 @@ public class Secretary extends User implements Observer{
     public ArrayList<Request> getAllRequests()
     {
        
-        ArrayList<Request> requests = new ArrayList<>();
-        try {
-                        FileInputStream fis = new FileInputStream("Requests.ser");
-			ObjectInputStream ois = new ObjectInputStream(fis);
-                        requests = (ArrayList) ois.readObject();
+        return requestsList;
+        
+        
+        
+        
+        //ArrayList<Request> requests = new ArrayList<>();
+        //try {
+                       // FileInputStream fis = new FileInputStream("Requests.ser");
+			//ObjectInputStream ois = new ObjectInputStream(fis);
+                       // requests = (ArrayList) ois.readObject();
 			
-			ois.close();
-                        fis.close();
+			//ois.close();
+                       // fis.close();
                         
-            } catch (FileNotFoundException  e) {
-			System.out.print("No file \n");
-		} catch (IOException | ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-        return requests; 
+        //    } catch (FileNotFoundException  e) {
+			//System.out.print("No file \n");
+	//	} catch (IOException | ClassNotFoundException e) {
+		//	e.printStackTrace();
+		//}
+       // return requests; 
     }
    
     
@@ -65,7 +71,7 @@ public class Secretary extends User implements Observer{
       ArrayList<Request> allRequests = getAllRequests();
       for (Request request : allRequests)
       {
-          if ("newAccountRequest".equals(request.getType()))
+          if ("newAccountRequest".equals(request.getType())&& !request.getCompleted())
           {
               requests.add((NewAccountRequest) request);
           }
@@ -81,7 +87,7 @@ public class Secretary extends User implements Observer{
       ArrayList<Request> allRequests = getAllRequests();
       for (Request request : allRequests)
       {
-          if ("newAppointmentRequest".equals(request.getType()))
+          if ("newAppointmentRequest".equals(request.getType()) && !request.getCompleted())
           {
               requests.add((NewAppointmentRequest)request);
           }
@@ -96,7 +102,7 @@ public class Secretary extends User implements Observer{
       ArrayList<Request> allRequests = getAllRequests();
       for (Request request : allRequests)
       {
-          if ("accountDeleteRequest".equals(request.getType()))
+          if ("accountDeleteRequest".equals(request.getType())&& !request.getCompleted())
           {
               requests.add((AccountDeleteRequest)request);
           }
@@ -164,26 +170,28 @@ public class Secretary extends User implements Observer{
              Patient tempUser = (Patient) accountRequest.getUser();
         
              
-        tempUser = (Patient) uf.makeNewUser("Patient", tempUser.getName(), tempUser.getPassword(), tempUser.getAddress(), tempUser.getGender(), tempUser.getRegisterDate());
-        ArrayList<Request> requests = this.getAllRequests();
-        Iterator<Request> iter = requests.iterator();
-        while (iter.hasNext())
-        {
-            Request request = iter.next();
-            if(request.getRequestId() == accountRequest.getRequestId())
+             tempUser = (Patient) uf.makeNewUser("NoRequestPatient", tempUser.getName(), tempUser.getPassword(), tempUser.getAddress(), tempUser.getGender(), tempUser.getRegisterDate());
+             accountRequest.setCompleted(true);
+        
+        //ArrayList<Request> requests = getAllRequests();
+        //Iterator<Request> iter = requests.iterator();
+       // while (iter.hasNext())
+       // {
+          //  Request request = iter.next();
+         //   if(request.getRequestId() == accountRequest.getRequestId())
+        //    {
+         //       iter.remove();
+         //       updateRequests(requests);
+       //     }
+      //  }
+      return tempUser.getUserId();
+        
+      } 
+        
+       catch (java.lang.NullPointerException e)
             {
-                iter.remove();
-                updateRequests(requests);
+                return ("No User requests");
             }
-        }
-        return tempUser.getUserId();
-        
-       } 
-        
-        catch (java.lang.NullPointerException e)
-             {
-                 return ("No User requests");
-             }
     }
     
     
@@ -191,8 +199,9 @@ public class Secretary extends User implements Observer{
     public void declineAccountRequest(NewAccountRequest accountRequest)
     {
         try{
+            accountRequest.setCompleted(true);
             
-        User tempUser = accountRequest.getUser();
+        /*User tempUser = accountRequest.getUser();
         ArrayList<Request> requests = this.getAllRequests();
         Iterator<Request> iter = requests.iterator();
         while (iter.hasNext())
@@ -204,24 +213,30 @@ public class Secretary extends User implements Observer{
                 updateRequests(requests);
             }
         }
-        
+        */
        } 
         
         catch (java.lang.NullPointerException e)
              {
                  System.out.print("No Use requests");
              }
+          
     }
     
     //method to approve a new appointment request
     public void approveAppointmentRequest(NewAppointmentRequest appointmentRequest)
     {
-        appointmentRequest.getAppointmentRequest().approveRequest(appointmentRequest.getAppointmentRequest());
+        appointmentRequest.setCompleted(true);
     }
     
     //method to delete any request
+   
     public void deleteRequest(Request request)
     {
+        request.setCompleted(true);
+   
+        /*
+   
         ArrayList<Request> requests;
         ArrayList<Request> toRemove = new ArrayList();
         requests = request.getAllRequests();
@@ -236,6 +251,7 @@ public class Secretary extends User implements Observer{
         
         requests.removeAll(toRemove);
         updateRequests(requests);
+        */
     }
     
     
@@ -365,6 +381,13 @@ public class Secretary extends User implements Observer{
         medicineOutOfStock.removeAll(toRemove);
         
         
+        this.updateUser();
+    }
+    
+    public void updateRequests(Object o)
+    {
+        Request r = (Request)o;
+        requestsList.add(r);
         this.updateUser();
     }
 }

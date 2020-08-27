@@ -15,22 +15,34 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import models.user.Secretary;
+import models.user.User;
 
 /**
  *
  * @author Richard Harris
  */
 //stores the request abstract class
-public abstract class Request implements Serializable {
+public abstract class Request implements Observable, Serializable {
     
     private String type;
-    private int requestId;
+   // private int requestId;
+    private boolean completed = false;
+    
+    private ArrayList<User> users = new ArrayList();
+    
+    
+    public boolean getCompleted(){return completed;}
+    public void setCompleted(boolean completed){this.completed = completed;
+    notifyObservers();
+    }
+    
     
     public String getType() { return type;}
     public void setType(String newType){type = newType;}
     
-    public int getRequestId() { return requestId;}
-    public void setRequestId(int newRequestId){requestId = newRequestId;}
+   // public int getRequestId() { return requestId;}
+   // public void setRequestId(int newRequestId){requestId = newRequestId;}
     
     //returns all requests
     public ArrayList<Request>  getAllRequests()
@@ -52,11 +64,26 @@ public abstract class Request implements Serializable {
         return requests; 
      }
     
-    //gets the next available request id
-    public int getNextRequestId()
+    
+     @Override
+    public void addObserver(User u) {
+        users.add((User)u);
+    }
+
+    @Override
+    public void removeObserver(User u) {
+        users.remove((User)u);
+    }
+
+    @Override
+    public void notifyObservers()
     {
-        ArrayList<Request> requests = getAllRequests();
-        return requests.size();
+        Secretary temp = new Secretary();
+        for(User user:users){
+            temp = (Secretary)user;
+            temp.updateRequests(this);
+        }
+        
         
     }
     
